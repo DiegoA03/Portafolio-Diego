@@ -63,7 +63,7 @@ const Header = () => {
           <div className="flex justify-center">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full overflow-hidden shadow-2xl">
               <img 
-                src="/src/components/Documents/image.png" 
+                src="/src/components/Documents/WhatsApp Image 2026-01-22 at 9.42.45 PM.jpeg" 
                 alt="Diego Álvarez" 
                 className="w-full h-full object-cover"
                 onError={(e) => {
