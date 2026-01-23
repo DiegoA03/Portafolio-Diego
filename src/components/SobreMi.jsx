@@ -23,14 +23,14 @@ const SobreMi = () => {
             <div className="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-600">
               <h3 className="text-xl font-bold text-blue-700 mb-3">Perfil Profesional</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Soy estudiante de undécimo semestre del programa de <span className="font-semibold text-blue-600">Ingeniería de Sistemas 
-                de la Universidad Francisco de Paula Santander</span>, con formación orientada al desarrollo de soluciones tecnológicas, 
-                el análisis de sistemas de información y la documentación técnica y de gestión de proyectos, con una proyección hacia el 
+                Soy estudiante de undécimo semestre del programa de <span className="font-semibold text-blue-600">Ingeniería de Sistemas
+                  de la Universidad Francisco de Paula Santander</span>, con formación orientada al desarrollo de soluciones tecnológicas,
+                el análisis de sistemas de información y la documentación técnica y de gestión de proyectos, con una proyección hacia el
                 área de la inteligencia artificial.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                Me caracterizo por asumir mis responsabilidades académicas con <span className="font-semibold text-blue-600">compromiso, 
-                ética y una actitud proactiva</span> frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.
+                Me caracterizo por asumir mis responsabilidades académicas con <span className="font-semibold text-blue-600">compromiso,
+                  ética y una actitud proactiva</span> frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.
               </p>
             </div>
 
@@ -43,21 +43,21 @@ const SobreMi = () => {
                 <div>
                   <h4 className="font-semibold text-blue-600 mb-2">💻 Desarrollo Full Stack</h4>
                   <p className="text-gray-700 text-sm">
-                    Perfil con mayor orientación al frontend, experiencia en HTML, CSS, JavaScript, Bootstrap y Tailwind. 
+                    Perfil con mayor orientación al frontend, experiencia en HTML, CSS, JavaScript, Bootstrap y Tailwind.
                     Backend con PHP y arquitectura MVC, logrando aplicaciones mantenibles y eficientes.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-blue-600 mb-2">📊 Análisis y Diseño de Sistemas</h4>
                   <p className="text-gray-700 text-sm">
-                    Competencias en análisis de datos, interpretación de necesidades del cliente, levantamiento de requerimientos 
+                    Competencias en análisis de datos, interpretación de necesidades del cliente, levantamiento de requerimientos
                     y diseño de soluciones alineadas a los objetivos del negocio usando diagramas UML.
                   </p>
                 </div>
                 <div>
                   <h4 className="font-semibold text-blue-600 mb-2">📝 Documentación Técnica</h4>
                   <p className="text-gray-700 text-sm">
-                    Me destaco significativamente en la elaboración de informes claros, estructurados y bien organizados, 
+                    Me destaco significativamente en la elaboración de informes claros, estructurados y bien organizados,
                     que facilitan la comunicación entre equipos técnicos y administrativos.
                   </p>
                 </div>
@@ -69,8 +69,8 @@ const SobreMi = () => {
                 🎯 Expectativa Profesional
               </h3>
               <p className="leading-relaxed">
-                Aspiro a fortalecer mis competencias técnicas y personales durante el proceso de prácticas profesionales, 
-                aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo 
+                Aspiro a fortalecer mis competencias técnicas y personales,
+                aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo
                 desarrollándome en el área de la inteligencia artificial y el desarrollo de software.
               </p>
             </div>
@@ -94,9 +94,9 @@ const SobreMi = () => {
             {/* Espacio para foto */}
             <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl overflow-hidden shadow-xl">
               <div className="aspect-[3/4] flex items-center justify-center">
-                <img 
-                  src="/src/components/Documents/image.png" 
-                  alt="Diego Álvarez" 
+                <img
+                  src="/sobre-mi.jpg"
+                  alt="Diego Álvarez"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.style.display = 'none';
@@ -132,7 +132,7 @@ const SobreMi = () => {
                     <span className="text-xs text-blue-600">Nativo</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{width: '100%'}}></div>
+                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '100%' }}></div>
                   </div>
                 </div>
                 <div>
@@ -141,7 +141,7 @@ const SobreMi = () => {
                     <span className="text-xs text-blue-600">Regular</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{width: '40%'}}></div>
+                    <div className="bg-blue-600 h-2 rounded-full" style={{ width: '40%' }}></div>
                   </div>
                 </div>
               </div>
@@ -151,5 +151,5 @@ const SobreMi = () => {
       </div>
     </section>
   );
-};export default SobreMi;
+}; export default SobreMi;
 

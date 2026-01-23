@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Github, Linkedin, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Download, Eye } from 'lucide-react';
+
 
 const Header = () => {
   return (
@@ -25,13 +26,13 @@ const Header = () => {
             {/* Badge de disponibilidad */}
             <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Disponible para Prácticas Profesionales
+              Disponible para trabajar
             </div>
-            
+
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
               Hola, soy <span className="text-blue-600">Diego Álvarez</span>
             </h1>
-            
+
             <p className="text-xl text-gray-700 mb-2">
               <span className="text-blue-600 font-semibold">Estudiante de Ingeniería de Sistemas.</span>
             </p>
@@ -41,18 +42,35 @@ const Header = () => {
 
             {/* Botones de acción */}
             <div className="flex flex-wrap gap-4 mb-8">
-              <a href="/src/components/Documents/HOJA DE VIDA DIEGO ALVAREZ - 1152118.pdf" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2">
-                <Download size={20} />
-                Descargar CV
+              {/* Botón para VER */}
+              <a
+                href="/hoja-de-vida.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+              >
+                <Eye size={20} />
+                Ver CV
               </a>
+
+              {/* Botón para DESCARGAR */}
+              <a
+                href="/hoja-de-vida.pdf"
+                download="CV-Diego-Alvarez.pdf"
+                className="bg-white text-blue-600 border-2 border-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition flex items-center gap-2"
+              >
+                <Download size={20} />
+                Descargar
+              </a>
+
               <div className="flex gap-3">
                 <a href="mailto:diegoandresalli@ufps.edu.co" className="w-12 h-12 border-2 border-blue-600 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
                   <Mail size={20} />
                 </a>
-                <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                <a href="https://github.com/DiegoA03" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
                   <Github size={20} />
                 </a>
-                <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+                <a href="https://www.linkedin.com/in/diego-andres-alvarez-lizarazo-6a40113a6/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 text-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
                   <Linkedin size={20} />
                 </a>
               </div>
@@ -62,9 +80,9 @@ const Header = () => {
           {/* Espacio para tu foto */}
           <div className="flex justify-center">
             <div className="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full overflow-hidden shadow-2xl">
-              <img 
-                src="/src/components/Documents/WhatsApp Image 2026-01-22 at 9.42.45 PM.jpeg" 
-                alt="Diego Álvarez" 
+              <img
+                src="/header.jpeg"
+                alt="Diego Álvarez"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.target.style.display = 'none';

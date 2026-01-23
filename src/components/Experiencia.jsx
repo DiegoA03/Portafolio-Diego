@@ -26,7 +26,7 @@ const Experiencia = () => {
       titulo: 'Sitio Web JAC',
       periodo: 'Febrero 2023 - Junio 2023',
       asignatura: 'Programación Web',
-      cliente: 'Gomez Llanez Claudia Yamile',
+      cliente: 'Ingeniero Freddy vera',
       descripcion: 'Desarrollo de sitio web informativo orientado a mantener comunicada a la comunidad del municipio de Patios.',
       tecnologias: ['PHP', 'Bootstrap', 'MySQL', 'XAMPP'],
       actividades: [
@@ -40,7 +40,7 @@ const Experiencia = () => {
       titulo: 'Sistema de Reconocimiento Facial con IA',
       periodo: 'Febrero 2024 - Junio 2024',
       asignatura: 'Seminario Integrador',
-      cliente: 'Ing. Pilar Rodriguez',
+      cliente: 'Ingenieria Gomez Llanez Claudia Yamile',
       descripcion: 'Aplicación de reconocimiento facial empleando redes neuronales convolucionales (CNN/MTCCN).',
       tecnologias: ['Python', 'HTML', 'CSS', 'Bootstrap', 'Tailwind', 'Selenium'],
       actividades: [
@@ -54,7 +54,7 @@ const Experiencia = () => {
       titulo: 'Mini E-Commerce MRM',
       periodo: 'Febrero 2025 - Junio 2025',
       asignatura: 'Ingeniería de Software',
-      cliente: 'Leal Pabon Jessica Lorena',
+      cliente: 'Ingeniera Pilar Rodriguez',
       descripcion: 'Aplicativo web tipo mini e-commerce para comercialización de repuestos de motocicletas a nivel local.',
       tecnologias: ['HTML', 'CSS', 'JavaScript', 'PHP', 'Bootstrap', 'MySQL', 'MVC'],
       actividades: [
