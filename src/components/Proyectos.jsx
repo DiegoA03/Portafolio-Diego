@@ -28,7 +28,7 @@ const Proyectos = () => {
       descripcion: 'Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.',
       imagen: '/proyecto-ecommerce.jpg', // Coloca tu imagen en public/
       demo: 'https://tu-demo.com',
-      github: 'https://github.com/DiegoA03/proyecto',
+      github: 'https://github.com/DiegoA03/mrm_ecommerce',
       tecnologias: [
         { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
         { nombre: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
@@ -72,9 +72,9 @@ const Proyectos = () => {
     {
       titulo: 'Reconocimiento Facial con IA',
       descripcion: 'Sistema de identificación facial usando redes neuronales convolucionales (CNN/MTCCN) con interfaz web moderna.',
-      imagen: '/proyecto-ia.jpg',
+      imagen: '/ia.png',
       demo: 'https://tu-demo.com',
-      github: 'https://github.com/tuusuario/proyecto',
+      github: 'https://github.com/BynelsonDa/Reconocimiento_emotion_2',
       tecnologias: [
         { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
         { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
