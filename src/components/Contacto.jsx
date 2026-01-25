@@ -3,12 +3,12 @@ import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 const Contacto = () => {
   return (
-    <footer id="contacto" className="bg-gradient-to-r from-blue-600 to-blue-400 text-white py-16">
+    <footer id="contacto" className="bg-gradient-to-r from-blue-600 to-blue-400 dark:from-gray-900 dark:to-black text-white py-16 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">¿Hablamos?</h2>
-          <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Estoy disponible para oportunidades de prácticas profesionales y proyectos interesantes. 
+          <p className="text-xl text-blue-100 dark:text-gray-300 max-w-2xl mx-auto">
+            Estoy disponible para escucharte y llevar tu idea a la nube. 
             No dudes en contactarme.
           </p>
         </div>
@@ -17,40 +17,40 @@ const Contacto = () => {
           {/* Email */}
           <a 
             href="mailto:diegoandresalli@ufps.edu.co" 
-            className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105"
+            className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border border-white/20"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
                 <Mail size={28} />
               </div>
               <h3 className="font-bold text-lg mb-2">Email</h3>
-              <p className="text-blue-100 text-sm">diegoandresalli@ufps.edu.co</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">diegoandresalli@ufps.edu.co</p>
             </div>
           </a>
 
           {/* Teléfono */}
           <a 
             href="tel:3107897525" 
-            className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105"
+            className="bg-white/10 backdrop-blur-sm p-6 rounded-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border border-white/20"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
                 <Phone size={28} />
               </div>
               <h3 className="font-bold text-lg mb-2">Teléfono</h3>
-              <p className="text-blue-100 text-sm">+57 310 789 7525</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">+57 310 789 7525</p>
             </div>
           </a>
 
           {/* Ubicación */}
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-lg">
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-lg border border-white/20">
             <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+              <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mb-4">
                 <MapPin size={28} />
               </div>
               <h3 className="font-bold text-lg mb-2">Ubicación</h3>
-              <p className="text-blue-100 text-sm">Av 5a #23-19 San Mateo</p>
-              <p className="text-blue-100 text-sm">Cúcuta, Norte de Santander</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">Av 5a #23-19 San Mateo</p>
+              <p className="text-blue-100 dark:text-gray-300 text-sm">Cúcuta, Norte de Santander</p>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Contacto = () => {
         <div className="text-center">
           <a 
             href="mailto:diegoandresalli@ufps.edu.co?subject=Oportunidad de Prácticas Profesionales" 
-            className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="inline-flex items-center gap-2 bg-white text-blue-600 dark:bg-blue-500 dark:text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-50 dark:hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             <Send size={20} />
             Enviar Mensaje
@@ -67,11 +67,11 @@ const Contacto = () => {
         </div>
 
         {/* Footer bottom */}
-        <div className="mt-12 pt-8 border-t border-white border-opacity-20 text-center">
-          <p className="text-blue-100 text-sm">
+        <div className="mt-12 pt-8 border-t border-white/20 text-center">
+          <p className="text-blue-100 dark:text-gray-400 text-sm">
             © 2025 Diego Andrés Álvarez Lizarazo. Todos los derechos reservados.
           </p>
-          <p className="text-blue-200 text-xs mt-2">
+          <p className="text-blue-200 dark:text-gray-500 text-xs mt-2">
             Estudiante de Ingeniería de Sistemas - Universidad Francisco de Paula Santander
           </p>
         </div>

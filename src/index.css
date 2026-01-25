@@ -7,7 +7,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Animación scroll infinito */
+/* Animación scroll infinito horizontal */
 @keyframes scroll-infinite {
   0% {
     transform: translateX(0);

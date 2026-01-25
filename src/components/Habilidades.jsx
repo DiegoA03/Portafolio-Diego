@@ -3,18 +3,66 @@ import { Code2 } from 'lucide-react';
 
 const Habilidades = () => {
   const habilidadesTecnicas = [
-    { nombre: 'HTML', icon: '🌐', color: 'from-orange-400 to-orange-600' },
-    { nombre: 'CSS', icon: '🎨', color: 'from-blue-400 to-blue-600' },
-    { nombre: 'JavaScript', icon: '⚡', color: 'from-yellow-400 to-yellow-600' },
-    { nombre: 'Bootstrap', icon: '🅱️', color: 'from-purple-400 to-purple-600' },
-    { nombre: 'Tailwind CSS', icon: '🎯', color: 'from-teal-400 to-teal-600' },
-    { nombre: 'React', icon: '⚛️', color: 'from-cyan-400 to-cyan-600' },
-    { nombre: 'PHP', icon: '🐘', color: 'from-indigo-400 to-indigo-600' },
-    { nombre: 'Python', icon: '🐍', color: 'from-blue-500 to-blue-700' },
-    { nombre: 'MySQL', icon: '🐬', color: 'from-blue-500 to-blue-700' },
-    { nombre: 'phpMyAdmin', icon: '💾', color: 'from-gray-500 to-gray-700' },
-    { nombre: 'Git', icon: '📦', color: 'from-orange-500 to-orange-700' },
-    { nombre: 'XAMPP', icon: '🔧', color: 'from-orange-400 to-orange-600' }
+    { 
+      nombre: 'HTML', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
+      color: 'from-orange-400 to-orange-600' 
+    },
+    { 
+      nombre: 'CSS', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
+      color: 'from-blue-400 to-blue-600' 
+    },
+    { 
+      nombre: 'JavaScript', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
+      color: 'from-yellow-400 to-yellow-600' 
+    },
+    { 
+      nombre: 'Bootstrap', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
+      color: 'from-purple-400 to-purple-600' 
+    },
+    { 
+      nombre: 'Tailwind CSS', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
+      color: 'from-teal-400 to-teal-600' 
+    },
+    { 
+      nombre: 'React', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
+      color: 'from-cyan-400 to-cyan-600' 
+    },
+    { 
+      nombre: 'PHP', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
+      color: 'from-indigo-400 to-indigo-600' 
+    },
+    { 
+      nombre: 'Python', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+      color: 'from-blue-500 to-blue-700' 
+    },
+    { 
+      nombre: 'MySQL', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
+      color: 'from-blue-500 to-blue-700' 
+    },
+    { 
+      nombre: 'Git', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
+      color: 'from-orange-500 to-orange-700' 
+    },
+    { 
+      nombre: 'GitHub', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
+      color: 'from-gray-600 to-gray-800' 
+    },
+    { 
+      nombre: 'Node.js', 
+      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+      color: 'from-green-500 to-green-700' 
+    }
   ];
 
   // Duplicamos el array para crear un loop infinito
@@ -54,20 +102,24 @@ const Habilidades = () => {
           <h3 className="text-2xl font-bold text-blue-500 mb-6">Tecnologías y Herramientas</h3>
           
           {/* Contenedor con overflow hidden */}
-          <div className="relative overflow-hidden py-8 bg-white dark:bg-gray-900 rounded-xl">
+          <div className="relative overflow-hidden py-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg">
             {/* Gradientes en los bordes */}
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
             
             {/* Animación infinita */}
-            <div className="flex gap-6 animate-scroll-infinite hover:pause">
+            <div className="flex gap-6 animate-scroll-infinite">
               {habilidadesDobles.map((skill, index) => (
                 <div 
                   key={index}
-                  className="flex-shrink-0 w-32 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                  className="flex-shrink-0 w-32 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border border-gray-200 dark:border-gray-700"
                 >
-                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-3xl shadow-lg`}>
-                    {skill.icon}
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <img 
+                      src={skill.logo} 
+                      alt={skill.nombre}
+                      className="w-full h-full object-contain"
+                    />
                   </div>
                   <p className="text-center font-semibold text-gray-800 dark:text-gray-200 text-sm">{skill.nombre}</p>
                 </div>
@@ -76,7 +128,7 @@ const Habilidades = () => {
           </div>
           
           <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
-            ✨ Pasa el cursor sobre las habilidades para pausar
+            ✨ Pasa el cursor sobre las habilidades para pausar la animación
           </p>
         </div>
 
