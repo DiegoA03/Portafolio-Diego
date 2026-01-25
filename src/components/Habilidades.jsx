@@ -17,6 +17,9 @@ const Habilidades = () => {
     { nombre: 'XAMPP', icon: '🔧', color: 'from-orange-400 to-orange-600' }
   ];
 
+  // Duplicamos el array para crear un loop infinito
+  const habilidadesDobles = [...habilidadesTecnicas, ...habilidadesTecnicas];
+
   const habilidadesBlandas = [
     { nombre: 'Trabajo en Equipo', icon: '👥' },
     { nombre: 'Responsabilidad', icon: '✅' },
@@ -37,45 +40,58 @@ const Habilidades = () => {
   ];
 
   return (
-    <section id="habilidades" className="py-20 bg-gray-50">
+    <section id="habilidades" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3">
-          <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
+          <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
             <Code2 className="text-white" size={24} />
           </div>
           Habilidades
         </h2>
 
-        {/* Habilidades Técnicas */}
+        {/* Habilidades Técnicas con Animación Horizontal */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-blue-600 mb-6">Tecnologías y Herramientas</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {habilidadesTecnicas.map((skill) => (
-              <div 
-                key={skill.nombre}
-                className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
-              >
-                <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-3xl shadow-lg`}>
-                  {skill.icon}
+          <h3 className="text-2xl font-bold text-blue-500 mb-6">Tecnologías y Herramientas</h3>
+          
+          {/* Contenedor con overflow hidden */}
+          <div className="relative overflow-hidden py-8 bg-white dark:bg-gray-900 rounded-xl">
+            {/* Gradientes en los bordes */}
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10"></div>
+            
+            {/* Animación infinita */}
+            <div className="flex gap-6 animate-scroll-infinite hover:pause">
+              {habilidadesDobles.map((skill, index) => (
+                <div 
+                  key={index}
+                  className="flex-shrink-0 w-32 bg-gray-50 dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer"
+                >
+                  <div className={`w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-lg flex items-center justify-center text-3xl shadow-lg`}>
+                    {skill.icon}
+                  </div>
+                  <p className="text-center font-semibold text-gray-800 dark:text-gray-200 text-sm">{skill.nombre}</p>
                 </div>
-                <p className="text-center font-semibold text-gray-800 text-sm">{skill.nombre}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
+          
+          <p className="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+            ✨ Pasa el cursor sobre las habilidades para pausar
+          </p>
         </div>
 
         {/* Competencias con barras de progreso */}
         <div className="mb-16">
-          <h3 className="text-2xl font-bold text-blue-600 mb-6">Competencias</h3>
-          <div className="bg-white p-8 rounded-xl shadow-lg">
+          <h3 className="text-2xl font-bold text-blue-500 mb-6">Competencias</h3>
+          <div className="bg-white dark:bg-gray-900 p-8 rounded-xl shadow-lg">
             <div className="space-y-6">
               {competencias.map((comp) => (
                 <div key={comp.area}>
                   <div className="flex justify-between mb-2">
-                    <span className="font-semibold text-gray-700">{comp.area}</span>
-                    <span className="text-blue-600 font-bold">{comp.nivel}%</span>
+                    <span className="font-semibold text-gray-700 dark:text-gray-300">{comp.area}</span>
+                    <span className="text-blue-500 font-bold">{comp.nivel}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 overflow-hidden">
                     <div 
                       className="bg-gradient-to-r from-blue-400 to-blue-600 h-3 rounded-full transition-all duration-1000 ease-out"
                       style={{ width: `${comp.nivel}%` }}
@@ -89,16 +105,16 @@ const Habilidades = () => {
 
         {/* Habilidades Blandas */}
         <div>
-          <h3 className="text-2xl font-bold text-blue-600 mb-6">Habilidades Profesionales</h3>
+          <h3 className="text-2xl font-bold text-blue-500 mb-6">Habilidades Profesionales</h3>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {habilidadesBlandas.map((skill) => (
               <div 
                 key={skill.nombre}
-                className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition-all duration-300 border-l-4 border-blue-600"
+                className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow hover:shadow-lg transition-all duration-300 border-l-4 border-blue-500"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-3xl">{skill.icon}</span>
-                  <span className="font-semibold text-gray-800">{skill.nombre}</span>
+                  <span className="font-semibold text-gray-800 dark:text-gray-200">{skill.nombre}</span>
                 </div>
               </div>
             ))}
@@ -106,7 +122,7 @@ const Habilidades = () => {
         </div>
 
         {/* Especialidades */}
-        <div className="mt-12 bg-blue-600 text-white p-8 rounded-xl shadow-lg">
+        <div className="mt-12 bg-blue-600 dark:bg-blue-500 text-white p-8 rounded-xl shadow-lg">
           <h3 className="text-2xl font-bold mb-4">Áreas de Especialización</h3>
           <div className="grid md:grid-cols-3 gap-6">
             <div>
