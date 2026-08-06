@@ -3,8 +3,7 @@ import Habilidades from '../components/Habilidades';
 
 const HabilidadesPage = () => {
   return (
-    <div className="pt-24 min-h-screen">
-      <Habilidades />
+  <div className="pt-24 min-h-screen">      <Habilidades />
     </div>
   );
 };

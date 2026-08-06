@@ -3,8 +3,7 @@ import Contacto from '../components/Contacto';
 
 const ContactoPage = () => {
   return (
-    <div className="pt-16 min-h-screen">
-      <Contacto />
+  <div className="pt-24 min-h-screen">      <Contacto />
     </div>
   );
 };

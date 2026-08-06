@@ -3,8 +3,7 @@ import Proyectos from '../components/Proyectos';
 
 const ProyectosPage = () => {
   return (
-    <div className="pt-24 min-h-screen">
-      <Proyectos />
+  <div className="pt-24 min-h-screen">      <Proyectos />
     </div>
   );
 };

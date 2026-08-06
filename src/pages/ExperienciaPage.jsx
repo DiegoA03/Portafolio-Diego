@@ -3,8 +3,7 @@ import Experiencia from '../components/Experiencia';
 
 const ExperienciaPage = () => {
   return (
-    <div className="pt-24 min-h-screen bg-white dark:bg-gray-900">
-      <Experiencia />
+  <div className="pt-24 min-h-screen">      <Experiencia />
     </div>
   );
 };

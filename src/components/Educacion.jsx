@@ -1,156 +1,105 @@
-import React, { useState } from 'react';
-import { GraduationCap, Award, ExternalLink } from 'lucide-react';
+import React from 'react';
+import { Award, ExternalLink } from 'lucide-react';
 
 const Educacion = () => {
-  const [mostrarMasCursos, setMostrarMasCursos] = useState(false);
-
   const educacion = [
     {
       titulo: 'Ingeniería de Sistemas',
       institucion: 'Universidad Francisco de Paula Santander',
       estado: 'Semestre 11° - En curso',
-      inicio: '2020-2',
-      codigo: '1152118'
+      inicio: '2020 - Presente',
+      codigo: '1152118',
+      logo: '/logo-ufps.png'
     },
     {
       titulo: 'Técnico Asistente Administrativo',
-      institucion: 'Instituto Técnico Mercedes Abrego',
-      año: '2019'
+      institucion: 'Educación Media',
+      año: '2018 - 2019',
+      logo: '/logo-colegio.png'
     }
   ];
 
-  // Certificados con imagen de insignia y link de verificación
+  // Reemplaza "imagen" y "link" con los datos reales de tus certificados
   const certificados = [
-    {
-      nombre: 'Linux Essentials',
-      institucion: 'Cisco Networking Academy',
-      año: '2025',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    },
-    {
-      nombre: 'Operating Systems Basics',
-      institucion: 'Cisco Networking Academy',
-      año: '2025',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    },
-    {
-      nombre: 'IPv6 básico - 3ra edición',
-      institucion: 'LACNIC',
-      año: '2025',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    },
-    {
-      nombre: 'Introducción a Cisco Packet Tracer',
-      institucion: 'Cisco Networking Academy',
-      año: '2025',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    },
-    {
-      nombre: 'Dispositivos de Red y Configuración Inicial',
-      institucion: 'Cisco Networking Academy',
-      año: '2025',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    },
-    {
-      nombre: 'Cómo resolver problemas y tomar decisiones con eficacia',
-      institucion: 'Coursera',
-      año: '2024',
-      imagen: 'cisco.png',
-      link: 'https://www.credly.com/badges/'
-    }
+    { nombre: 'Linux Essentials', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-1' },
+    { nombre: 'Networking Basics', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-2' },
+    { nombre: 'Network Support and Security', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-3' },
+    { nombre: 'Network Devices and Config', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-4' },
+    { nombre: 'IPv6 Básico', imagen: '/certificados/lacnic.png', link: 'https://www.credly.com/badges/tu-link-5' },
+    { nombre: 'Endpoint Security', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-6' },
+    { nombre: 'Cloud Foundations', imagen: '/certificados/aws.png', link: 'https://www.credly.com/badges/tu-link-6' },
+    { nombre: 'Full stack dev senior', imagen: '/certificados/senior.png', link: 'https://www.credly.com/badges/tu-link-6' }
+
+
   ];
+
+  const certificadosDobles = [...certificados, ...certificados];
 
   return (
-    <section id="educacion" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <section id="educacion" className="py-20 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          {/* Educación Formal */}
+        <div className="grid md:grid-cols-2 gap-12 mb-16 items-start">
+          {/* Educación Formal con logos */}
           <div>
-            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-gray-900 dark:text-white">
-              <GraduationCap className="text-blue-500" size={32} />
-              Educación
-            </h2>
-            <div className="relative border-l-2 border-blue-200 dark:border-blue-800 ml-6">
+            <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Educación</h2>
+            <div className="space-y-6">
               {educacion.map((edu, idx) => (
-                <div key={idx} className="mb-8 ml-6">
-                  <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] border-4 border-white dark:border-gray-800"></div>
-                  <div className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow hover:shadow-md transition border border-gray-200 dark:border-gray-700">
+                <div key={idx} className="flex items-center gap-4 bg-white dark:bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition border border-gray-200 dark:border-gray-700">
+                  <div className="w-16 h-16 flex-shrink-0 bg-gray-50 dark:bg-gray-700 rounded-lg flex items-center justify-center p-2">
+                    <img
+                      src={edu.logo}
+                      alt={edu.institucion}
+                      className="w-full h-full object-contain"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </div>
+                  <div>
                     <h3 className="text-lg font-bold text-blue-600 dark:text-blue-400">{edu.titulo}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 font-semibold flex items-center gap-2">
-                      {edu.institucion}
-                      <ExternalLink size={14} className="text-gray-400" />
-                    </p>
-                    {edu.estado && <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{edu.estado}</p>}
+                    <p className="text-gray-700 dark:text-gray-300 font-semibold">{edu.institucion}</p>
+                    {edu.estado && <p className="text-sm text-gray-600 dark:text-gray-400">{edu.estado}</p>}
                     {edu.inicio && <p className="text-xs text-gray-500 dark:text-gray-500">Inicio: {edu.inicio} | Código: {edu.codigo}</p>}
-                    {edu.año && <p className="text-sm text-gray-500 dark:text-gray-400">Graduado: {edu.año}</p>}
+                    {edu.año && <p className="text-sm text-gray-500 dark:text-gray-400">{edu.año}</p>}
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Cursos y Certificaciones (lista textual) */}
+          {/* Certificados - carrusel infinito al lado de Educación */}
           <div>
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-gray-900 dark:text-white">
               <Award className="text-blue-500" size={32} />
-              Cursos y Certificaciones
+              Certificaciones
             </h2>
-            <div className="space-y-4">
-              {certificados.slice(0, mostrarMasCursos ? certificados.length : 4).map((curso, idx) => (
-                <div key={idx} className="bg-white dark:bg-gray-900 p-4 rounded-lg border-l-4 border-blue-500 hover:shadow-md transition">
-                  <h3 className="font-bold text-gray-800 dark:text-white">{curso.nombre}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
-                    {curso.institucion}
-                    <ExternalLink size={14} className="text-gray-400" />
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{curso.año}</p>
-                </div>
-              ))}
 
-              {!mostrarMasCursos && certificados.length > 4 && (
-                <button onClick={() => setMostrarMasCursos(true)} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4">
-                  + Ver más cursos
-                </button>
-              )}
+            <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6">
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
 
-              {mostrarMasCursos && (
-                <button onClick={() => setMostrarMasCursos(false)} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4">
-                  - Ver menos
-                </button>
-              )}
+              <div className="flex gap-6 animate-scroll-infinite">
+                {certificadosDobles.map((cert, idx) => (
+                  <a
+                    key={idx}
+                    href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex-shrink-0 w-24 h-24 relative"
+                    title={cert.nombre}
+                  >
+                    <img
+                      src={cert.imagen}
+                      alt={cert.nombre}
+                      className="w-full h-full object-contain grayscale opacity-50 transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-125 drop-shadow-lg"
+                      onError={(e) => { e.target.style.display = 'none'; }}
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
+              ✨ Pasa el cursor sobre cada insignia para verla en color y verificarla
+            </p>
           </div>
-        </div>
-
-        {/* Galería de Insignias / Certificados con efecto hover */}
-        <div>
-          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Insignias de Certificación</h2>
-          <div className="flex flex-wrap gap-6 justify-center md:justify-start">
-            {certificados.map((cert, idx) => (
-              <a
-                key={idx}
-                href={cert.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative w-32 h-32 md:w-36 md:h-36"
-                title={cert.nombre}
-              >
-                <img
-                  src={cert.imagen}
-                  alt={cert.nombre}
-                  className="w-full h-full object-contain grayscale opacity-50 transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-125 drop-shadow-lg"
-                />
-              </a>
-            ))}
-          </div>
-          <p className="text-center md:text-left text-sm text-gray-500 dark:text-gray-400 mt-6">
-            ✨ Pasa el cursor sobre cada insignia para verla en color y verificarla
-          </p>
         </div>
       </div>
     </section>

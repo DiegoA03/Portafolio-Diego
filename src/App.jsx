@@ -14,7 +14,38 @@ import HabilidadesPage from './pages/HabilidadesPage';
 import SobreMiPage from './pages/SobreMiPage';
 import ContactoPage from './pages/ContactoPage';
 
-const particlesOptions = {
+// Fondo tipo galaxia/vía láctea - solo para el Home
+const particlesGalaxia = {
+  background: { color: { value: 'transparent' } },
+  fpsLimit: 60,
+  interactivity: {
+    events: { onHover: { enable: true, mode: 'bubble' }, resize: true },
+    modes: { bubble: { distance: 120, size: 4, duration: 2, opacity: 1 } }
+  },
+  particles: {
+    color: { value: ['#ffffff', '#60A5FA', '#A78BFA', '#93C5FD'] },
+    links: { enable: false },
+    move: {
+      enable: true,
+      speed: 0.3,
+      direction: 'none',
+      random: true,
+      straight: false,
+      outModes: { default: 'out' }
+    },
+    number: { density: { enable: true, area: 900 }, value: 150 },
+    opacity: {
+      value: { min: 0.1, max: 0.8 },
+      animation: { enable: true, speed: 1, sync: false, startValue: 'random' }
+    },
+    shape: { type: 'circle' },
+    size: { value: { min: 0.5, max: 2 } }
+  },
+  detectRetina: true
+};
+
+// Fondo tipo red de conexiones - para el resto de páginas
+const particlesRed = {
   background: { color: { value: 'transparent' } },
   fpsLimit: 60,
   interactivity: {
@@ -57,12 +88,26 @@ function AnimatedRoutes() {
   );
 }
 
-function App() {
-  const [modoOscuro, setModoOscuro] = useState(true);
+function FondoParticulas() {
+  const location = useLocation();
+  const esHome = location.pathname === '/';
 
   const particlesInit = useCallback(async (engine) => {
     await loadSlim(engine);
   }, []);
+
+  return (
+    <Particles
+      id="tsparticles"
+      init={particlesInit}
+      options={esHome ? particlesGalaxia : particlesRed}
+      className="fixed inset-0 z-0"
+    />
+  );
+}
+
+function App() {
+  const [modoOscuro, setModoOscuro] = useState(true);
 
   useEffect(() => {
     if (modoOscuro) {
@@ -75,9 +120,8 @@ function App() {
   const toggleModoOscuro = () => setModoOscuro(!modoOscuro);
 
   return (
-    <div className="relative min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      {/* Fondo de partículas GLOBAL - se ve en todas las páginas */}
-      <Particles id="tsparticles" init={particlesInit} options={particlesOptions} className="fixed inset-0 z-0" />
+    <div className="relative min-h-screen bg-blue-50 dark:bg-gray-950 transition-colors duration-300">
+      <FondoParticulas />
 
       <div className="relative z-10">
         <CustomCursor />
