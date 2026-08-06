@@ -88,8 +88,7 @@ const Habilidades = () => {
   ];
 
   return (
-    <section id="habilidades" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-6xl">
+<section id="habilidades" className="py-20 transition-colors duration-300">      <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
           <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
             <Code2 className="text-white" size={24} />

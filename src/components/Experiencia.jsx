@@ -1,236 +1,238 @@
-import React from 'react';
-import { Briefcase } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Briefcase, X, Calendar, CheckCircle2, Target } from 'lucide-react';
 
 const Experiencia = () => {
-  const experienciaLaboral = [
-  {
-    cargo: 'Analista QA',
-    empresa: 'Gnosoft LTDA',
-    periodo: '2026 - Prácticas Empresariales',
-    descripcion: 'Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.',
-    actividades: [
-      'Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias',
-      'Apoyo en la validación y despliegue de actualizaciones en entornos finales',
-      'Garantía del cumplimiento de los estándares de calidad'
-    ],
-    logros: [
-      'Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica',
-      'Fortalecimiento de competencias en análisis crítico y comunicación asertiva',
-      'Resolución de problemas en un entorno empresarial real'
-    ]
-  },
-  {
-    cargo: 'Asistente Administrativo',
-    empresa: 'Facultad de Ciencias Agrarias - UFPS',
-    periodo: 'Semestre II - 2024',
-    descripcion: 'Gestión y organización del sistema de archivos digital (Datasoft) de la facultad.',
-    actividades: [
-      'Clasificación, digitalización y archivo de documentación administrativa y académica',
-      'Atención y procesamiento eficiente de documentos oficiales'
-    ],
-    logros: [
-      'Fortalecimiento de habilidades en gestión documental digital',
-      'Mejora en la eficiencia del procesamiento de documentos oficiales'
-    ]
-  },
-  {
-    cargo: 'Asistente Administrativo',
-    empresa: 'ISA Consultores',
-    periodo: '2018 - 2019 - 100 horas de Prácticas Estudiantiles',
-    descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
-    actividades: [
-      'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
-      'Apoyo en la gestión de pagos y retiros bancarios',
-      'Organización y verificación de documentación financiera'
-    ],
-    logros: [
-      'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
-      'Fortalecimiento de habilidades en organización y responsabilidad',
-      'Aporte al mejoramiento del orden documental de la empresa'
-    ]
-  }
-];
+  const [seleccionada, setSeleccionada] = useState(null);
 
-  const proyectosAcademicos = [
+  const experiencias = [
     {
-      titulo: 'Sitio Web JAC',
-      periodo: 'Febrero 2023 - Junio 2023',
-      asignatura: 'Programación Web',
-      cliente: 'Ingeniero Freddy vera',
-      descripcion: 'Desarrollo de sitio web informativo orientado a mantener comunicada a la comunidad del municipio de Patios.',
-      tecnologias: [
-        { nombre: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-        { nombre: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-        { nombre: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }
-      ],
+      id: 'gnosoft',
+      cargo: 'Analista QA',
+      empresa: 'Gnosoft LTDA',
+      periodo: '2026 · Prácticas Empresariales',
+      logo: '/logo-gnosoft.png',
+      inicial: 'GN',
+      color: 'from-blue-500 to-cyan-500',
+      descripcion: 'Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.',
       actividades: [
-        'Implementación de funcionalidades para publicación de noticias y eventos',
-        'Sistema de inscripciones con acceso administrativo',
-        'Gestión de base de datos MySQL en entorno local',
-        'Análisis de requerimientos y levantamiento de necesidades'
+        'Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias',
+        'Apoyo en la validación y despliegue de actualizaciones en entornos finales',
+        'Garantía del cumplimiento de los estándares de calidad'
+      ],
+      logros: [
+        'Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica',
+        'Fortalecimiento de competencias en análisis crítico y comunicación asertiva',
+        'Resolución de problemas en un entorno empresarial real'
       ]
     },
     {
-      titulo: 'Sistema de Reconocimiento Facial con IA',
-      periodo: 'Febrero 2024 - Junio 2024',
-      asignatura: 'Seminario Integrador',
-      cliente: 'Ingenieria Gomez Llanez Claudia Yamile',
-      descripcion: 'Aplicación de reconocimiento facial empleando redes neuronales convolucionales (CNN/MTCCN).',
-      tecnologias: [
-        { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-        { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-        { nombre: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-        { nombre: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-        { nombre: 'Tailwind', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' }
-      ],
+      id: 'ufps',
+      cargo: 'Asistente Administrativo',
+      empresa: 'Facultad de Ciencias Agrarias · UFPS',
+      periodo: 'Semestre II · 2024 · Beca-Trabajo',
+      logo: '/logo-ufps.png',
+      inicial: 'U',
+      color: 'from-red-500 to-orange-500',
+      descripcion: 'Gestión y organización del sistema de archivos digital (Datasoft) de la facultad, como parte del programa de beca-trabajo universitario.',
       actividades: [
-        'Investigación y análisis de redes neuronales convolucionales',
-        'Desarrollo con librerías especializadas para visión por computador',
-        'Implementación y pruebas de modelos públicos',
-        'Automatización de pruebas con Selenium'
+        'Clasificación, digitalización y archivo de documentación administrativa y académica',
+        'Atención y procesamiento eficiente de documentos oficiales'
+      ],
+      logros: [
+        'Fortalecimiento de habilidades en gestión documental digital',
+        'Mejora en la eficiencia del procesamiento de documentos oficiales'
       ]
     },
     {
-      titulo: 'Mini E-Commerce MRM',
-      periodo: 'Febrero 2025 - Junio 2025',
-      asignatura: 'Ingeniería de Software',
-      cliente: 'Ingeniera Pilar Rodriguez',
-      descripcion: 'Aplicativo web tipo mini e-commerce para comercialización de repuestos de motocicletas a nivel local.',
-      tecnologias: [
-        { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-        { nombre: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-        { nombre: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-        { nombre: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-        { nombre: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-        { nombre: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }
-      ],
+      id: 'isa',
+      cargo: 'Asistente Administrativo',
+      empresa: 'ISA Consultores',
+      periodo: '2018 - 2019 · 100 horas · Prácticas Estudiantiles',
+      logo: '/logo-isa.png',
+      inicial: 'ISA',
+      color: 'from-purple-500 to-pink-500',
+      descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
       actividades: [
-        'Desarrollo bajo arquitectura MVC',
-        'Sistema de pagos mediante código QR',
-        'Generación automática de facturas',
-        'Gestión de inventario, ventas y control administrativo',
-        'Aplicación de procesos de reingeniería de software'
-      ]
-    },
-    {
-      titulo: 'Sistema Administrativo MRM',
-      periodo: 'Febrero 2025 - Junio 2025',
-      asignatura: 'Administración de Proyectos Informáticos',
-      cliente: 'Leal Pabon Jessica Lorena',
-      descripcion: 'Sistema web para gestión administrativa enfocado en control de inventario, pedidos, ventas y asignación de citas para mecánicos.',
-      tecnologias: [
-        { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-        { nombre: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-        { nombre: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-        { nombre: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
-        { nombre: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-        { nombre: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' }
+        'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
+        'Apoyo en la gestión de pagos y retiros bancarios',
+        'Organización y verificación de documentación financiera'
       ],
-      actividades: [
-        'Creación de sistema de asignación de citas manual y automática',
-        'Gestión de inventario y pedidos',
-        'Análisis de requerimientos y diseño del sistema',
-        'Documentación técnica del proyecto'
+      logros: [
+        'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
+        'Fortalecimiento de habilidades en organización y responsabilidad',
+        'Aporte al mejoramiento del orden documental de la empresa'
       ]
     }
   ];
 
   return (
-    <section id="experiencia" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="experiencia" className="py-20 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-bold mb-4 flex items-center gap-3 text-gray-900 dark:text-white">
           <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
             <Briefcase className="text-white" size={24} />
           </div>
-          Experiencia Laboral y Proyectos
+          Experiencia Laboral
         </h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-12">
+          Pasa el cursor sobre cada logo y haz clic para descubrir más ✨
+        </p>
 
-        {/* Experiencia Laboral */}
-        <div className="mb-16">
-          <h3 className="text-2xl font-bold text-blue-500 mb-6">Experiencia Laboral</h3>
-          <div className="relative border-l-2 border-blue-200 dark:border-blue-800 ml-6">
-            {experienciaLaboral.map((exp, idx) => (
-              <div key={idx} className="mb-10 ml-6">
-                <div className="absolute w-4 h-4 bg-blue-500 rounded-full -left-[9px] border-4 border-white dark:border-gray-900"></div>
-                <div className="bg-blue-50 dark:bg-gray-800 p-6 rounded-lg hover:shadow-lg transition">
-                  <h4 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-1">{exp.cargo}</h4>
-                  <p className="text-gray-700 dark:text-gray-300 font-semibold mb-1">{exp.empresa}</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">{exp.periodo}</p>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{exp.descripcion}</p>
-                  
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Actividades:</p>
-                      <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                        {exp.actividades.map((act, i) => (
-                          <li key={i}>{act}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">Logros:</p>
-                      <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1">
-                        {exp.logros.map((logro, i) => (
-                          <li key={i}>{logro}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+        <div className="flex flex-wrap justify-center items-start gap-16 md:gap-24 py-8">
+          {experiencias.map((exp) => (
+            <div key={exp.id} className="group relative flex flex-col items-center">
+              <div className="absolute -top-16 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none z-20">
+                <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs md:text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap relative">
+                  ¿Te gustaría conocer un poco de mi experiencia?
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900 dark:border-t-gray-700"></div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Proyectos Académicos */}
-        <div>
-          <h3 className="text-2xl font-bold text-blue-500 mb-6">Proyectos Académicos</h3>
-          <div className="space-y-6">
-            {proyectosAcademicos.map((proyecto, idx) => (
-              <div key={idx} className="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-xl transition border border-gray-200 dark:border-gray-700">
-                <div className="p-6">
-                  <div className="flex flex-wrap justify-between items-start mb-3">
-                    <div>
-                      <h4 className="text-xl font-bold text-gray-800 dark:text-white">{proyecto.titulo}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{proyecto.asignatura}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-500">Cliente: {proyecto.cliente}</p>
-                    </div>
-                    <span className="text-sm text-blue-600 dark:text-blue-400 font-semibold">{proyecto.periodo}</span>
-                  </div>
-                  
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">{proyecto.descripcion}</p>
-                  
-                  {/* Tecnologías con logos */}
-                  <div className="flex flex-wrap gap-3 mb-4">
-                    {proyecto.tecnologias.map((tech) => (
-                      <div 
-                        key={tech.nombre}
-                        className="flex items-center gap-2 bg-white dark:bg-gray-700 px-3 py-2 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition"
-                      >
-                        <img 
-                          src={tech.logo} 
-                          alt={tech.nombre}
-                          className="w-5 h-5 object-contain"
-                        />
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{tech.nombre}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <details className="cursor-pointer">
-                    <summary className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold">Ver actividades realizadas</summary>
-                    <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 space-y-1 mt-3 ml-4">
-                      {proyecto.actividades.map((act, i) => (
-                        <li key={i}>{act}</li>
-                      ))}
-                    </ul>
-                  </details>
+              <motion.button
+                layoutId={`card-${exp.id}`}
+                onClick={() => setSeleccionada(exp)}
+                whileHover={{ scale: 1.15, rotate: 3 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative w-36 h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br ${exp.color} p-[4px] shadow-lg cursor-pointer`}
+              >
+                <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
+                  <img
+                   src={exp.logo}
+                   alt={exp.empresa}
+                   className="w-full h-full object-cover rounded-full"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = `<span class="font-bold text-2xl text-gray-700 dark:text-gray-300">${exp.inicial}</span>`;
+                    }}
+                  />
                 </div>
-              </div>
-            ))}
-          </div>
+                <span className="absolute inset-0 rounded-full animate-ping bg-blue-400/30 group-hover:opacity-0"></span>
+              </motion.button>
+
+              <p className="mt-5 text-base font-semibold text-gray-800 dark:text-gray-200 text-center max-w-[160px]">
+                {exp.empresa}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {seleccionada && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSeleccionada(null)}
+              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+            />
+
+            <motion.div
+              layoutId={`card-${seleccionada.id}`}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+            >
+              <motion.div
+                className="pointer-events-auto relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700"
+                initial={{ borderRadius: 24 }}
+              >
+                <div className={`relative bg-gradient-to-br ${seleccionada.color} p-8 rounded-t-3xl`}>
+                  <button
+                    onClick={() => setSeleccionada(null)}
+                    className="absolute top-4 right-4 w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition"
+                  >
+                    <X size={20} />
+                  </button>
+
+                  <div className="flex items-center gap-4">
+                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-lg flex-shrink-0">
+                      <img
+                        src={seleccionada.logo}
+                        alt={seleccionada.empresa}
+                        className="w-3/4 h-3/4 object-contain"
+                        onError={(e) => {
+                          e.target.style.display = 'none';
+                          e.target.parentElement.innerHTML = `<span class="font-bold text-xl text-gray-700">${seleccionada.inicial}</span>`;
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white">{seleccionada.cargo}</h3>
+                      <p className="text-white/90 font-medium">{seleccionada.empresa}</p>
+                      <div className="flex items-center gap-1 text-white/80 text-sm mt-1">
+                        <Calendar size={14} />
+                        {seleccionada.periodo}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-8 space-y-6">
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="text-gray-700 dark:text-gray-300 leading-relaxed"
+                  >
+                    {seleccionada.descripcion}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 }}
+                  >
+                    <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
+                      <Target size={18} className="text-blue-500" />
+                      Actividades realizadas
+                    </h4>
+                    <ul className="space-y-2">
+                      {seleccionada.actividades.map((act, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + i * 0.08 }}
+                          className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm"
+                        >
+                          <span className="text-blue-500 mt-1">▸</span>
+                          {act}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
+                      <CheckCircle2 size={18} className="text-green-500" />
+                      Logros
+                    </h4>
+                    <ul className="space-y-2">
+                      {seleccionada.logros.map((logro, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.45 + i * 0.08 }}
+                          className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm"
+                        >
+                          <CheckCircle2 size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                          {logro}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

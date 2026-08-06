@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fondo base detrás de las partículas */
+html, body {
+  background-color: #eff6ff; /* azul clarito (modo claro) */
+  margin: 0;
+  padding: 0;
+}
+
+html.dark, html.dark body {
+  background-color: #020617; /* casi negro (modo oscuro) */
+}
+
 html {
   scroll-behavior: smooth;
 }

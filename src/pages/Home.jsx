@@ -7,8 +7,7 @@ const Home = () => {
 
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-900 dark:to-black min-h-screen flex items-center transition-colors duration-300 overflow-hidden">
-
+<div className="relative min-h-screen flex items-center overflow-hidden">
 
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mt-20">

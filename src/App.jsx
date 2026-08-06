@@ -16,6 +16,7 @@ import ContactoPage from './pages/ContactoPage';
 
 // Fondo tipo galaxia/vía láctea - solo para el Home
 const particlesGalaxia = {
+  fullScreen: { enable: true, zIndex: 0 },
   background: { color: { value: 'transparent' } },
   fpsLimit: 60,
   interactivity: {
@@ -23,7 +24,7 @@ const particlesGalaxia = {
     modes: { bubble: { distance: 120, size: 4, duration: 2, opacity: 1 } }
   },
   particles: {
-    color: { value: ['#ffffff', '#60A5FA', '#A78BFA', '#93C5FD'] },
+    color: { value: ['#ffffff', '#93C5FD', '#C4B5FD'] },
     links: { enable: false },
     move: {
       enable: true,
@@ -33,19 +34,20 @@ const particlesGalaxia = {
       straight: false,
       outModes: { default: 'out' }
     },
-    number: { density: { enable: true, area: 900 }, value: 150 },
-    opacity: {
-      value: { min: 0.1, max: 0.8 },
-      animation: { enable: true, speed: 1, sync: false, startValue: 'random' }
-    },
+    number: { density: { enable: true, area: 800 }, value: 180 },
+    opacity: { value: 0.7, random: { enable: true, minimumValue: 0.2 } },
     shape: { type: 'circle' },
-    size: { value: { min: 0.5, max: 2 } }
+    size: { value: { min: 0.5, max: 2.2 } },
+    twinkle: {
+      particles: { enable: true, color: '#ffffff', frequency: 0.05, opacity: 1 }
+    }
   },
   detectRetina: true
 };
 
 // Fondo tipo red de conexiones - para el resto de páginas
 const particlesRed = {
+  fullScreen: { enable: true, zIndex: 0 },
   background: { color: { value: 'transparent' } },
   fpsLimit: 60,
   interactivity: {
@@ -98,10 +100,10 @@ function FondoParticulas() {
 
   return (
     <Particles
+      key={esHome ? 'galaxia' : 'red'}
       id="tsparticles"
       init={particlesInit}
       options={esHome ? particlesGalaxia : particlesRed}
-      className="fixed inset-0 z-0"
     />
   );
 }
@@ -120,7 +122,7 @@ function App() {
   const toggleModoOscuro = () => setModoOscuro(!modoOscuro);
 
   return (
-    <div className="relative min-h-screen bg-blue-50 dark:bg-gray-950 transition-colors duration-300">
+<div className="relative min-h-screen transition-colors duration-300">  
       <FondoParticulas />
 
       <div className="relative z-10">

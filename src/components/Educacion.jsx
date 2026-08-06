@@ -36,8 +36,7 @@ const Educacion = () => {
   const certificadosDobles = [...certificados, ...certificados];
 
   return (
-    <section id="educacion" className="py-20 bg-white/70 dark:bg-gray-900/70 backdrop-blur-sm transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-6xl">
+<section id="educacion" className="py-20 transition-colors duration-300">      <div className="container mx-auto px-4 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 mb-16 items-start">
           {/* Educación Formal con logos */}
           <div>
@@ -72,8 +71,7 @@ const Educacion = () => {
               Certificaciones
             </h2>
 
-            <div className="relative overflow-hidden bg-gray-50 dark:bg-gray-800/50 rounded-xl p-6">
-              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
+<div className="relative overflow-hidden bg-white/40 dark:bg-gray-800/30 backdrop-blur-sm rounded-xl p-6 border border-gray-200/50 dark:border-gray-700/50">              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
               <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
 
               <div className="flex gap-6 animate-scroll-infinite">
