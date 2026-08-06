@@ -3,23 +3,53 @@ import { Briefcase } from 'lucide-react';
 
 const Experiencia = () => {
   const experienciaLaboral = [
-    {
-      cargo: 'Asistente Administrativo',
-      empresa: 'ISA Consultores',
-      periodo: '100 horas - Prácticas Estudiantiles',
-      descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
-      actividades: [
-        'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
-        'Apoyo en la gestión de pagos y retiros bancarios',
-        'Organización y verificación de documentación financiera'
-      ],
-      logros: [
-        'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
-        'Fortalecimiento de habilidades en organización y responsabilidad',
-        'Aporte al mejoramiento del orden documental de la empresa'
-      ]
-    }
-  ];
+  {
+    cargo: 'Analista QA',
+    empresa: 'Gnosoft LTDA',
+    periodo: '2026 - Prácticas Empresariales',
+    descripcion: 'Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.',
+    actividades: [
+      'Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias',
+      'Apoyo en la validación y despliegue de actualizaciones en entornos finales',
+      'Garantía del cumplimiento de los estándares de calidad'
+    ],
+    logros: [
+      'Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica',
+      'Fortalecimiento de competencias en análisis crítico y comunicación asertiva',
+      'Resolución de problemas en un entorno empresarial real'
+    ]
+  },
+  {
+    cargo: 'Asistente Administrativo',
+    empresa: 'Facultad de Ciencias Agrarias - UFPS',
+    periodo: 'Semestre II - 2024',
+    descripcion: 'Gestión y organización del sistema de archivos digital (Datasoft) de la facultad.',
+    actividades: [
+      'Clasificación, digitalización y archivo de documentación administrativa y académica',
+      'Atención y procesamiento eficiente de documentos oficiales'
+    ],
+    logros: [
+      'Fortalecimiento de habilidades en gestión documental digital',
+      'Mejora en la eficiencia del procesamiento de documentos oficiales'
+    ]
+  },
+  {
+    cargo: 'Asistente Administrativo',
+    empresa: 'ISA Consultores',
+    periodo: '2018 - 2019 - 100 horas de Prácticas Estudiantiles',
+    descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
+    actividades: [
+      'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
+      'Apoyo en la gestión de pagos y retiros bancarios',
+      'Organización y verificación de documentación financiera'
+    ],
+    logros: [
+      'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
+      'Fortalecimiento de habilidades en organización y responsabilidad',
+      'Aporte al mejoramiento del orden documental de la empresa'
+    ]
+  }
+];
 
   const proyectosAcademicos = [
     {

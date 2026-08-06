@@ -19,49 +19,56 @@ const Educacion = () => {
     }
   ];
 
-  const cursos = [
-    { 
-      nombre: 'Linux Essentials', 
-      institucion: 'Cisco Networking Academy', 
-      año: '2025', 
-      horas: '70 horas' 
+  // Certificados con imagen de insignia y link de verificación
+  const certificados = [
+    {
+      nombre: 'Linux Essentials',
+      institucion: 'Cisco Networking Academy',
+      año: '2025',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     },
-    { 
-      nombre: 'Operating Systems Basics', 
-      institucion: 'Cisco Networking Academy', 
-      año: '2025', 
-      horas: '12 horas' 
+    {
+      nombre: 'Operating Systems Basics',
+      institucion: 'Cisco Networking Academy',
+      año: '2025',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     },
-    { 
-      nombre: 'IPv6 básico - 3ra edición 2025', 
-      institucion: 'LACNIC', 
-      año: '2025', 
-      horas: '20 horas' 
+    {
+      nombre: 'IPv6 básico - 3ra edición',
+      institucion: 'LACNIC',
+      año: '2025',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     },
-    { 
-      nombre: 'Introducción a Cisco Packet Tracer', 
-      institucion: 'Cisco Networking Academy', 
-      año: '2025', 
-      horas: '2 horas' 
+    {
+      nombre: 'Introducción a Cisco Packet Tracer',
+      institucion: 'Cisco Networking Academy',
+      año: '2025',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     },
-    { 
-      nombre: 'Dispositivos de Red y Configuración Inicial', 
-      institucion: 'Cisco Networking Academy', 
-      año: '2025', 
-      horas: '22 horas' 
+    {
+      nombre: 'Dispositivos de Red y Configuración Inicial',
+      institucion: 'Cisco Networking Academy',
+      año: '2025',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     },
-    { 
-      nombre: 'Cómo resolver problemas y tomar decisiones con eficacia', 
-      institucion: 'Coursera', 
-      año: '2024', 
-      horas: '' 
+    {
+      nombre: 'Cómo resolver problemas y tomar decisiones con eficacia',
+      institucion: 'Coursera',
+      año: '2024',
+      imagen: 'cisco.png',
+      link: 'https://www.credly.com/badges/'
     }
   ];
 
   return (
     <section id="educacion" className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
           {/* Educación Formal */}
           <div>
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-gray-900 dark:text-white">
@@ -87,46 +94,63 @@ const Educacion = () => {
             </div>
           </div>
 
-          {/* Cursos y Certificaciones */}
+          {/* Cursos y Certificaciones (lista textual) */}
           <div>
             <h2 className="text-3xl font-bold mb-8 flex items-center gap-3 text-gray-900 dark:text-white">
               <Award className="text-blue-500" size={32} />
               Cursos y Certificaciones
             </h2>
             <div className="space-y-4">
-              {cursos.slice(0, mostrarMasCursos ? cursos.length : 4).map((curso, idx) => (
+              {certificados.slice(0, mostrarMasCursos ? certificados.length : 4).map((curso, idx) => (
                 <div key={idx} className="bg-white dark:bg-gray-900 p-4 rounded-lg border-l-4 border-blue-500 hover:shadow-md transition">
                   <h3 className="font-bold text-gray-800 dark:text-white">{curso.nombre}</h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-2">
                     {curso.institucion}
                     <ExternalLink size={14} className="text-gray-400" />
                   </p>
-                  <div className="flex justify-between items-center mt-2">
-                    <p className="text-xs text-gray-500 dark:text-gray-500">{curso.año}</p>
-                    {curso.horas && <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">{curso.horas}</p>}
-                  </div>
+                  <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">{curso.año}</p>
                 </div>
               ))}
-              
-              {!mostrarMasCursos && cursos.length > 4 && (
-                <button 
-                  onClick={() => setMostrarMasCursos(true)}
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4"
-                >
+
+              {!mostrarMasCursos && certificados.length > 4 && (
+                <button onClick={() => setMostrarMasCursos(true)} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4">
                   + Ver más cursos
                 </button>
               )}
-              
+
               {mostrarMasCursos && (
-                <button 
-                  onClick={() => setMostrarMasCursos(false)}
-                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4"
-                >
+                <button onClick={() => setMostrarMasCursos(false)} className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold flex items-center gap-2 mt-4">
                   - Ver menos
                 </button>
               )}
             </div>
           </div>
+        </div>
+
+        {/* Galería de Insignias / Certificados con efecto hover */}
+        <div>
+          <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Insignias de Certificación</h2>
+          <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+            {certificados.map((cert, idx) => (
+              <a
+                key={idx}
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-32 h-32 md:w-36 md:h-36"
+                title={cert.nombre}
+              >
+                <img
+                  src={cert.imagen}
+                  alt={cert.nombre}
+                  className="w-full h-full object-contain grayscale opacity-50 transition-all duration-300 ease-out group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-125 drop-shadow-lg"
+                />
+              </a>
+            ))}
+          </div>
+          <p className="text-center md:text-left text-sm text-gray-500 dark:text-gray-400 mt-6">
+            ✨ Pasa el cursor sobre cada insignia para verla en color y verificarla
+          </p>
         </div>
       </div>
     </section>

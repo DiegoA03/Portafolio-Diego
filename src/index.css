@@ -2,19 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Scroll suave */
 html {
   scroll-behavior: smooth;
 }
 
-/* Animación scroll infinito horizontal */
+/* Animación de flotación suave para la foto */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Scroll infinito (habilidades) */
 @keyframes scroll-infinite {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .animate-scroll-infinite {
@@ -23,4 +32,23 @@ html {
 
 .animate-scroll-infinite:hover {
   animation-play-state: paused;
+}
+* {
+  cursor: none !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+html, body, * {
+  cursor: none !important;
+}
+
+/* En dispositivos táctiles (celular) sí se muestra el cursor normal */
+@media (hover: none) and (pointer: coarse) {
+  html, body, * {
+    cursor: auto !important;
+  }
 }
