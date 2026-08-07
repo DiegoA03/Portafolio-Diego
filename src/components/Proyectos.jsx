@@ -63,45 +63,58 @@ const proyectos = [
 
 const Proyectos = () => {
   const [activo, setActivo] = useState(0);
+  const total = proyectos.length;
+  const anteriorIndex = (activo - 1 + total) % total;
+  const siguienteIndex = (activo + 1) % total;
   const proyecto = proyectos[activo];
 
   return (
     <section id="proyectos" className="py-20 transition-colors duration-300 min-h-screen">
       <div className="container mx-auto px-4 max-w-7xl">
-        <h2 className="text-5xl md:text-6xl font-light mb-16 text-gray-300 dark:text-gray-700 select-none">
+        <h2 className="text-5xl md:text-6xl font-light mb-16 text-gray-900 dark:text-white select-none">
           Proyectos
         </h2>
 
         <div className="grid md:grid-cols-5 gap-10 items-center">
-          {/* Lista vertical de nombres */}
-          <div className="md:col-span-2 flex flex-col gap-6">
-            {proyectos.map((p, idx) => (
-              <button
-                key={p.nombre}
-                onClick={() => setActivo(idx)}
-                className="text-left group"
+          {/* Selector tipo "caja fuerte" */}
+          <div className="md:col-span-2">
+            <div className="relative h-[220px] md:h-[240px] overflow-hidden">
+              <motion.button
+                key={`anterior-${anteriorIndex}`}
+                type="button"
+                onClick={() => setActivo(anteriorIndex)}
+                initial={{ y: -20, opacity: 0, scale: 0.75, filter: 'blur(4px)' }}
+                animate={{ y: -6, opacity: 0.65, scale: 0.8, filter: 'blur(2px)' }}
+                transition={{ duration: 0.45, ease: 'easeInOut' }}
+                whileHover={{ opacity: 0.95, scale: 0.84, filter: 'blur(0px)' }}
+                className="absolute left-0 top-0 text-xl md:text-2xl font-semibold text-gray-500 dark:text-gray-500 text-left origin-left"
               >
-                <span
-                  className={`text-2xl md:text-3xl font-semibold transition-all duration-300 ${
-                    idx === activo
-                      ? 'text-gray-900 dark:text-white'
-                      : 'text-gray-300 dark:text-gray-700 group-hover:text-gray-500 dark:group-hover:text-gray-500'
-                  }`}
-                >
-                  {p.nombre}
-                </span>
-                <AnimatePresence>
-                  {idx === activo && (
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{ width: '3rem' }}
-                      exit={{ width: 0 }}
-                      className="h-[3px] bg-blue-500 rounded-full mt-2"
-                    />
-                  )}
-                </AnimatePresence>
-              </button>
-            ))}
+                {proyectos[anteriorIndex].nombre}
+              </motion.button>
+
+              <motion.div
+                key={`actual-${activo}`}
+                initial={{ y: 48, opacity: 0, scale: 0.85, filter: 'blur(6px)' }}
+                animate={{ y: 40, opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                transition={{ duration: 0.45, ease: 'easeInOut' }}
+                className="absolute left-0 top-0 text-3xl md:text-4xl font-bold text-gray-900 dark:text-white cursor-default origin-left"
+              >
+                {proyecto.nombre}
+              </motion.div>
+
+              <motion.button
+                key={`siguiente-${siguienteIndex}`}
+                type="button"
+                onClick={() => setActivo(siguienteIndex)}
+                initial={{ y: 110, opacity: 0, scale: 0.72, filter: 'blur(5px)' }}
+                animate={{ y: 112, opacity: 0.55, scale: 0.78, filter: 'blur(2px)' }}
+                transition={{ duration: 0.45, ease: 'easeInOut' }}
+                whileHover={{ opacity: 0.85, scale: 0.82, filter: 'blur(0px)' }}
+                className="absolute left-0 top-0 text-xl md:text-2xl font-semibold text-gray-500 dark:text-gray-500 text-left origin-left"
+              >
+                {proyectos[siguienteIndex].nombre}
+              </motion.button>
+            </div>
           </div>
 
           {/* Panel de detalle */}
@@ -114,9 +127,7 @@ const Proyectos = () => {
                 exit={{ opacity: 0, y: -24 }}
                 transition={{ duration: 0.45, ease: 'easeInOut' }}
               >
-                {/* Mockup de navegador */}
                 <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900">
-                  {/* Barra superior del navegador */}
                   <div className="flex items-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
                     <div className="flex gap-1.5">
                       <span className="w-3 h-3 rounded-full bg-red-400"></span>
@@ -128,19 +139,17 @@ const Proyectos = () => {
                     </div>
                   </div>
 
-                  {/* Imagen del proyecto */}
-                  <div className="relative">
+                  <div className="relative overflow-hidden">
                     <img
                       src={proyecto.imagen}
                       alt={proyecto.nombre}
-                      className="w-full h-72 md:h-80 object-cover"
+                      className="w-full h-72 md:h-80 object-cover transition-transform duration-500 ease-out hover:scale-110"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.parentElement.innerHTML = `<div class="w-full h-72 md:h-80 flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600"><span class="text-white text-4xl font-bold">${proyecto.nombre.substring(0, 2)}</span></div>`;
                       }}
                     />
 
-                    {/* Botones flotantes tipo la referencia */}
                     <div className="absolute bottom-4 right-4 flex gap-2">
                       <a
                         href={proyecto.github}
@@ -164,7 +173,6 @@ const Proyectos = () => {
                   </div>
                 </div>
 
-                {/* Tecnologías */}
                 <div className="flex flex-wrap gap-3 mt-6">
                   {proyecto.tecnologias.map((tech) => (
                     <div
@@ -177,7 +185,6 @@ const Proyectos = () => {
                   ))}
                 </div>
 
-                {/* Descripción */}
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mt-6">
                   {proyecto.descripcion}
                 </p>

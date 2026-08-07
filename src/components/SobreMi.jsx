@@ -1,9 +1,9 @@
 import React from 'react';
-import { User, MapPin, Calendar, Code, Target } from 'lucide-react';
+import { MapPin, Calendar, User } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const SobreMi = () => {
   const datosPersonales = [
-    { icono: <Code size={20} />, label: 'Código', valor: '1152118' },
     { icono: <MapPin size={20} />, label: 'Ubicación', valor: 'Cúcuta, Norte de Santander' },
     { icono: <Calendar size={20} />, label: 'Nacimiento', valor: '03 de Agosto, 2002' },
     { icono: <User size={20} />, label: 'Estado Civil', valor: 'Soltero' }
@@ -11,16 +11,20 @@ const SobreMi = () => {
 
   return (
 <section id="sobre" className="py-20 transition-colors duration-300">      <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold mb-12 flex items-center gap-3 text-gray-900 dark:text-white">
-          <User className="text-blue-500" size={32} />
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gray-900 dark:text-white select-none">
           Sobre Mí
         </h2>
 
         <div className="grid md:grid-cols-3 gap-12 items-start">
           {/* Columna de texto - 2/3 */}
           <div className="md:col-span-2 space-y-6">
-            <div className="bg-blue-50 dark:bg-gray-800 p-6 rounded-lg border-l-4 border-blue-500">
-              <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-3">Perfil Profesional</h3>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 p-8 rounded-xl border border-blue-200 dark:border-blue-900/30 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">Perfil Profesional</h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
                 Soy estudiante de undécimo semestre del programa de <span className="font-semibold text-blue-600 dark:text-blue-400">Ingeniería de Sistemas
                   de la Universidad Francisco de Paula Santander</span>, con formación orientada al desarrollo de soluciones tecnológicas,
@@ -31,70 +35,71 @@ const SobreMi = () => {
                 Me caracterizo por asumir mis responsabilidades académicas con <span className="font-semibold text-blue-600 dark:text-blue-400">compromiso,
                   ética y una actitud proactiva</span> frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 flex items-center gap-2">
-                <Target className="text-blue-500" size={24} />
-                Competencias Destacadas
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-gradient-to-r from-blue-600 to-blue-500 dark:from-blue-700 dark:to-blue-600 text-white p-8 rounded-xl shadow-lg"
+            >
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
+                <span className="text-3xl">🎯</span>
+                Expectativa Profesional
               </h3>
-              <div className="space-y-3">
-                <div>
-                  <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">💻 Desarrollo Full Stack</h4>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Perfil con mayor orientación al frontend, experiencia en HTML, CSS, JavaScript, Bootstrap y Tailwind.
-                    Backend con PHP y arquitectura MVC, logrando aplicaciones mantenibles y eficientes.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">📊 Análisis y Diseño de Sistemas</h4>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Competencias en análisis de datos, interpretación de necesidades del cliente, levantamiento de requerimientos
-                    y diseño de soluciones alineadas a los objetivos del negocio usando diagramas UML.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">📝 Documentación Técnica</h4>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm">
-                    Me destaco significativamente en la elaboración de informes claros, estructurados y bien organizados,
-                    que facilitan la comunicación entre equipos técnicos y administrativos.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-blue-600 dark:bg-blue-500 text-white p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-3 flex items-center gap-2">
-                🎯 Expectativa Profesional
-              </h3>
-              <p className="leading-relaxed">
+              <p className="leading-relaxed text-blue-50">
                 Aspiro a fortalecer mis competencias técnicas y personales,
                 aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo
                 desarrollándome en el área de la inteligencia artificial y el desarrollo de software.
               </p>
-            </div>
+            </motion.div>
 
             {/* Fortalezas */}
-            <div>
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4">Principales Fortalezas</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {['Trabajo en equipo', 'Responsabilidad', 'Autodisciplina', 'Aprendizaje rápido', 'Orden y organización', 'Proactividad'].map((fortaleza) => (
-                  <div key={fortaleza} className="flex items-center gap-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg border border-gray-200 dark:border-gray-700">
-                    <span className="text-blue-600 dark:text-blue-400">✓</span>
-                    <span className="text-gray-700 dark:text-gray-300 font-medium">{fortaleza}</span>
-                  </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Principales Fortalezas</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { nombre: 'Trabajo en equipo', emoji: '🤝' },
+                  { nombre: 'Responsabilidad', emoji: '🎯' },
+                  { nombre: 'Autodisciplina', emoji: '🏋️' },
+                  { nombre: 'Aprendizaje rápido', emoji: '📈' },
+                  { nombre: 'Orden y organización', emoji: '🗂️' },
+                  { nombre: 'Proactividad', emoji: '🔥' }
+                ].map((fortaleza) => (
+                  <motion.div 
+                    key={fortaleza.nombre}
+                    whileHover={{ scale: 1.08, y: -6, rotateZ: 2 }}
+                    className="flex items-center gap-3 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-4 rounded-lg border border-gray-200 dark:border-gray-700 cursor-pointer hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 shadow-md hover:shadow-lg"
+                  >
+                    <motion.span 
+                      className="text-3xl"
+                      animate={{ y: [0, -8, 0], rotateZ: [-5, 5, -5] }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: Math.random() * 2, ease: 'easeInOut' }}
+                    >
+                      {fortaleza.emoji}
+                    </motion.span>
+                    <span className="text-gray-700 dark:text-gray-300 font-medium text-sm">{fortaleza.nombre}</span>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Columna lateral - 1/3 */}
           <div className="space-y-6">
             {/* Espacio para foto */}
-            <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl overflow-hidden shadow-xl">
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl overflow-hidden shadow-xl"
+            >
               <div className="aspect-[3/4] flex items-center justify-center">
                 <img
-                  src="/sobre-mi.jpg"
+                  src="/sobre-mi.png"
                   alt="Diego Álvarez"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -103,48 +108,74 @@ const SobreMi = () => {
                   }}
                 />
               </div>
-            </div>
+            </motion.div>
 
             {/* Datos personales */}
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700">
-              <h3 className="font-bold text-gray-800 dark:text-white mb-4">Información Personal</h3>
-              <div className="space-y-3">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700"
+            >
+              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">Información Personal</h3>
+              <div className="space-y-4">
                 {datosPersonales.map((dato, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <div className="text-blue-600 dark:text-blue-400 mt-1">{dato.icono}</div>
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-white dark:hover:bg-gray-800/50 transition-colors"
+                  >
+                    <div className="text-blue-600 dark:text-blue-400 mt-1 flex-shrink-0">{dato.icono}</div>
                     <div>
-                      <p className="text-xs text-gray-500 dark:text-gray-500 uppercase">{dato.label}</p>
-                      <p className="text-sm font-semibold text-gray-700 dark:text-gray-300">{dato.valor}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase font-semibold">{dato.label}</p>
+                      <p className="text-sm font-semibold text-gray-800 dark:text-gray-200">{dato.valor}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
             {/* Idiomas */}
-            <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700">
-              <h3 className="font-bold text-gray-800 dark:text-white mb-4">Idiomas</h3>
-              <div className="space-y-3">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700"
+            >
+              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">Idiomas</h3>
+              <div className="space-y-5">
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Español</span>
-                    <span className="text-xs text-blue-600 dark:text-blue-400">Nativo</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇪🇸 Español</span>
+                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Nativo</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style={{ width: '100%' }}></div>
+                  <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                      className="bg-gradient-to-r from-blue-500 to-blue-600 h-2.5 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '100%' }}
+                      transition={{ duration: 1.5, delay: 0.3 }}
+                    />
                   </div>
                 </div>
                 <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Inglés</span>
-                    <span className="text-xs text-blue-600 dark:text-blue-400">Regular</span>
+                  <div className="flex justify-between mb-2">
+                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇺🇸 Inglés</span>
+                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Regular</span>
                   </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div className="bg-blue-600 dark:bg-blue-500 h-2 rounded-full" style={{ width: '40%' }}></div>
+                  <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+                    <motion.div 
+                      className="bg-gradient-to-r from-blue-500 to-blue-600 h-2.5 rounded-full"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '40%' }}
+                      transition={{ duration: 1.5, delay: 0.5 }}
+                    />
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>

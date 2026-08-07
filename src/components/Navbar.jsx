@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Menu, X, Terminal } from 'lucide-react';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
@@ -25,11 +25,13 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-gray-900/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg z-50 px-6 py-4 border-b border-gray-800">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Terminal size={18} className="text-white" />
-          </div>
-          <span className="text-xl font-bold text-blue-400">Diego Álvarez</span>
+        <Link to="/" className="flex items-center gap-3 group">
+          <img
+            src="/DA-logo.png"
+            alt="DA Logo"
+            className="w-14 h-14 object-contain group-hover:scale-110 transition-transform"
+          />
+          <span className="text-lg font-bold text-blue-400 tracking-wider">DIEGO ÁLVAREZ</span>
         </Link>
 
         <div className="flex items-center gap-4">

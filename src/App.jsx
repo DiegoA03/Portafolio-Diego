@@ -6,6 +6,7 @@ import { loadSlim } from 'tsparticles-slim';
 import Navbar from './components/Navbar';
 import CustomCursor from './components/CustomCursor';
 import WhatsAppButton from './components/WhatsAppButton';
+import SplashScreen from './components/SplashScreen';
 import Home from './pages/Home';
 import ExperienciaPage from './pages/ExperienciaPage';
 import EducacionPage from './pages/EducacionPage';
@@ -110,6 +111,7 @@ function FondoParticulas() {
 
 function App() {
   const [modoOscuro, setModoOscuro] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     if (modoOscuro) {
@@ -122,16 +124,22 @@ function App() {
   const toggleModoOscuro = () => setModoOscuro(!modoOscuro);
 
   return (
-<div className="relative min-h-screen transition-colors duration-300">  
-      <FondoParticulas />
+    <>
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      
+      {!showSplash && (
+        <div className="relative min-h-screen transition-colors duration-300">  
+          <FondoParticulas />
 
-      <div className="relative z-10">
-        <CustomCursor />
-        <Navbar modoOscuro={modoOscuro} toggleModoOscuro={toggleModoOscuro} />
-        <AnimatedRoutes />
-        <WhatsAppButton />
-      </div>
-    </div>
+          <div className="relative z-10">
+            <CustomCursor />
+            <Navbar modoOscuro={modoOscuro} toggleModoOscuro={toggleModoOscuro} />
+            <AnimatedRoutes />
+            <WhatsAppButton />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
