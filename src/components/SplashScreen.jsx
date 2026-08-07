@@ -231,21 +231,24 @@ const SplashScreen = ({ onComplete }) => {
           style={{ bottom: '-220px', right: 'calc(50% - 4px)' }}
         />
 
-        {/* Logo imagen con animación blur */}
-        <motion.img
-          src="/DA-logo.png"
-          alt="DA Logo"
-          initial={{ filter: 'blur(30px)', opacity: 0 }}
-          animate={{
-            filter: 'blur(0px)',
-            opacity: 1,
-          }}
-          transition={{
-            duration: 2.5,
-            ease: 'easeOut',
-          }}
-          className="w-[420px] h-[420px] object-contain drop-shadow-2xl relative z-10"
-        />
+        {/* Contenedor circular que recorta el espacio vacío del logo */}
+<div className="relative z-10 w-[340px] h-[340px] rounded-full overflow-hidden flex items-center justify-center">
+  <motion.img
+    src="/DA-logo.png"
+    alt="DA Logo"
+    initial={{ filter: 'blur(30px)', opacity: 0, scale: 1.8 }}
+    animate={{
+      filter: 'blur(0px)',
+      opacity: 1,
+      scale: 2.2,
+    }}
+    transition={{
+      duration: 2.5,
+      ease: 'easeOut',
+    }}
+    className="w-full h-full object-contain drop-shadow-2xl"
+  />
+</div>
       </motion.div>
 
       {/* Fade out al final */}

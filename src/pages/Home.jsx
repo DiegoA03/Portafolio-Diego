@@ -1,29 +1,30 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Github, Linkedin, Download, Eye } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
+import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
-
+  const { t } = useLanguage();
 
   return (
-<div className="relative min-h-screen flex items-center overflow-hidden">
-
+    <div className="relative min-h-screen flex items-center overflow-hidden">
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>
             <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></span>
-              Disponible para trabajar
+              {t.home.disponible}
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
-              Hola, soy <span className="text-blue-600 dark:text-blue-400">Diego Álvarez</span> 👋
+              {t.home.hola} <span className="text-blue-600 dark:text-blue-400">Diego Álvarez</span> 👋
             </h1>
 
             <div className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 h-10">
               <TypeAnimation
-                sequence={['Desarrollador Frontend', 2000, 'Estudiante de Ingeniería de Sistemas', 2000, 'Full Stack Developer', 2000, 'Apasionado por la IA', 2000]}
+                key={t.home.roles.join('-')}
+                sequence={t.home.roles.flatMap((rol) => [rol, 2000])}
                 wrapper="span"
                 speed={50}
                 className="font-semibold text-blue-600 dark:text-blue-400"
@@ -33,22 +34,22 @@ const Home = () => {
             </div>
 
             <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-8">
-              Especialista en documentación técnica, análisis de sistemas y desarrollo de soluciones tecnológicas orientadas al frontend.
+              {t.home.descripcion}
             </p>
 
             <div className="flex flex-wrap gap-4 mb-8">
               <a href="/hoja-de-vida.pdf" target="_blank" rel="noopener noreferrer" className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition flex items-center gap-2">
                 <Eye size={20} />
-                Ver CV
+                {t.home.verCV}
               </a>
 
               <a href="/hoja-de-vida.pdf" download="CV-Diego-Alvarez.pdf" className="bg-white dark:bg-transparent text-blue-600 dark:text-blue-400 border-2 border-blue-600 dark:border-blue-400 px-6 py-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-400/10 transition flex items-center gap-2">
                 <Download size={20} />
-                Descargar
+                {t.home.descargar}
               </a>
 
               <div className="flex gap-3">
-                <a href="mailto:diegoandresalli@ufps.edu.co" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
+                <a href="mailto:ingdaalvarez@gmail.com" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
                   <Mail size={20} />
                 </a>
                 <a href="https://github.com/DiegoA03" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
@@ -60,10 +61,9 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Chips rápidos para navegar (opcional, como en la imagen de referencia) */}
             <div className="flex flex-wrap gap-3">
               <Link to="/proyectos" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                Ver mis proyectos →
+                {t.home.verProyectos} →
               </Link>
             </div>
           </div>

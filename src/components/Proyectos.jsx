@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
-const proyectos = [
+const datosProyectos = [
   {
-    nombre: 'Mini E-Commerce MRM',
+    id: 'ecommerce',
     url: 'mrm-ecommerce.site',
-    descripcion: 'Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.',
     imagen: '/proyecto-ecommerce.jpg',
     demo: 'https://tu-demo.com',
     github: 'https://github.com/DiegoA03/mrm_ecommerce',
@@ -19,9 +19,8 @@ const proyectos = [
     ]
   },
   {
-    nombre: 'Sistema Administrativo MRM',
+    id: 'admin',
     url: 'admin-mrm.site',
-    descripcion: 'Plataforma de gestión administrativa para taller de motos con control de inventario, citas y asignación inteligente de mecánicos.',
     imagen: '/proyecto-admin.jpg',
     demo: 'https://tu-demo.com',
     github: 'https://github.com/DiegoA03',
@@ -34,9 +33,8 @@ const proyectos = [
     ]
   },
   {
-    nombre: 'Reconocimiento Facial IA',
+    id: 'ia',
     url: 'github.com/reconocimiento-ia',
-    descripcion: 'Sistema de identificación facial usando redes neuronales convolucionales (CNN/MTCCN) con interfaz web moderna.',
     imagen: '/ia.png',
     demo: 'https://tu-demo.com',
     github: 'https://github.com/BynelsonDa/Reconocimiento_emotion_2',
@@ -47,9 +45,8 @@ const proyectos = [
     ]
   },
   {
-    nombre: 'Menú Olivos Pizzi',
+    id: 'pizzi',
     url: 'olivos-pizzi-menu.vercel.app',
-    descripcion: 'Sitio web para la visualización del menú de la pizzería Olivos Pizzi de la ciudad de Bogotá, con una interacción moderna para el cliente.',
     imagen: '/olivos-pizzi-menu.png',
     demo: 'https://olivos-pizzi-menu.vercel.app',
     github: 'https://github.com/DiegoA03/olivos-pizzi-menu',
@@ -63,6 +60,13 @@ const proyectos = [
 
 const Proyectos = () => {
   const [activo, setActivo] = useState(0);
+  const { t } = useLanguage();
+
+  const proyectos = datosProyectos.map((p) => ({
+    ...p,
+    ...t.proyectos.items[p.id]
+  }));
+
   const total = proyectos.length;
   const anteriorIndex = (activo - 1 + total) % total;
   const siguienteIndex = (activo + 1) % total;
@@ -72,7 +76,7 @@ const Proyectos = () => {
     <section id="proyectos" className="py-20 transition-colors duration-300 min-h-screen">
       <div className="container mx-auto px-4 max-w-7xl">
         <h2 className="text-5xl md:text-6xl font-light mb-16 text-gray-900 dark:text-white select-none">
-          Proyectos
+          {t.proyectos.titulo}
         </h2>
 
         <div className="grid md:grid-cols-5 gap-10 items-center">
@@ -158,7 +162,7 @@ const Proyectos = () => {
                         className="flex items-center gap-2 bg-gray-900/90 hover:bg-gray-900 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-semibold transition"
                       >
                         <Github size={16} />
-                        Código
+                        {t.proyectos.codigo}
                       </a>
                       <a
                         href={proyecto.demo}
@@ -167,7 +171,7 @@ const Proyectos = () => {
                         className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition"
                       >
                         <ExternalLink size={16} />
-                        Ver
+                        {t.proyectos.ver}
                       </a>
                     </div>
                   </div>

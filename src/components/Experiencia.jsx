@@ -1,70 +1,22 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Briefcase, X, Calendar, CheckCircle2, Target } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
+
+const datosExperiencia = [
+  { id: 'gnosoft', logo: '/logo-gnosoft.png', inicial: 'GN', color: 'from-blue-500 to-cyan-500' },
+  { id: 'ufps', logo: '/logo-ufps.png', inicial: 'U', color: 'from-red-500 to-orange-500' },
+  { id: 'isa', logo: '/logo-isa.png', inicial: 'ISA', color: 'from-purple-500 to-pink-500' }
+];
 
 const Experiencia = () => {
   const [seleccionada, setSeleccionada] = useState(null);
+  const { t } = useLanguage();
 
-  const experiencias = [
-    {
-      id: 'gnosoft',
-      cargo: 'Analista QA',
-      empresa: 'Gnosoft LTDA',
-      periodo: '2026 · Prácticas Empresariales',
-      logo: '/logo-gnosoft.png',
-      inicial: 'GN',
-      color: 'from-blue-500 to-cyan-500',
-      descripcion: 'Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.',
-      actividades: [
-        'Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias',
-        'Apoyo en la validación y despliegue de actualizaciones en entornos finales',
-        'Garantía del cumplimiento de los estándares de calidad'
-      ],
-      logros: [
-        'Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica',
-        'Fortalecimiento de competencias en análisis crítico y comunicación asertiva',
-        'Resolución de problemas en un entorno empresarial real'
-      ]
-    },
-    {
-      id: 'ufps',
-      cargo: 'Asistente Administrativo',
-      empresa: 'Facultad de Ciencias Agrarias · UFPS',
-      periodo: 'Semestre II · 2024 · Beca-Trabajo',
-      logo: '/logo-ufps.png',
-      inicial: 'U',
-      color: 'from-red-500 to-orange-500',
-      descripcion: 'Gestión y organización del sistema de archivos digital (Datasoft) de la facultad, como parte del programa de beca-trabajo universitario.',
-      actividades: [
-        'Clasificación, digitalización y archivo de documentación administrativa y académica',
-        'Atención y procesamiento eficiente de documentos oficiales'
-      ],
-      logros: [
-        'Fortalecimiento de habilidades en gestión documental digital',
-        'Mejora en la eficiencia del procesamiento de documentos oficiales'
-      ]
-    },
-    {
-      id: 'isa',
-      cargo: 'Asistente Administrativo',
-      empresa: 'ISA Consultores',
-      periodo: '2018 - 2019 · 100 horas · Prácticas Estudiantiles',
-      logo: '/logo-isa.png',
-      inicial: 'ISA',
-      color: 'from-purple-500 to-pink-500',
-      descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
-      actividades: [
-        'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
-        'Apoyo en la gestión de pagos y retiros bancarios',
-        'Organización y verificación de documentación financiera'
-      ],
-      logros: [
-        'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
-        'Fortalecimiento de habilidades en organización y responsabilidad',
-        'Aporte al mejoramiento del orden documental de la empresa'
-      ]
-    }
-  ];
+  const experiencias = datosExperiencia.map((exp) => ({
+    ...exp,
+    ...t.experiencia.items[exp.id]
+  }));
 
   return (
     <section id="experiencia" className="py-20 transition-colors duration-300">
@@ -73,10 +25,10 @@ const Experiencia = () => {
           <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
             <Briefcase className="text-white" size={24} />
           </div>
-          Experiencia Laboral
+          {t.experiencia.titulo}
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-12">
-          Pasa el cursor sobre cada logo y haz clic para descubrir más ✨
+          {t.experiencia.subtitulo}
         </p>
 
         <div className="flex flex-wrap justify-center items-start gap-16 md:gap-24 py-8">
@@ -84,7 +36,7 @@ const Experiencia = () => {
             <div key={exp.id} className="group relative flex flex-col items-center">
               <div className="absolute -top-16 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none z-20">
                 <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs md:text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap relative">
-                  ¿Te gustaría conocer un poco de mi experiencia?
+                  {t.experiencia.tooltip}
                   <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900 dark:border-t-gray-700"></div>
                 </div>
               </div>
@@ -98,9 +50,9 @@ const Experiencia = () => {
               >
                 <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
                   <img
-                   src={exp.logo}
-                   alt={exp.empresa}
-                   className="w-full h-full object-cover rounded-full"
+                    src={exp.logo}
+                    alt={exp.empresa}
+                    className="w-full h-full object-cover rounded-full"
                     onError={(e) => {
                       e.target.style.display = 'none';
                       e.target.parentElement.innerHTML = `<span class="font-bold text-2xl text-gray-700 dark:text-gray-300">${exp.inicial}</span>`;
@@ -185,7 +137,7 @@ const Experiencia = () => {
                   >
                     <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
                       <Target size={18} className="text-blue-500" />
-                      Actividades realizadas
+                      {t.experiencia.actividadesTitulo}
                     </h4>
                     <ul className="space-y-2">
                       {seleccionada.actividades.map((act, i) => (
@@ -210,7 +162,7 @@ const Experiencia = () => {
                   >
                     <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
                       <CheckCircle2 size={18} className="text-green-500" />
-                      Logros
+                      {t.experiencia.logrosTitulo}
                     </h4>
                     <ul className="space-y-2">
                       {seleccionada.logros.map((logro, i) => (

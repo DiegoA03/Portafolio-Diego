@@ -1,18 +1,23 @@
 import React from 'react';
 import { MapPin, Calendar, User } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+
+const iconosDatos = [MapPin, Calendar, User];
 
 const SobreMi = () => {
-  const datosPersonales = [
-    { icono: <MapPin size={20} />, label: 'Ubicación', valor: 'Cúcuta, Norte de Santander' },
-    { icono: <Calendar size={20} />, label: 'Nacimiento', valor: '03 de Agosto, 2002' },
-    { icono: <User size={20} />, label: 'Estado Civil', valor: 'Soltero' }
-  ];
+  const { t } = useLanguage();
+
+  const datosPersonales = t.sobreMi.datosPersonales.map((dato, idx) => {
+    const IconComponent = iconosDatos[idx];
+    return { ...dato, icono: <IconComponent size={20} /> };
+  });
 
   return (
-<section id="sobre" className="py-20 transition-colors duration-300">      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="sobre" className="py-20 transition-colors duration-300">
+      <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gray-900 dark:text-white select-none">
-          Sobre Mí
+          {t.sobreMi.titulo}
         </h2>
 
         <div className="grid md:grid-cols-3 gap-12 items-start">
@@ -24,16 +29,16 @@ const SobreMi = () => {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-gray-800 dark:to-gray-900 p-8 rounded-xl border border-blue-200 dark:border-blue-900/30 shadow-lg"
             >
-              <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">Perfil Profesional</h3>
+              <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">{t.sobreMi.tituloPerfil}</h3>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                Soy estudiante de undécimo semestre del programa de <span className="font-semibold text-blue-600 dark:text-blue-400">Ingeniería de Sistemas
-                  de la Universidad Francisco de Paula Santander</span>, con formación orientada al desarrollo de soluciones tecnológicas,
-                el análisis de sistemas de información y la documentación técnica y de gestión de proyectos, con una proyección hacia el
-                área de la inteligencia artificial.
+                {t.sobreMi.parrafo1Parte1}{' '}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">{t.sobreMi.parrafo1Destacado}</span>
+                {t.sobreMi.parrafo1Parte2}
               </p>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                Me caracterizo por asumir mis responsabilidades académicas con <span className="font-semibold text-blue-600 dark:text-blue-400">compromiso,
-                  ética y una actitud proactiva</span> frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.
+                {t.sobreMi.parrafo2Parte1}{' '}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">{t.sobreMi.parrafo2Destacado}</span>{' '}
+                {t.sobreMi.parrafo2Parte2}
               </p>
             </motion.div>
 
@@ -45,12 +50,10 @@ const SobreMi = () => {
             >
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-3">
                 <span className="text-3xl">🎯</span>
-                Expectativa Profesional
+                {t.sobreMi.tituloExpectativa}
               </h3>
               <p className="leading-relaxed text-blue-50">
-                Aspiro a fortalecer mis competencias técnicas y personales,
-                aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo
-                desarrollándome en el área de la inteligencia artificial y el desarrollo de software.
+                {t.sobreMi.textoExpectativa}
               </p>
             </motion.div>
 
@@ -60,16 +63,9 @@ const SobreMi = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Principales Fortalezas</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">{t.sobreMi.tituloFortalezas}</h3>
               <div className="grid grid-cols-2 gap-4">
-                {[
-                  { nombre: 'Trabajo en equipo', emoji: '🤝' },
-                  { nombre: 'Responsabilidad', emoji: '🎯' },
-                  { nombre: 'Autodisciplina', emoji: '🏋️' },
-                  { nombre: 'Aprendizaje rápido', emoji: '📈' },
-                  { nombre: 'Orden y organización', emoji: '🗂️' },
-                  { nombre: 'Proactividad', emoji: '🔥' }
-                ].map((fortaleza) => (
+                {t.sobreMi.fortalezas.map((fortaleza) => (
                   <motion.div 
                     key={fortaleza.nombre}
                     whileHover={{ scale: 1.08, y: -6, rotateZ: 2 }}
@@ -117,7 +113,7 @@ const SobreMi = () => {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700"
             >
-              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">Información Personal</h3>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">{t.sobreMi.tituloInfoPersonal}</h3>
               <div className="space-y-4">
                 {datosPersonales.map((dato, idx) => (
                   <motion.div 
@@ -144,12 +140,12 @@ const SobreMi = () => {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-6 rounded-xl shadow border border-gray-200 dark:border-gray-700"
             >
-              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">Idiomas</h3>
+              <h3 className="font-bold text-gray-900 dark:text-white mb-5 text-lg">{t.sobreMi.tituloIdiomas}</h3>
               <div className="space-y-5">
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇪🇸 Español</span>
-                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Nativo</span>
+                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇪🇸 {t.sobreMi.espanol}</span>
+                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">{t.sobreMi.nivelNativo}</span>
                   </div>
                   <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
                     <motion.div 
@@ -162,8 +158,8 @@ const SobreMi = () => {
                 </div>
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇺🇸 Inglés</span>
-                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">Regular</span>
+                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">🇺🇸 {t.sobreMi.ingles}</span>
+                    <span className="text-xs font-bold text-blue-600 dark:text-blue-400">{t.sobreMi.nivelRegular}</span>
                   </div>
                   <div className="w-full bg-gray-300 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
                     <motion.div 

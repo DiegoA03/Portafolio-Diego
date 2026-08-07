@@ -1,135 +1,48 @@
 import React from 'react';
 import { Code2, ShoppingCart, Package, Calendar, UtensilsCrossed, Briefcase, CheckCircle, FileText, Layers } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
+
+const habilidadesTecnicas = [
+  { nombre: 'HTML', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: 'from-orange-400 to-orange-600' },
+  { nombre: 'CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', color: 'from-blue-400 to-blue-600' },
+  { nombre: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', color: 'from-yellow-400 to-yellow-600' },
+  { nombre: 'Bootstrap', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', color: 'from-purple-400 to-purple-600' },
+  { nombre: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', color: 'from-teal-400 to-teal-600' },
+  { nombre: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: 'from-cyan-400 to-cyan-600' },
+  { nombre: 'PHP', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg', color: 'from-indigo-400 to-indigo-600' },
+  { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: 'from-blue-500 to-blue-700' },
+  { nombre: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', color: 'from-blue-500 to-blue-700' },
+  { nombre: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: 'from-orange-500 to-orange-700' },
+  { nombre: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg', color: 'from-gray-600 to-gray-800' },
+  { nombre: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: 'from-green-500 to-green-700' }
+];
+
+const habilidadesDobles = [...habilidadesTecnicas, ...habilidadesTecnicas];
+
+const iconosServicios = [ShoppingCart, Package, Calendar, UtensilsCrossed, Briefcase];
+const iconosRoles = [Code2, Layers, FileText, CheckCircle];
+const coloresRoles = ['from-blue-500 to-cyan-500', 'from-purple-500 to-pink-500', 'from-orange-500 to-red-500', 'from-green-500 to-teal-500'];
 
 const Habilidades = () => {
-  const habilidadesTecnicas = [
-    { 
-      nombre: 'HTML', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg',
-      color: 'from-orange-400 to-orange-600' 
-    },
-    { 
-      nombre: 'CSS', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg',
-      color: 'from-blue-400 to-blue-600' 
-    },
-    { 
-      nombre: 'JavaScript', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg',
-      color: 'from-yellow-400 to-yellow-600' 
-    },
-    { 
-      nombre: 'Bootstrap', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg',
-      color: 'from-purple-400 to-purple-600' 
-    },
-    { 
-      nombre: 'Tailwind CSS', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg',
-      color: 'from-teal-400 to-teal-600' 
-    },
-    { 
-      nombre: 'React', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-      color: 'from-cyan-400 to-cyan-600' 
-    },
-    { 
-      nombre: 'PHP', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg',
-      color: 'from-indigo-400 to-indigo-600' 
-    },
-    { 
-      nombre: 'Python', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      color: 'from-blue-500 to-blue-700' 
-    },
-    { 
-      nombre: 'MySQL', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg',
-      color: 'from-blue-500 to-blue-700' 
-    },
-    { 
-      nombre: 'Git', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
-      color: 'from-orange-500 to-orange-700' 
-    },
-    { 
-      nombre: 'GitHub', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-      color: 'from-gray-600 to-gray-800' 
-    },
-    { 
-      nombre: 'Node.js', 
-      logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-      color: 'from-green-500 to-green-700' 
-    }
-  ];
+  const { t } = useLanguage();
 
-  // Duplicamos el array para crear un loop infinito
-  const habilidadesDobles = [...habilidadesTecnicas, ...habilidadesTecnicas];
+  const roles = t.habilidades.roles.map((rol, idx) => ({
+    ...rol,
+    icon: iconosRoles[idx],
+    color: coloresRoles[idx]
+  }));
 
-  const servicios = [
-    { 
-      nombre: 'E-commerce', 
-      descripcion: 'Plataformas de venta online completas con carrito, pagos y gestión de inventario.',
-      icon: ShoppingCart 
-    },
-    { 
-      nombre: 'Gestión de Inventarios', 
-      descripcion: 'Sistemas para control, seguimiento y administración de productos y almacenes.',
-      icon: Package 
-    },
-    { 
-      nombre: 'Gestión de Citas', 
-      descripcion: 'Aplicaciones para reservas, calendarios y asignación automática de horarios.',
-      icon: Calendar 
-    },
-    { 
-      nombre: 'Menús Digitales', 
-      descripcion: 'Catálogos interactivos para restaurantes, bares y establecimientos comerciales.',
-      icon: UtensilsCrossed 
-    },
-    { 
-      nombre: 'Portafolios Web', 
-      descripcion: 'Sitios profesionales para mostrar proyectos, experiencia y servicios de manera impactante.',
-      icon: Briefcase 
-    }
-  ];
-
-  const roles = [
-    { 
-      nombre: 'Desarrollador Full Stack',
-      descripcion: 'Construcción de aplicaciones web completas con énfasis en frontend y experiencia del usuario.',
-      icon: Code2,
-      color: 'from-blue-500 to-cyan-500'
-    },
-    { 
-      nombre: 'Analista de Sistemas',
-      descripcion: 'Análisis de requerimientos, diseño UML y arquitectura de soluciones tecnológicas.',
-      icon: Layers,
-      color: 'from-purple-500 to-pink-500'
-    },
-    { 
-      nombre: 'Documentador Técnico',
-      descripcion: 'Documentación estructurada de proyectos, procesos y guías técnicas de implementación.',
-      icon: FileText,
-      color: 'from-orange-500 to-red-500'
-    },
-    { 
-      nombre: 'Tester QA',
-      descripcion: 'Control de calidad, pruebas funcionales y aseguramiento de la robustez del software.',
-      icon: CheckCircle,
-      color: 'from-green-500 to-teal-500'
-    }
-  ];
-
+  const servicios = t.habilidades.servicios.map((servicio, idx) => ({
+    ...servicio,
+    icon: iconosServicios[idx]
+  }));
 
   return (
     <section id="habilidades" className="py-20 transition-colors duration-300">
       <div className="container mx-auto px-4 max-w-6xl">
         <h2 className="text-4xl md:text-5xl font-bold mb-16 text-gray-900 dark:text-white select-none">
-          Habilidades & Servicios
+          {t.habilidades.titulo}
         </h2>
 
         {/* Sección de Presentación con Imagen + Roles */}
@@ -152,7 +65,7 @@ const Habilidades = () => {
           {/* Roles y Descripción */}
           <div>
             <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed mb-8">
-              Soy un desarrollador apasionado con múltiples roles en el ecosistema de desarrollo de software. Mi especialidad es crear soluciones web impactantes y funcionales, siempre manteniendo estándares de calidad y documentación técnica estructurada.
+              {t.habilidades.descripcionIntro}
             </p>
             
             <div className="space-y-4">
@@ -183,7 +96,7 @@ const Habilidades = () => {
         {/* Sección de Servicios */}
         <div className="mb-20">
           <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Servicios que Ofrezco
+            {t.habilidades.tituloServicios}
           </h3>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -216,16 +129,13 @@ const Habilidades = () => {
         {/* Tecnologías y Herramientas */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
-            Tecnologías y Herramientas
+            {t.habilidades.tituloTecnologias}
           </h3>
           
-          {/* Contenedor con overflow hidden */}
           <div className="relative overflow-hidden py-8 bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-800">
-            {/* Gradientes en los bordes */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-gray-900 to-transparent z-10 pointer-events-none"></div>
             
-            {/* Animación infinita */}
             <div className="flex gap-6 animate-scroll-infinite">
               {habilidadesDobles.map((skill, index) => (
                 <motion.div 
