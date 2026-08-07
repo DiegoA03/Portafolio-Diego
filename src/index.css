@@ -7,6 +7,8 @@ html, body {
   background-color: #eff6ff; /* azul clarito (modo claro) */
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 html.dark, html.dark body {
