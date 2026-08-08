@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Github, Linkedin, Download, Eye } from 'lucide-react';
+import { Mail, Github, Linkedin, Instagram, Facebook, Download, Eye } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -57,6 +57,12 @@ const Home = () => {
                 </a>
                 <a href="https://www.linkedin.com/in/diego-andres-alvarez-lizarazo-6a40113a6/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
                   <Linkedin size={20} />
+                </a>
+                <a href="https://www.instagram.com/dk_alvarez08/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
+                  <Instagram size={20} />
+                </a>
+                <a href="https://www.facebook.com/diego.lizarazo.562" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
+                  <Facebook size={20} />
                 </a>
               </div>
             </div>
