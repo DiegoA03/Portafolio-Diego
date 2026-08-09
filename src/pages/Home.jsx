@@ -1,14 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Github, Linkedin, Instagram, Facebook, Download, Eye } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { useLanguage } from '../context/LanguageContext';
 
+const useEsOscuro = () => {
+  const [esOscuro, setEsOscuro] = useState(document.documentElement.classList.contains('dark'));
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      setEsOscuro(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
+
+  return esOscuro;
+};
+
 const Home = () => {
   const { t } = useLanguage();
+  const esOscuro = useEsOscuro();
 
   return (
     <div className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Capa de nebulosa - detrás de las partículas */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
+        <div
+          className="absolute w-[900px] h-[900px] rounded-full blur-3xl transition-opacity duration-500"
+          style={{
+            background: esOscuro
+              ? 'radial-gradient(circle, rgba(139,92,246,0.35) 0%, rgba(59,130,246,0.15) 40%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(124,58,237,0.4) 0%, rgba(37,99,235,0.25) 40%, transparent 70%)',
+            opacity: esOscuro ? 0.3 : 0.45,
+            top: '-15%',
+            left: '10%'
+          }}
+        />
+        <div
+          className="absolute w-[700px] h-[700px] rounded-full blur-3xl transition-opacity duration-500"
+          style={{
+            background: esOscuro
+              ? 'radial-gradient(circle, rgba(236,72,153,0.3) 0%, rgba(168,85,247,0.15) 45%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(219,39,119,0.4) 0%, rgba(147,51,234,0.25) 45%, transparent 70%)',
+            opacity: esOscuro ? 0.25 : 0.4,
+            top: '20%',
+            right: '5%'
+          }}
+        />
+        <div
+          className="absolute w-[600px] h-[600px] rounded-full blur-3xl transition-opacity duration-500"
+          style={{
+            background: esOscuro
+              ? 'radial-gradient(circle, rgba(251,191,36,0.25) 0%, rgba(245,158,11,0.1) 45%, transparent 70%)'
+              : 'radial-gradient(circle, rgba(217,119,6,0.4) 0%, rgba(180,83,9,0.2) 45%, transparent 70%)',
+            opacity: esOscuro ? 0.2 : 0.35,
+            bottom: '-10%',
+            left: '30%'
+          }}
+        />
+      </div>
+
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="grid md:grid-cols-2 gap-12 items-center mt-20">
           <div>

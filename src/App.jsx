@@ -21,26 +21,42 @@ const particlesGalaxia = {
   background: { color: { value: 'transparent' } },
   fpsLimit: 60,
   interactivity: {
-    events: { onHover: { enable: true, mode: 'bubble' }, resize: true },
-    modes: { bubble: { distance: 120, size: 4, duration: 2, opacity: 1 } }
+    events: {
+      onHover: { enable: true, mode: 'attract' },
+      resize: true
+    },
+    modes: {
+      attract: { distance: 180, duration: 0.4, factor: 3 }
+    }
   },
   particles: {
-    color: { value: ['#ffffff', '#93C5FD', '#C4B5FD'] },
+    color: {
+      value: ['#ffffff', '#f5e6c8', '#c9b8ff', '#e8d5ff', '#fff4d6']
+    },
     links: { enable: false },
     move: {
       enable: true,
-      speed: 0.3,
+      speed: 0.15,
       direction: 'none',
       random: true,
       straight: false,
       outModes: { default: 'out' }
     },
-    number: { density: { enable: true, area: 800 }, value: 180 },
-    opacity: { value: 0.7, random: { enable: true, minimumValue: 0.2 } },
+    number: {
+      density: { enable: true, area: 700 },
+      value: 350
+    },
+    opacity: {
+      value: { min: 0.15, max: 0.95 },
+      animation: { enable: true, speed: 0.8, sync: false, startValue: 'random' }
+    },
     shape: { type: 'circle' },
-    size: { value: { min: 0.5, max: 2.2 } },
+    size: {
+      value: { min: 0.4, max: 2.5 },
+      animation: { enable: false }
+    },
     twinkle: {
-      particles: { enable: true, color: '#ffffff', frequency: 0.05, opacity: 1 }
+      particles: { enable: true, color: '#ffffff', frequency: 0.08, opacity: 1 }
     }
   },
   detectRetina: true
@@ -91,7 +107,7 @@ function AnimatedRoutes() {
   );
 }
 
-function FondoParticulas() {
+function FondoParticulas({ modoOscuro }) {
   const location = useLocation();
   const esHome = location.pathname === '/';
 
@@ -99,16 +115,30 @@ function FondoParticulas() {
     await loadSlim(engine);
   }, []);
 
+  const galaxiaOptions = {
+    ...particlesGalaxia,
+    particles: {
+      ...particlesGalaxia.particles,
+      color: { value: ['#ffffff', '#f5e6c8', '#c9b8ff', '#e8d5ff', '#fff4d6'] },
+      opacity: {
+        value: { min: 0.15, max: 0.95 },
+        animation: { enable: true, speed: 0.8, sync: false, startValue: 'random' }
+      },
+      twinkle: {
+        particles: { enable: true, color: '#ffffff', frequency: 0.08, opacity: 1 }
+      }
+    }
+  };
+
   return (
     <Particles
       key={esHome ? 'galaxia' : 'red'}
       id="tsparticles"
       init={particlesInit}
-      options={esHome ? particlesGalaxia : particlesRed}
+      options={esHome ? galaxiaOptions : particlesRed}
     />
   );
 }
-
 function App() {
   const [modoOscuro, setModoOscuro] = useState(true);
   const [showSplash, setShowSplash] = useState(true);

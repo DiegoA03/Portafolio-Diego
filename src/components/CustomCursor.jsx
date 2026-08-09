@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 
+const esDispositivoTactil = () => {
+  return (
+    typeof window !== 'undefined' &&
+    (window.matchMedia('(hover: none)').matches || 'ontouchstart' in window)
+  );
+};
+
 const CustomCursor = () => {
   const [posicion, setPosicion] = useState({ x: -100, y: -100 });
   const [visible, setVisible] = useState(false);
   const [sobreEnlace, setSobreEnlace] = useState(false);
+  const [esTactil, setEsTactil] = useState(false);
 
   useEffect(() => {
+    setEsTactil(esDispositivoTactil());
+  }, []);
+
+  useEffect(() => {
+    if (esTactil) return;
+
     const moverCursor = (e) => {
       setPosicion({ x: e.clientX, y: e.clientY });
       if (!visible) setVisible(true);
@@ -17,9 +31,9 @@ const CustomCursor = () => {
 
     window.addEventListener('mousemove', moverCursor);
     return () => window.removeEventListener('mousemove', moverCursor);
-  }, [visible]);
+  }, [visible, esTactil]);
 
-  if (!visible) return null;
+  if (esTactil || !visible) return null;
 
   const tamañoAnillo = sobreEnlace ? 44 : 24;
 
@@ -32,7 +46,6 @@ const CustomCursor = () => {
         transform: 'translate(-50%, -50%)'
       }}
     >
-      {/* Anillo exterior */}
       <div
         className="absolute rounded-full border-2 border-blue-500 transition-[width,height,background-color] duration-150 ease-out"
         style={{
@@ -44,7 +57,6 @@ const CustomCursor = () => {
           backgroundColor: sobreEnlace ? 'rgba(59, 130, 246, 0.15)' : 'transparent'
         }}
       />
-      {/* Punto central */}
       <div
         className="absolute rounded-full bg-blue-500 transition-transform duration-150"
         style={{
