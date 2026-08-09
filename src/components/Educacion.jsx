@@ -6,14 +6,15 @@ const logosEducacion = ['/logo-ufps.png', '/logo-colegio.png'];
 
 // Nombres de certificados (oficiales, no se traducen)
 const certificados = [
-  { nombre: 'Linux Essentials', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-1' },
-  { nombre: 'Networking Basics', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-2' },
-  { nombre: 'Network Support and Security', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-3' },
-  { nombre: 'Network Devices and Config', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-4' },
-  { nombre: 'IPv6 Básico', imagen: '/certificados/lacnic.png', link: 'https://www.credly.com/badges/tu-link-5' },
-  { nombre: 'Endpoint Security', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/tu-link-6' },
-  { nombre: 'Cloud Foundations', imagen: '/certificados/aws.png', link: 'https://www.credly.com/badges/tu-link-6' },
-  { nombre: 'Full stack dev senior', imagen: '/certificados/senior.png', link: 'https://www.credly.com/badges/tu-link-6' }
+  { nombre: 'Linux Essentials', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/45c3cc61-cbd1-4caf-8a1b-e0a1f1087f12' },
+  { nombre: 'Networking Basics', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/b10629b4-263c-475b-ade2-a04ed0174aaf' },
+  { nombre: 'Network Support and Security', imagen: '/certificados/cisco.png', link: 'https://www.netacad.com/certificates/?issuanceId=8cb114e3-f0c3-44b7-857c-6416031e9165' },
+  { nombre: 'Endpoint Security', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/25e341ec-729e-469e-8a80-a9d31489b66c' },
+  { nombre: 'Network Devices and Config', imagen: '/certificados/cisco.png', link: 'https://www.credly.com/badges/e9961f69-523b-4bf2-80d1-4a3872ae3164' },
+  { nombre: 'IPv6 Básico', imagen: '/certificados/lacnic.png', link: '/lacnic.pdf' },
+  { nombre: 'Cisco Packet Tracer', imagen: '/certificados/cisco.png', link: 'https://www.netacad.com/certificates/?issuanceId=537c7a37-2217-49ce-a491-e372b100cad4' },
+  { nombre: 'Cloud Foundations', imagen: '/certificados/aws.png', link: '/aws.pdf' },
+  { nombre: 'Full stack dev senior', imagen: '/certificados/senior.png', link: '/senior.pdf' }
 ];
 
 const certificadosDobles = [...certificados, ...certificados];

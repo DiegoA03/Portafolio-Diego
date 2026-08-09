@@ -91,7 +91,7 @@ export const traducciones = {
     },
     {
       titulo: 'Técnico Asistente Administrativo',
-      institucion: 'Educación Media',
+      institucion: 'Instituto Tecnico Mercedes Abrego',
       año: '2007 - 2019'
     }
   ]
@@ -299,7 +299,7 @@ contacto: {
     },
     {
       titulo: 'Administrative Assistant Technician',
-      institucion: 'High School Education',
+      institucion: 'Mercedes Abrego Technical Institute',
       año: '2007 - 2019'
     }
   ]
