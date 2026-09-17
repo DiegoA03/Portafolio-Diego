@@ -5,6 +5,18 @@ import { useLanguage } from '../context/LanguageContext';
 
 const datosProyectos = [
   {
+    id: 'depuradorfnc',
+    url: 'depuradorfnc.vercel.app',
+    imagen: '/depuradorfnc.png',
+    demo: 'https://depuradorfnc.vercel.app/',
+    github: 'https://github.com/diegoalvarez-dev/microproyecto_web.git',
+    tecnologias: [
+      { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { nombre: 'Tailwind', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+      { nombre: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' }
+    ]
+  },
+  {
     id: 'ecommerce',
     url: 'mrm-ecommerce.site',
     imagen: '/proyecto-ecommerce.jpg',

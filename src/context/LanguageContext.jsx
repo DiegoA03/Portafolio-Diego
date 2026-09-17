@@ -102,6 +102,10 @@ proyectos: {
   codigo: 'Código',
   ver: 'Ver',
   items: {
+      depuradorfnc: {
+      nombre: 'Depurador FNC',
+      descripcion: 'Microproyecto, este es un sistema Web para depurar una gramatica ya sea generada aleatoriamente o registrada por el usuario. Muestra el paso a paso de cada fase de depuracion hasta aplicar la forma normal de Chomsky'
+    },
     ecommerce: {
       nombre: 'Mini E-Commerce MRM',
       descripcion: 'Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.'
@@ -309,6 +313,10 @@ proyectos: {
   codigo: 'Code',
   ver: 'View',
   items: {
+    depuradorfnc: {
+      nombre: 'Depurador FNC',
+      descripcion: 'This micro-project is a web-based system for debugging a grammar—whether randomly generated or user-defined. It displays the step-by-step process of each debugging phase, culminating in the application of Chomsky Normal Form.'
+    },
     ecommerce: {
       nombre: 'Mini E-Commerce MRM',
       descripcion: 'Complete web system for the commercialization of motorcycle parts, featuring QR payment system, inventory management and automatic invoice generation.'
