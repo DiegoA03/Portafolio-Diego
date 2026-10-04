@@ -106,6 +106,10 @@ proyectos: {
       nombre: 'Depurador FNC',
       descripcion: 'Microproyecto, este es un sistema Web para depurar una gramatica ya sea generada aleatoriamente o registrada por el usuario. Muestra el paso a paso de cada fase de depuracion hasta aplicar la forma normal de Chomsky'
     },
+     conversorfng: {
+      nombre: 'Conversor FNG',
+      descripcion: 'Microproyecto, este es un sistema Web que valida un sigma si esta en la Forma Nomal De chomsky y aplica el paso a paso de conversion hasta llegar hasta la Forma Normal De Greibach que es donde todas sus producciones empiezan por variable terminal.'
+    },
     ecommerce: {
       nombre: 'Mini E-Commerce MRM',
       descripcion: 'Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.'
@@ -316,6 +320,10 @@ proyectos: {
     depuradorfnc: {
       nombre: 'Depurador FNC',
       descripcion: 'This micro-project is a web-based system for debugging a grammar—whether randomly generated or user-defined. It displays the step-by-step process of each debugging phase, culminating in the application of Chomsky Normal Form.'
+    },
+    conversorfng: {
+      nombre: 'Conversor FNG',
+      descripcion: 'This micro-project is a web-based system that validates whether a grammar is in Chomsky Normal Form and performs the step-by-step conversion process to reach Greibach Normal Form, in which all productions begin with a terminal followed by a variable.'
     },
     ecommerce: {
       nombre: 'Mini E-Commerce MRM',
