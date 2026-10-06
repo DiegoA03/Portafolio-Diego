@@ -18,9 +18,9 @@ const datosProyectos = [
   },
    {
     id: 'conversorfng',
-    url: 'conversorfng.vercel.app',
+    url: 'microproyecto-web-fng.vercel.app',
     imagen: '/conversorfng.png',
-    demo: 'https://conversorfng.vercel.app/',
+    demo: 'https://microproyecto-web-fng.vercel.app/',
     github: 'https://github.com/diegoalvarez-dev/MicroproyectoWeb_FNG.git',
     tecnologias: [
       { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
