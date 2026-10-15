@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Briefcase, X, Calendar, CheckCircle2, Target } from 'lucide-react';
+import { Calendar, CheckCircle2, Target, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import SectionTitle from './SectionTitle';
 
 const datosExperiencia = [
   { id: 'gnosoft', logo: '/logo-gnosoft.png', inicial: 'GN', color: 'from-blue-500 to-cyan-500' },
@@ -9,182 +10,243 @@ const datosExperiencia = [
   { id: 'isa', logo: '/logo-isa.png', inicial: 'ISA', color: 'from-purple-500 to-pink-500' }
 ];
 
+// Logo circular con respaldo de iniciales si la imagen no carga
+const Logo = ({ src, alt, inicial, ajuste, className = '' }) => {
+  const [error, setError] = useState(false);
+
+  return (
+    <span
+      className={`flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ${className}`}
+    >
+      {error ? (
+        <span className="text-sm font-bold text-gray-700">{inicial}</span>
+      ) : (
+        <img
+          src={src}
+          alt={alt}
+          className={`h-full w-full ${ajuste}`}
+          onError={() => setError(true)}
+        />
+      )}
+    </span>
+  );
+};
+
 const Experiencia = () => {
-  const [seleccionada, setSeleccionada] = useState(null);
-  const { t } = useLanguage();
+  const { t, idioma } = useLanguage();
+  const [activaId, setActivaId] = useState(datosExperiencia[0].id);
 
   const experiencias = datosExperiencia.map((exp) => ({
     ...exp,
     ...t.experiencia.items[exp.id]
   }));
 
+  const indice = experiencias.findIndex((e) => e.id === activaId);
+  const activa = experiencias[indice];
+  const total = experiencias.length;
+
+  const mover = (delta) => {
+    setActivaId(experiencias[(indice + delta + total) % total].id);
+  };
+
+  const etiquetaAnterior = idioma === 'es' ? 'Experiencia anterior' : 'Previous experience';
+  const etiquetaSiguiente = idioma === 'es' ? 'Experiencia siguiente' : 'Next experience';
+
   return (
-    <section id="experiencia" className="py-20 transition-colors duration-300">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <h2 className="text-4xl font-bold mb-4 flex items-center gap-3 text-gray-900 dark:text-white">
-          <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
-            <Briefcase className="text-white" size={24} />
-          </div>
-          {t.experiencia.titulo}
-        </h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-12">
-          {t.experiencia.subtitulo}
-        </p>
+    <section id="experiencia" className="py-12 transition-colors duration-300 md:py-16">
+      <div className="container mx-auto max-w-6xl px-4">
+        <SectionTitle
+        
+          titulo={t.experiencia.titulo}
+          subtitulo={t.experiencia.subtitulo}
+        />
 
-        <div className="flex flex-wrap justify-center items-start gap-16 md:gap-24 py-8">
-          {experiencias.map((exp) => (
-            <div key={exp.id} className="group relative flex flex-col items-center">
-              <div className="absolute -top-16 opacity-0 group-hover:opacity-100 group-hover:-translate-y-1 transition-all duration-300 pointer-events-none z-20">
-                <div className="bg-gray-900 dark:bg-gray-700 text-white text-xs md:text-sm px-4 py-2 rounded-xl shadow-xl whitespace-nowrap relative">
-                  {t.experiencia.tooltip}
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-gray-900 dark:border-t-gray-700"></div>
-                </div>
-              </div>
-
-              <motion.button
-                layoutId={`card-${exp.id}`}
-                onClick={() => setSeleccionada(exp)}
-                whileHover={{ scale: 1.15, rotate: 3 }}
-                whileTap={{ scale: 0.95 }}
-                className={`relative w-36 h-36 md:w-44 md:h-44 rounded-full bg-gradient-to-br ${exp.color} p-[4px] shadow-lg cursor-pointer`}
-              >
-                <div className="w-full h-full bg-white dark:bg-gray-900 rounded-full flex items-center justify-center overflow-hidden">
-                  <img
-                    src={exp.logo}
-                    alt={exp.empresa}
-                    className="w-full h-full object-cover rounded-full"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = `<span class="font-bold text-2xl text-gray-700 dark:text-gray-300">${exp.inicial}</span>`;
-                    }}
-                  />
-                </div>
-                <span className="absolute inset-0 rounded-full animate-ping bg-blue-400/30 group-hover:opacity-0"></span>
-              </motion.button>
-
-              <p className="mt-5 text-base font-semibold text-gray-800 dark:text-gray-200 text-center max-w-[160px]">
-                {exp.empresa}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <AnimatePresence>
-        {seleccionada && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSeleccionada(null)}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+        <div className="grid items-start gap-6 lg:grid-cols-[320px_1fr] lg:gap-10">
+          {/* Línea de tiempo: elige la experiencia */}
+          <ol className="relative space-y-2 lg:sticky lg:top-28">
+            <span
+              aria-hidden="true"
+              className="absolute bottom-10 left-[41px] top-10 w-px bg-gradient-to-b from-blue-500/60 via-violet-500/40 to-transparent"
             />
 
-            <motion.div
-              layoutId={`card-${seleccionada.id}`}
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
-            >
-              <motion.div
-                className="pointer-events-auto relative w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700"
-                initial={{ borderRadius: 24 }}
-              >
-                <div className={`relative bg-gradient-to-br ${seleccionada.color} p-8 rounded-t-3xl`}>
-                  <button
-                    onClick={() => setSeleccionada(null)}
-                    className="absolute top-4 right-4 w-9 h-9 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition"
-                  >
-                    <X size={20} />
-                  </button>
+            {experiencias.map((exp, i) => {
+              const activo = exp.id === activaId;
 
-                  <div className="flex items-center gap-4">
-                    <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center overflow-hidden shadow-lg flex-shrink-0">
-                      <img
-                        src={seleccionada.logo}
-                        alt={seleccionada.empresa}
-                        className="w-3/4 h-3/4 object-contain"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `<span class="font-bold text-xl text-gray-700">${seleccionada.inicial}</span>`;
-                        }}
+              return (
+                <li key={exp.id}>
+                  <button
+                    type="button"
+                    onClick={() => setActivaId(exp.id)}
+                    aria-current={activo ? 'true' : undefined}
+                    className="relative flex w-full items-center gap-4 rounded-2xl p-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  >
+                    {activo && (
+                      <motion.span
+                        layoutId="experiencia-activa"
+                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        className="absolute inset-0 rounded-2xl bg-white/70 shadow-lg ring-1 ring-black/5 backdrop-blur-md dark:bg-white/10 dark:ring-white/10"
                       />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-white">{seleccionada.cargo}</h3>
-                      <p className="text-white/90 font-medium">{seleccionada.empresa}</p>
-                      <div className="flex items-center gap-1 text-white/80 text-sm mt-1">
-                        <Calendar size={14} />
-                        {seleccionada.periodo}
-                      </div>
-                    </div>
+                    )}
+
+                    <span
+                      className={`relative z-10 shrink-0 rounded-full bg-gradient-to-br p-[3px] transition-all duration-300 ${exp.color} ${
+                        activo ? 'scale-105 opacity-100' : 'opacity-60 saturate-50 hover:opacity-100'
+                      }`}
+                    >
+                      <Logo
+                        src={exp.logo}
+                        alt={exp.empresa}
+                        inicial={exp.inicial}
+                        ajuste="object-cover"
+                        className="h-[52px] w-[52px]"
+                      />
+                    </span>
+
+                    <span className="relative z-10 min-w-0">
+                      <span className="block text-[11px] font-semibold tracking-[0.25em] text-gray-500 dark:text-gray-400">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span
+                        className={`block truncate text-base font-semibold transition-colors ${
+                          activo
+                            ? 'text-gray-900 dark:text-white'
+                            : 'text-gray-600 dark:text-gray-400'
+                        }`}
+                      >
+                        {exp.empresa}
+                      </span>
+                      <span className="block truncate text-sm text-gray-500 dark:text-gray-500">
+                        {exp.cargo}
+                      </span>
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
+
+          {/* Panel de detalle: ocupa el espacio, sin modal */}
+          <AnimatePresence mode="wait">
+            <motion.article
+              key={activa.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden rounded-3xl border border-gray-200/70 bg-white/70 shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-gray-900/60"
+            >
+              <div className={`h-1.5 bg-gradient-to-r ${activa.color}`} />
+
+              <div className="p-6 md:p-10">
+                <header className="flex flex-col gap-5 sm:flex-row sm:items-center">
+                  <span className={`shrink-0 rounded-full bg-gradient-to-br p-1 shadow-lg ${activa.color}`}>
+                    <Logo
+                      src={activa.logo}
+                      alt={activa.empresa}
+                      inicial={activa.inicial}
+                      ajuste="object-contain p-2"
+                      className="h-20 w-20 md:h-24 md:w-24"
+                    />
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-3xl font-semibold leading-tight text-gray-900 md:text-4xl dark:text-white">
+                      {activa.cargo}
+                    </h3>
+                    <p className="mt-1 text-lg font-medium text-blue-600 dark:text-blue-400">
+                      {activa.empresa}
+                    </p>
                   </div>
+                </header>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {activa.periodo.split(' · ').map((dato, i) => (
+                    <span
+                      key={dato}
+                      className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-700 dark:bg-blue-400/10 dark:text-blue-300"
+                    >
+                      {i === 0 && <Calendar size={14} />}
+                      {dato}
+                    </span>
+                  ))}
                 </div>
 
-                <div className="p-8 space-y-6">
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.15 }}
-                    className="text-gray-700 dark:text-gray-300 leading-relaxed"
-                  >
-                    {seleccionada.descripcion}
-                  </motion.p>
+                <p className="mt-6 text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
+                  {activa.descripcion}
+                </p>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25 }}
-                  >
-                    <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
-                      <Target size={18} className="text-blue-500" />
+                <div className="mt-8 grid gap-8 md:grid-cols-2">
+                  <section>
+                    <h4 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-900 dark:text-white">
+                      <Target size={16} className="text-blue-500" />
                       {t.experiencia.actividadesTitulo}
                     </h4>
-                    <ul className="space-y-2">
-                      {seleccionada.actividades.map((act, i) => (
+                    <ul className="space-y-3">
+                      {activa.actividades.map((act, i) => (
                         <motion.li
-                          key={i}
+                          key={act}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + i * 0.08 }}
-                          className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm"
+                          transition={{ delay: 0.15 + i * 0.08 }}
+                          className="flex items-start gap-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
                         >
-                          <span className="text-blue-500 mt-1">▸</span>
+                          <span className="mt-0.5 text-blue-500">▸</span>
                           {act}
                         </motion.li>
                       ))}
                     </ul>
-                  </motion.div>
+                  </section>
 
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <h4 className="flex items-center gap-2 font-bold text-gray-900 dark:text-white mb-3">
-                      <CheckCircle2 size={18} className="text-green-500" />
+                  <section>
+                    <h4 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gray-900 dark:text-white">
+                      <CheckCircle2 size={16} className="text-green-500" />
                       {t.experiencia.logrosTitulo}
                     </h4>
-                    <ul className="space-y-2">
-                      {seleccionada.logros.map((logro, i) => (
+                    <ul className="space-y-3">
+                      {activa.logros.map((logro, i) => (
                         <motion.li
-                          key={i}
+                          key={logro}
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.45 + i * 0.08 }}
-                          className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm"
+                          transition={{ delay: 0.25 + i * 0.08 }}
+                          className="flex items-start gap-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
                         >
-                          <CheckCircle2 size={14} className="text-green-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-green-500" />
                           {logro}
                         </motion.li>
                       ))}
                     </ul>
-                  </motion.div>
+                  </section>
                 </div>
-              </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              </div>
+
+              {/* Navegación entre experiencias */}
+              <footer className="flex items-center justify-between border-t border-gray-200/70 px-6 py-4 md:px-10 dark:border-white/10">
+                <button
+                  type="button"
+                  onClick={() => mover(-1)}
+                  aria-label={etiquetaAnterior}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-gray-700 transition hover:bg-gray-900/5 dark:text-gray-300 dark:hover:bg-white/10"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                <span className="text-sm font-semibold tracking-[0.25em] text-gray-500 dark:text-gray-400">
+                  {String(indice + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                </span>
+
+                <button
+                  type="button"
+                  onClick={() => mover(1)}
+                  aria-label={etiquetaSiguiente}
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-gray-700 transition hover:bg-gray-900/5 dark:text-gray-300 dark:hover:bg-white/10"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </footer>
+            </motion.article>
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 };

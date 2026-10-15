@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
 /* Fondo base detrás de las partículas */
 html, body {
   background-color: #eff6ff; /* azul clarito (modo claro) */

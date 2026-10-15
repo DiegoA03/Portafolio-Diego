@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Github, Linkedin, Instagram, Facebook, Download, Eye } from 'lucide-react';
 import { TypeAnimation } from 'react-type-animation';
 import { useLanguage } from '../context/LanguageContext';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const useEsOscuro = () => {
   const [esOscuro, setEsOscuro] = useState(document.documentElement.classList.contains('dark'));
@@ -21,10 +22,10 @@ const useEsOscuro = () => {
 const Home = () => {
   const { t } = useLanguage();
   const esOscuro = useEsOscuro();
+  const reducirMovimiento = useReducedMotion();
 
   return (
-    <div className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Capa de nebulosa - detrás de las partículas */}
+<div className="relative min-h-screen flex items-center overflow-hidden">      {/* Capa de nebulosa - detrás de las partículas */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
         <div
           className="absolute w-[900px] h-[900px] rounded-full blur-3xl transition-opacity duration-500"
@@ -69,9 +70,19 @@ const Home = () => {
               {t.home.disponible}
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-900 dark:text-white">
-              {t.home.hola} <span className="text-blue-600 dark:text-blue-400">Diego Álvarez</span> 👋
-            </h1>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white">
+  {t.home.hola} 
+ <span className="italic text-blue-600 dark:text-blue-400">Diego Álvarez</span>{' '}
+<motion.span
+  className="inline-block"
+  style={{ transformOrigin: '70% 70%' }}
+  animate={reducirMovimiento ? undefined : { rotate: [0, 16, -8, 16, -4, 12, 0, 0] }}
+  transition={{ duration: 2.2, repeat: Infinity, repeatDelay: 1, ease: 'easeInOut' }}
+  aria-hidden="true"
+>
+  👋
+</motion.span>
+</h1>
 
             <div className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 h-10">
               <TypeAnimation

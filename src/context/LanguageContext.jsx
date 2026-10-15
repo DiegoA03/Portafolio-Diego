@@ -25,8 +25,7 @@ export const traducciones = {
     },
     experiencia: {
       titulo: 'Experiencia Laboral',
-      subtitulo: 'Pasa el cursor sobre cada logo y haz clic para descubrir más ✨',
-      tooltip: '¿Te gustaría conocer un poco de mi experiencia?',
+      subtitulo: 'Mi recorrido profesional. Elige una experiencia para ver el detalle de lo que hice y lo que logré.',
       actividadesTitulo: 'Actividades realizadas',
       logrosTitulo: 'Logros',
       items: {
@@ -81,6 +80,8 @@ export const traducciones = {
     educacion: {
   tituloEducacion: 'Educación',
   tituloCertificaciones: 'Certificaciones',
+  subtitulo: 'Mi formación académica y las certificaciones que respaldan mis conocimientos.',
+  subtituloCertificaciones: 'Pasa el cursor sobre una insignia para verla a color y haz clic para abrir el certificado.',
   items: [
     {
       titulo: 'Ingeniería de Sistemas',
@@ -99,6 +100,7 @@ export const traducciones = {
 // Dentro de "es":
 proyectos: {
   titulo: 'Proyectos',
+  subtitulo: 'Algunos de los proyectos que he construido. Navega entre ellos para ver la vista previa, las tecnologías y el código.',
   codigo: 'Código',
   ver: 'Ver',
   items: {
@@ -130,6 +132,8 @@ proyectos: {
 },
 habilidades: {
   titulo: 'Habilidades & Servicios',
+  subtitulo: 'Lo que sé hacer, los roles que desempeño y las herramientas con las que lo construyo.',
+  subtituloTecnologias: 'Pasa el cursor sobre cada logo para verlo a color.',
   descripcionIntro: 'Soy un desarrollador apasionado con múltiples roles en el ecosistema de desarrollo de software. Mi especialidad es crear soluciones web impactantes y funcionales, siempre manteniendo estándares de calidad y documentación técnica estructurada.',
   tituloServicios: 'Servicios que Ofrezco',
   tituloTecnologias: 'Tecnologías y Herramientas',
@@ -176,6 +180,7 @@ habilidades: {
 },
 sobreMi: {
   titulo: 'Sobre Mí',
+  subtitulo: 'Quién soy, qué me mueve y hacia dónde voy.',
   tituloPerfil: 'Perfil Profesional',
   parrafo1Parte1: 'Soy estudiante del programa de',
   parrafo1Destacado: 'Ingeniería de Sistemas de la Universidad Francisco de Paula Santander',
@@ -241,8 +246,7 @@ contacto: {
     },
     experiencia: {
       titulo: 'Work Experience',
-      subtitulo: 'Hover over each logo and click to discover more ✨',
-      tooltip: 'Would you like to know a bit about my experience?',
+      subtitulo: 'My professional journey. Pick an experience to see what I did and what I achieved.',
       actividadesTitulo: 'Activities performed',
       logrosTitulo: 'Achievements',
       items: {
@@ -297,6 +301,8 @@ contacto: {
     educacion: {
   tituloEducacion: 'Education',
   tituloCertificaciones: 'Certifications',
+  subtitulo: 'My academic background and the certifications that back up my knowledge.',
+  subtituloCertificaciones: 'Hover over a badge to see it in color and click to open the certificate.',
   items: [
     {
       titulo: 'Systems Engineering',
@@ -314,6 +320,7 @@ contacto: {
 },
 proyectos: {
   titulo: 'Projects',
+  subtitulo: 'Some of the projects I have built. Browse them to see a preview, the stack and the code.',
   codigo: 'Code',
   ver: 'View',
   items: {
@@ -345,6 +352,8 @@ proyectos: {
 },
 habilidades: {
   titulo: 'Skills & Services',
+  subtitulo: 'What I can do, the roles I play and the tools I build with.',
+  subtituloTecnologias: 'Hover over each logo to see it in color.',
   descripcionIntro: 'I am a passionate developer with multiple roles in the software development ecosystem. My specialty is creating impactful, functional web solutions, always maintaining quality standards and structured technical documentation.',
   tituloServicios: 'Services I Offer',
   tituloTecnologias: 'Technologies and Tools',
@@ -392,6 +401,7 @@ habilidades: {
 // Dentro de "en":
 sobreMi: {
   titulo: 'About Me',
+  subtitulo: 'Who I am, what drives me and where I am heading.',
   tituloPerfil: 'Professional Profile',
   parrafo1Parte1: 'I am a student in the',
   parrafo1Destacado: 'Systems Engineering program at Francisco de Paula Santander University',

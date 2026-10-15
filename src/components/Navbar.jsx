@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import LanguageToggle from './LanguageToggle';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
   const [menuAbierto, setMenuAbierto] = useState(false);
+  const [conScroll, setConScroll] = useState(false);
   const location = useLocation();
   const { idioma, toggleIdioma, t } = useLanguage();
+
+  useEffect(() => {
+    const onScroll = () => setConScroll(window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const toggleMenu = () => setMenuAbierto(!menuAbierto);
   const cerrarMenu = () => setMenuAbierto(false);
@@ -22,85 +32,75 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
 
   const esActivo = (ruta) => location.pathname === ruta;
 
+  const claseLink = (ruta, extra = '') =>
+    `${extra} rounded-lg text-sm font-medium transition ${
+      esActivo(ruta)
+        ? 'bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:text-white'
+        : 'text-slate-700 hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white'
+    }`;
+
   return (
     <>
-        <nav className="fixed top-0 left-0 right-0 h-20 bg-gradient-to-r from-blue-600 to-blue-400 dark:from-gray-900 dark:to-gray-900 backdrop-blur-md shadow-lg z-50 px-6 border-b border-blue-500/30 dark:border-gray-800 transition-colors duration-300">        <div className="container mx-auto h-full flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-3 group h-full py-3">
+      {/* Navbar transparente: solo se desenfoca ligeramente al hacer scroll */}
+      <nav
+        className={`fixed left-0 right-0 top-0 z-50 h-20 border-b bg-transparent px-6 transition-all duration-300 ${
+          conScroll
+            ? 'border-slate-900/5 backdrop-blur-md dark:border-white/10'
+            : 'border-transparent'
+        }`}
+      >
+        <div className="container mx-auto flex h-full items-center justify-between">
+          <Link to="/" className="group flex h-full items-center gap-3 py-3">
             <img
               src="/logo.png"
               alt="DA Logo"
-              className="h-full w-auto object-contain group-hover:scale-110 transition-transform"
+              className="h-full w-auto object-contain transition-transform group-hover:scale-110"
             />
-          <span className="text-lg font-bold text-white dark:text-blue-400 tracking-wider">DIEGO ÁLVAREZ</span>          </Link>
+            <span className="font-display hidden text-base font-semibold tracking-[0.2em] text-slate-900 min-[400px]:inline dark:text-white">
+              DIEGO ÁLVAREZ
+            </span>
+          </Link>
 
-          <div className="flex items-center gap-4">
-            {/* Botón de idioma */}
-           <button
-  onClick={toggleIdioma}
-  className="flex items-center gap-1 px-3 py-2 rounded-lg bg-white/20 dark:bg-gray-800 hover:bg-white/30 dark:hover:bg-gray-700 transition text-sm font-semibold text-white dark:text-gray-300"
-  aria-label="Cambiar idioma"
->
-  <span className={idioma === 'es' ? 'text-white font-bold dark:text-blue-400' : 'text-blue-100 dark:text-gray-500'}>ES</span>
-  <span className="text-blue-200 dark:text-gray-600">/</span>
-  <span className={idioma === 'en' ? 'text-white font-bold dark:text-blue-400' : 'text-blue-100 dark:text-gray-500'}>EN</span>
-</button>
+          <div className="flex items-center gap-3 md:gap-4">
+            <LanguageToggle idioma={idioma} toggleIdioma={toggleIdioma} />
+            <ThemeToggle modoOscuro={modoOscuro} toggleModoOscuro={toggleModoOscuro} />
 
-           <button
-  onClick={toggleModoOscuro}
-  className="p-2 rounded-lg bg-white/20 dark:bg-gray-800 hover:bg-white/30 dark:hover:bg-gray-700 transition"
-  aria-label="Cambiar tema"
->
-  {modoOscuro ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} className="text-white" />}
-</button>
+            <div className="hidden gap-1 md:flex">
+              {links.map((link) => (
+                <Link key={link.ruta} to={link.ruta} className={claseLink(link.ruta, 'px-4 py-2')}>
+                  {link.nombre}
+                </Link>
+              ))}
+            </div>
 
-           <div className="hidden md:flex gap-1">
-  {links.map((link) => (
-    <Link
-      key={link.ruta}
-      to={link.ruta}
-      className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-        esActivo(link.ruta)
-          ? 'bg-white/25 text-white dark:bg-blue-500/20 dark:text-blue-400'
-          : 'text-blue-50 hover:text-white hover:bg-white/15 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800'
-      }`}
-    >
-      {link.nombre}
-    </Link>
-  ))}
-</div>
-
-           <button
-  onClick={toggleMenu}
-  className="md:hidden text-white hover:text-blue-100 dark:text-gray-300 dark:hover:text-blue-400 transition"
-  aria-label="Menú"
->
-  {menuAbierto ? <X size={28} /> : <Menu size={28} />}
-</button>
+            <button
+              onClick={toggleMenu}
+              className="text-slate-800 transition hover:text-slate-950 md:hidden dark:text-slate-200 dark:hover:text-white"
+              aria-label="Menú"
+            >
+              {menuAbierto ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
         </div>
       </nav>
 
-      {/* Menú móvil - Panel independiente con su propio fondo sólido */}
+      {/* Menú móvil: cristal translúcido para que se lea bien */}
       {menuAbierto && (
-  <div className="fixed top-20 left-0 right-0 z-40 md:hidden bg-blue-500 dark:bg-gray-900 border-b border-blue-400/30 dark:border-gray-800 shadow-xl transition-colors duration-300">
-    <div className="flex flex-col gap-2 p-4">
-      {links.map((link) => (
-        <Link
-          key={link.ruta}
-          to={link.ruta}
-          onClick={cerrarMenu}
-          className={`px-4 py-3 rounded-lg text-sm font-medium transition ${
-            esActivo(link.ruta)
-              ? 'bg-white/25 text-white dark:bg-blue-500/20 dark:text-blue-400'
-              : 'text-blue-50 hover:text-white hover:bg-white/15 dark:text-gray-300 dark:hover:text-blue-400 dark:hover:bg-gray-800'
-          }`}
-        >
-          {link.nombre}
-        </Link>
-      ))}
-    </div>
-  </div>
-)}
+        <div className="fixed left-0 right-0 top-20 z-40 border-b border-slate-900/5 bg-white/80 shadow-xl backdrop-blur-xl transition-colors duration-300 md:hidden dark:border-white/10 dark:bg-slate-950/80">
+          <div className="flex flex-col gap-2 p-4">
+            {links.map((link) => (
+              <Link
+                key={link.ruta}
+                to={link.ruta}
+                onClick={cerrarMenu}
+                className={claseLink(link.ruta, 'px-3 py-3')}
+              >
+                {link.nombre}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };
