@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import LanguageToggle from './LanguageToggle';
-import ThemeToggle from './ThemeToggle';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -16,30 +16,30 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
   useEffect(() => {
     const onScroll = () => setConScroll(window.scrollY > 10);
     onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const toggleMenu = () => setMenuAbierto(!menuAbierto);
   const cerrarMenu = () => setMenuAbierto(false);
 
   const links = [
-    { nombre: t.nav.experiencia, ruta: '/experiencia' },
-    { nombre: t.nav.educacion, ruta: '/educacion' },
-    { nombre: t.nav.proyectos, ruta: '/proyectos' },
-    { nombre: t.nav.habilidades, ruta: '/habilidades' },
-    { nombre: t.nav.sobreMi, ruta: '/sobre-mi' },
-    { nombre: t.nav.contacto, ruta: '/contacto' }
+    { nombre: t.nav.experiencia, ruta: "/experiencia" },
+    { nombre: t.nav.educacion, ruta: "/educacion" },
+    { nombre: t.nav.proyectos, ruta: "/proyectos" },
+    { nombre: t.nav.habilidades, ruta: "/habilidades" },
+    { nombre: t.nav.sobreMi, ruta: "/sobre-mi" },
+    { nombre: t.nav.contacto, ruta: "/contacto" },
   ];
 
   const esActivo = (ruta) => location.pathname === ruta;
 
   // Estilo de los enlaces del menú móvil
-  const claseLink = (ruta, extra = '') =>
+  const claseLink = (ruta, extra = "") =>
     `${extra} rounded-lg text-sm font-medium transition ${
       esActivo(ruta)
-        ? 'bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:text-white'
-        : 'text-slate-700 hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white'
+        ? "bg-slate-900/10 text-slate-900 dark:bg-white/10 dark:text-white"
+        : "text-slate-700 hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
     }`;
 
   return (
@@ -48,8 +48,8 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
       <nav
         className={`fixed left-0 right-0 top-0 z-50 h-20 border-b bg-transparent px-6 transition-all duration-300 ${
           conScroll
-            ? 'border-slate-900/5 backdrop-blur-md dark:border-white/10'
-            : 'border-transparent'
+            ? "border-slate-900/5 backdrop-blur-md dark:border-white/10"
+            : "border-transparent"
         }`}
       >
         <div className="container mx-auto flex h-full items-center justify-between">
@@ -67,11 +67,17 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
 
           <div className="flex items-center gap-3 md:gap-4">
             <LanguageToggle idioma={idioma} toggleIdioma={toggleIdioma} />
-            <ThemeToggle modoOscuro={modoOscuro} toggleModoOscuro={toggleModoOscuro} />
+            <ThemeToggle
+              modoOscuro={modoOscuro}
+              toggleModoOscuro={toggleModoOscuro}
+            />
 
             {/* Enlaces: una pastilla de cristal se desliza hasta el enlace bajo el cursor
                 y una línea con degradado se dibuja debajo */}
-            <div className="hidden gap-1 md:flex" onMouseLeave={() => setRutaHover(null)}>
+            <div
+              className="hidden gap-1 md:flex"
+              onMouseLeave={() => setRutaHover(null)}
+            >
               {links.map((link) => {
                 const activo = esActivo(link.ruta);
 
@@ -84,14 +90,18 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
                     onBlur={() => setRutaHover(null)}
                     className={`group relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                       activo
-                        ? 'text-slate-900 dark:text-white'
-                        : 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                        ? "text-slate-900 dark:text-white"
+                        : "text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                     }`}
                   >
                     {rutaHover === link.ruta && (
                       <motion.span
                         layoutId="nav-hover"
-                        transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 420,
+                          damping: 32,
+                        }}
                         className="absolute inset-0 rounded-lg bg-slate-900/5 ring-1 ring-slate-900/5 backdrop-blur-sm dark:bg-white/10 dark:ring-white/10"
                       />
                     )}
@@ -104,8 +114,8 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
                       aria-hidden="true"
                       className={`absolute inset-x-4 bottom-1 h-0.5 rounded-full bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 transition-transform duration-300 ease-out ${
                         activo
-                          ? 'origin-left scale-x-100'
-                          : 'origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100'
+                          ? "origin-left scale-x-100"
+                          : "origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100"
                       }`}
                     />
                   </Link>
@@ -133,7 +143,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
                 key={link.ruta}
                 to={link.ruta}
                 onClick={cerrarMenu}
-                className={claseLink(link.ruta, 'px-4 py-3')}
+                className={claseLink(link.ruta, "px-4 py-3")}
               >
                 {link.nombre}
               </Link>

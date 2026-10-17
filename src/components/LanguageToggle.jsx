@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // Bandera de España (simplificada: franjas rojo-amarillo-rojo)
-const BanderaEspana = ({ className = '' }) => (
+const BanderaEspana = ({ className = "" }) => (
   <svg
     viewBox="0 0 30 20"
     preserveAspectRatio="xMidYMid slice"
@@ -14,7 +14,7 @@ const BanderaEspana = ({ className = '' }) => (
 );
 
 // Bandera de Estados Unidos (simplificada: 13 franjas, cantón azul y estrellas)
-const BanderaEEUU = ({ className = '' }) => {
+const BanderaEEUU = ({ className = "" }) => {
   const alto = 20 / 13;
   const franjasBlancas = [1, 3, 5, 7, 9, 11];
   const estrellas = [];
@@ -42,7 +42,7 @@ const BanderaEEUU = ({ className = '' }) => {
 };
 
 const LanguageToggle = ({ idioma, toggleIdioma }) => {
-  const esIngles = idioma === 'en';
+  const esIngles = idioma === "en";
 
   return (
     <button
@@ -50,8 +50,10 @@ const LanguageToggle = ({ idioma, toggleIdioma }) => {
       role="switch"
       aria-checked={esIngles}
       onClick={toggleIdioma}
-      aria-label={esIngles ? 'Cambiar a español' : 'Switch to English'}
-      title={esIngles ? 'English · clic para español' : 'Español · clic para inglés'}
+      aria-label={esIngles ? "Cambiar a español" : "Switch to English"}
+      title={
+        esIngles ? "English · clic para español" : "Español · clic para inglés"
+      }
       className="relative h-7 w-14 shrink-0 rounded-full border border-slate-900/10 bg-white/40 backdrop-blur-sm transition-colors hover:bg-white/60 dark:border-white/15 dark:bg-white/10 dark:hover:bg-white/20"
     >
       {/* Etiquetas a los lados (la activa queda tapada por el círculo) */}
@@ -65,17 +67,17 @@ const LanguageToggle = ({ idioma, toggleIdioma }) => {
       {/* Círculo deslizante con la bandera */}
       <span
         className={`absolute left-1 top-1 h-5 w-5 overflow-hidden rounded-full shadow-md ring-1 ring-black/10 transition-transform duration-300 ease-out ${
-          esIngles ? 'translate-x-[26px]' : 'translate-x-0'
+          esIngles ? "translate-x-[26px]" : "translate-x-0"
         }`}
       >
         <BanderaEspana
           className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${
-            esIngles ? 'opacity-0' : 'opacity-100'
+            esIngles ? "opacity-0" : "opacity-100"
           }`}
         />
         <BanderaEEUU
           className={`absolute inset-0 h-full w-full transition-opacity duration-300 ${
-            esIngles ? 'opacity-100' : 'opacity-0'
+            esIngles ? "opacity-100" : "opacity-0"
           }`}
         />
       </span>

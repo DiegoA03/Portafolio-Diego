@@ -6,12 +6,11 @@ export default {
   ],
   darkMode: 'class', // ← IMPORTANTE: Habilita modo oscuro con clase
   theme: {
-    extend: {
+  extend: {
   fontFamily: {
   display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
   sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-  marca: ['"Playfair Display"', 'serif'],
-},
+  marca: ['"Alfa Slab One"', '"Playfair Display"', 'serif'],},
 },
   },
   plugins: [],

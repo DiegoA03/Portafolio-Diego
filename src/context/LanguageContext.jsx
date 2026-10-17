@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 const LanguageContext = createContext();
 
@@ -7,483 +7,554 @@ export const useLanguage = () => useContext(LanguageContext);
 export const traducciones = {
   es: {
     nav: {
-      experiencia: 'Experiencia',
-      educacion: 'Educación',
-      proyectos: 'Proyectos',
-      habilidades: 'Habilidades',
-      sobreMi: 'Sobre Mí',
-      contacto: 'Contacto'
+      experiencia: "Experiencia",
+      educacion: "Educación",
+      proyectos: "Proyectos",
+      habilidades: "Habilidades",
+      sobreMi: "Sobre Mí",
+      contacto: "Contacto",
     },
     home: {
-      disponible: 'Disponible para trabajar',
-      hola: 'Hola, soy',
-      roles: ['Desarrollador Frontend', 'Estudiante de Ingeniería de Sistemas', 'Full Stack Developer', 'Apasionado por la IA'],
-      descripcion: 'Especialista en documentación técnica, análisis de sistemas y desarrollo de soluciones tecnológicas orientadas al frontend.',
-      verCV: 'Ver CV',
-      descargar: 'Descargar',
+      disponible: "Disponible para trabajar",
+      hola: "Hola, soy",
+      roles: [
+        "Desarrollador Frontend",
+        "Estudiante de Ingeniería de Sistemas",
+        "Full Stack Developer",
+        "Apasionado por la IA",
+      ],
+      descripcion:
+        "Especialista en documentación técnica, análisis de sistemas y desarrollo de soluciones tecnológicas orientadas al frontend.",
+      verCV: "Ver CV",
+      descargar: "Descargar",
     },
     experiencia: {
-      titulo: 'Experiencia Laboral',
-      subtitulo: 'Mi recorrido profesional. Elige una experiencia para ver el detalle de lo que hice y lo que logré.',
-      actividadesTitulo: 'Actividades realizadas',
-      logrosTitulo: 'Logros',
+      titulo: "Experiencia Laboral",
+      subtitulo:
+        "Mi recorrido profesional. Elige una experiencia para ver el detalle de lo que hice y lo que logré.",
+      actividadesTitulo: "Actividades realizadas",
+      logrosTitulo: "Logros",
       items: {
         gnosoft: {
-          cargo: 'Analista QA',
-          empresa: 'Gnosoft LTDA',
-          periodo: '2026 · Prácticas Empresariales',
-          descripcion: 'Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.',
+          cargo: "Analista QA",
+          empresa: "Gnosoft LTDA",
+          periodo: "2026 · Prácticas Empresariales",
+          descripcion:
+            "Ejecución de pruebas funcionales sobre la plataforma Gnosoft Académico, validando requerimientos en entornos de prueba y producción.",
           actividades: [
-            'Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias',
-            'Apoyo en la validación y despliegue de actualizaciones en entornos finales',
-            'Garantía del cumplimiento de los estándares de calidad'
+            "Análisis de requerimientos, diseño de casos de prueba y registro estructurado de evidencias e incidencias",
+            "Apoyo en la validación y despliegue de actualizaciones en entornos finales",
+            "Garantía del cumplimiento de los estándares de calidad",
           ],
           logros: [
-            'Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica',
-            'Fortalecimiento de competencias en análisis crítico y comunicación asertiva',
-            'Resolución de problemas en un entorno empresarial real'
-          ]
+            "Gestión y cierre satisfactorio de 19 requerimientos funcionales durante el período de práctica",
+            "Fortalecimiento de competencias en análisis crítico y comunicación asertiva",
+            "Resolución de problemas en un entorno empresarial real",
+          ],
         },
         ufps: {
-          cargo: 'Asistente Administrativo',
-          empresa: 'Facultad de Ciencias Agrarias · UFPS',
-          periodo: 'Semestre II · 2024 · Beca-Trabajo',
-          descripcion: 'Gestión y organización del sistema de archivos digital (Datasoft) de la facultad, como parte del programa de beca-trabajo universitario.',
+          cargo: "Asistente Administrativo",
+          empresa: "Facultad de Ciencias Agrarias · UFPS",
+          periodo: "Semestre II · 2024 · Beca-Trabajo",
+          descripcion:
+            "Gestión y organización del sistema de archivos digital (Datasoft) de la facultad, como parte del programa de beca-trabajo universitario.",
           actividades: [
-            'Clasificación, digitalización y archivo de documentación administrativa y académica',
-            'Atención y procesamiento eficiente de documentos oficiales'
+            "Clasificación, digitalización y archivo de documentación administrativa y académica",
+            "Atención y procesamiento eficiente de documentos oficiales",
           ],
           logros: [
-            'Fortalecimiento de habilidades en gestión documental digital',
-            'Mejora en la eficiencia del procesamiento de documentos oficiales'
-          ]
+            "Fortalecimiento de habilidades en gestión documental digital",
+            "Mejora en la eficiencia del procesamiento de documentos oficiales",
+          ],
         },
         isa: {
-          cargo: 'Asistente Administrativo',
-          empresa: 'ISA Consultores',
-          periodo: '2018 - 2019 · 100 horas · Prácticas Estudiantiles',
-          descripcion: 'Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.',
+          cargo: "Asistente Administrativo",
+          empresa: "ISA Consultores",
+          periodo: "2018 - 2019 · 100 horas · Prácticas Estudiantiles",
+          descripcion:
+            "Apoyo en labores administrativas relacionadas con la gestión y organización documental de la empresa.",
           actividades: [
-            'Clasificación, orden y archivo de comprobantes de pago y documentos contables',
-            'Apoyo en la gestión de pagos y retiros bancarios',
-            'Organización y verificación de documentación financiera'
+            "Clasificación, orden y archivo de comprobantes de pago y documentos contables",
+            "Apoyo en la gestión de pagos y retiros bancarios",
+            "Organización y verificación de documentación financiera",
           ],
           logros: [
-            'Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles',
-            'Fortalecimiento de habilidades en organización y responsabilidad',
-            'Aporte al mejoramiento del orden documental de la empresa'
-          ]
-        }
-      }
+            "Cumplimiento satisfactorio de las 100 horas de prácticas estudiantiles",
+            "Fortalecimiento de habilidades en organización y responsabilidad",
+            "Aporte al mejoramiento del orden documental de la empresa",
+          ],
+        },
+      },
     },
     educacion: {
-  tituloEducacion: 'Educación',
-  tituloCertificaciones: 'Certificaciones',
-  subtitulo: 'Mi formación académica y las certificaciones que respaldan mis conocimientos.',
-  subtituloCertificaciones: 'Pasa el cursor sobre una insignia para verla a color y haz clic para abrir el certificado.',
-  items: [
-    {
-      titulo: 'Ingeniería de Sistemas',
-      institucion: 'Universidad Francisco de Paula Santander',
-      estado: 'Semestre 11° - En curso',
-      inicioLabel: 'Inicio',
-      inicio: '2020 - Actualidad'
+      tituloEducacion: "Educación",
+      tituloCertificaciones: "Certificaciones",
+      subtitulo:
+        "Mi formación académica y las certificaciones que respaldan mis conocimientos.",
+      subtituloCertificaciones:
+        "Pasa el cursor sobre una insignia para verla a color y haz clic para abrir el certificado.",
+      items: [
+        {
+          titulo: "Ingeniería de Sistemas",
+          institucion: "Universidad Francisco de Paula Santander",
+          estado: "En curso",
+          inicioLabel: "Inicio",
+          inicio: "2020 - Presente",
+        },
+        {
+          titulo: "Técnico Asistente Administrativo",
+          institucion: "Instituto Tecnico Mercedes Abrego",
+          año: "2007 - 2019",
+        },
+      ],
     },
-    {
-      titulo: 'Técnico Asistente Administrativo',
-      institucion: 'Instituto Tecnico Mercedes Abrego',
-      año: '2007 - 2019'
-    }
-  ]
-},
-// Dentro de "es":
-proyectos: {
-  titulo: 'Proyectos',
-  subtitulo: 'Algunos de los proyectos que he construido. Navega entre ellos para ver la vista previa, las tecnologías y el código.',
-  codigo: 'Código',
-  ver: 'Ver',
-  items: {
-      depuradorfnc: {
-      nombre: 'Depurador FNC',
-      descripcion: 'Microproyecto, este es un sistema Web para depurar una gramatica ya sea generada aleatoriamente o registrada por el usuario. Muestra el paso a paso de cada fase de depuracion hasta aplicar la forma normal de Chomsky'
+    // Dentro de "es":
+    proyectos: {
+      titulo: "Proyectos",
+      subtitulo:
+        "Algunos de los proyectos que he construido. Navega entre ellos para ver la vista previa, las tecnologías y el código.",
+      codigo: "Código",
+      ver: "Ver",
+      documentacion: "Documentación",
+      items: {
+        depuradorfnc: {
+          nombre: "Depurador FNC",
+          descripcion:
+            "Microproyecto, este es un sistema Web para depurar una gramatica ya sea generada aleatoriamente o registrada por el usuario. Muestra el paso a paso de cada fase de depuracion hasta aplicar la forma normal de Chomsky",
+        },
+        conversorfng: {
+          nombre: "Conversor FNG",
+          descripcion:
+            "Microproyecto, este es un sistema Web que valida un sigma si esta en la Forma Nomal De chomsky y aplica el paso a paso de conversion hasta llegar hasta la Forma Normal De Greibach que es donde todas sus producciones empiezan por variable terminal.",
+        },
+        ecommerce: {
+          nombre: "Mini E-Commerce MRM",
+          descripcion:
+            "Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.",
+        },
+        admin: {
+          nombre: "Sistema Administrativo MRM",
+          descripcion:
+            "Plataforma de gestión administrativa para taller de motos con control de inventario, citas y asignación inteligente de mecánicos.",
+        },
+        ia: {
+          nombre: "Reconocimiento Facial IA",
+          descripcion:
+            "Sistema de identificación facial usando redes neuronales convolucionales (CNN/MTCCN) con interfaz web moderna.",
+        },
+        pizzi: {
+          nombre: "Menú Olivos Pizzi",
+          descripcion:
+            "Sitio web para la visualización del menú de la pizzería Olivos Pizzi de la ciudad de Bogotá, con una interacción moderna para el cliente.",
+        },
+      },
     },
-     conversorfng: {
-      nombre: 'Conversor FNG',
-      descripcion: 'Microproyecto, este es un sistema Web que valida un sigma si esta en la Forma Nomal De chomsky y aplica el paso a paso de conversion hasta llegar hasta la Forma Normal De Greibach que es donde todas sus producciones empiezan por variable terminal.'
+    habilidades: {
+      titulo: "Habilidades & Servicios",
+      subtitulo:
+        "Lo que sé hacer, los roles que desempeño y las herramientas con las que lo construyo.",
+      subtituloTecnologias:
+        "Pasa el cursor sobre cada logo para verlo a color.",
+      descripcionIntro:
+        "Soy un desarrollador apasionado con múltiples roles en el ecosistema de desarrollo de software. Mi especialidad es crear soluciones web impactantes y funcionales, siempre manteniendo estándares de calidad y documentación técnica estructurada.",
+      tituloServicios: "Servicios que Ofrezco",
+      tituloTecnologias: "Tecnologías y Herramientas",
+      roles: [
+        {
+          nombre: "Desarrollador Full Stack",
+          descripcion:
+            "Construcción de aplicaciones web completas con énfasis en frontend y experiencia del usuario.",
+        },
+        {
+          nombre: "Analista de Sistemas",
+          descripcion:
+            "Análisis de requerimientos, diseño UML y arquitectura de soluciones tecnológicas.",
+        },
+        {
+          nombre: "Documentador Técnico",
+          descripcion:
+            "Documentación estructurada de proyectos, procesos y guías técnicas de implementación.",
+        },
+        {
+          nombre: "Tester QA",
+          descripcion:
+            "Control de calidad, pruebas funcionales y aseguramiento de la robustez del software.",
+        },
+      ],
+      servicios: [
+        {
+          nombre: "E-commerce",
+          descripcion:
+            "Plataformas de venta online completas con carrito, pagos y gestión de inventario.",
+        },
+        {
+          nombre: "Gestión de Inventarios",
+          descripcion:
+            "Sistemas para control, seguimiento y administración de productos y almacenes.",
+        },
+        {
+          nombre: "Gestión de Citas",
+          descripcion:
+            "Aplicaciones para reservas, calendarios y asignación automática de horarios.",
+        },
+        {
+          nombre: "Menús Digitales",
+          descripcion:
+            "Catálogos interactivos para restaurantes, bares y establecimientos comerciales.",
+        },
+        {
+          nombre: "Portafolios Web",
+          descripcion:
+            "Sitios profesionales para mostrar proyectos, experiencia y servicios de manera impactante.",
+        },
+      ],
     },
-    ecommerce: {
-      nombre: 'Mini E-Commerce MRM',
-      descripcion: 'Sistema web completo para comercialización de repuestos de motocicletas con sistema de pagos QR, gestión de inventario y generación automática de facturas.'
+    sobreMi: {
+      titulo: "Sobre Mí",
+      subtitulo: "Quién soy, qué me mueve y hacia dónde voy.",
+      tituloPerfil: "Perfil Profesional",
+      parrafo1Parte1: "Soy estudiante del programa del",
+      parrafo1Destacado:
+        "Ingeniería de Sistemas de la Universidad Francisco de Paula Santander",
+      parrafo1Parte2:
+        ", actualmente en la etapa final de mi carrera, con formación orientada al desarrollo de soluciones tecnológicas, el análisis de sistemas de información y la documentación técnica y de gestión de proyectos, con una proyección hacia el área de la inteligencia artificial.",
+      parrafo2Parte1:
+        "Me caracterizo por asumir mis responsabilidades académicas con",
+      parrafo2Destacado: "compromiso, ética y una actitud proactiva",
+      parrafo2Parte2:
+        "frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.",
+      tituloExpectativa: "Expectativa Profesional",
+      textoExpectativa:
+        "Aspiro a fortalecer mis competencias técnicas y personales, aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo desarrollándome en el área de la inteligencia artificial y el desarrollo de software.",
+      tituloFortalezas: "Principales Fortalezas",
+      fortalezas: [
+        { nombre: "Trabajo en equipo", emoji: "🤝" },
+        { nombre: "Responsabilidad", emoji: "🎯" },
+        { nombre: "Autodisciplina", emoji: "🏋️" },
+        { nombre: "Aprendizaje rápido", emoji: "📈" },
+        { nombre: "Orden y organización", emoji: "🗂️" },
+        { nombre: "Proactividad", emoji: "🔥" },
+      ],
+      tituloInfoPersonal: "Información Personal",
+      datosPersonales: [
+        { label: "Ubicación", valor: "Cúcuta, Norte de Santander" },
+        { label: "Nacimiento", valor: "03 de Agosto, 2002" },
+        { label: "Estado Civil", valor: "Soltero" },
+      ],
+      tituloIdiomas: "Idiomas",
+      espanol: "Español",
+      ingles: "Inglés",
+      nivelNativo: "Nativo",
+      nivelRegular: "Regular",
+      escuchaAhora: "Escucha ahora",
+      reproducir: "Reproducir",
+      pausar: "Pausar",
     },
-    admin: {
-      nombre: 'Sistema Administrativo MRM',
-      descripcion: 'Plataforma de gestión administrativa para taller de motos con control de inventario, citas y asignación inteligente de mecánicos.'
+    contacto: {
+      titulo: "¿Hablamos?",
+      subtitulo:
+        "Estoy disponible para escucharte y llevar tu idea a la nube. No dudes en contactarme.",
+      email: "Email",
+      telefono: "Teléfono",
+      ubicacion: "Ubicación",
+      direccion1: "Av 5a #23-19 San Mateo",
+      direccion2: "Cúcuta, Norte de Santander",
+      botonEnviar: "Enviar Mensaje",
+      escribirWhatsapp: "Escríbeme por WhatsApp",
+      descripciones: {
+        linkedin: "Conectemos profesionalmente.",
+        instagram: "Sígueme para más contenido.",
+        facebook: "Encuéntrame también en Facebook.",
+        github: "Explora mis proyectos.",
+        email: "Escríbeme un correo cuando quieras.",
+        telefono: "Llámame o escríbeme cuando quieras.",
+        ubicacion: "Aquí me encuentras.",
+      },
+      redes: "Sígueme en redes",
+      copiar: "Copiar",
+      copiado: "Copiado",
+      asuntoCorreo: "Oportunidad de Prácticas Profesionales",
+      derechos: "Todos los derechos reservados.",
     },
-    ia: {
-      nombre: 'Reconocimiento Facial IA',
-      descripcion: 'Sistema de identificación facial usando redes neuronales convolucionales (CNN/MTCCN) con interfaz web moderna.'
-    },
-    pizzi: {
-      nombre: 'Menú Olivos Pizzi',
-      descripcion: 'Sitio web para la visualización del menú de la pizzería Olivos Pizzi de la ciudad de Bogotá, con una interacción moderna para el cliente.'
-    }
-  }
-},
-habilidades: {
-  titulo: 'Habilidades & Servicios',
-  subtitulo: 'Lo que sé hacer, los roles que desempeño y las herramientas con las que lo construyo.',
-  subtituloTecnologias: 'Pasa el cursor sobre cada logo para verlo a color.',
-  descripcionIntro: 'Soy un desarrollador apasionado con múltiples roles en el ecosistema de desarrollo de software. Mi especialidad es crear soluciones web impactantes y funcionales, siempre manteniendo estándares de calidad y documentación técnica estructurada.',
-  tituloServicios: 'Servicios que Ofrezco',
-  tituloTecnologias: 'Tecnologías y Herramientas',
-  roles: [
-    {
-      nombre: 'Desarrollador Full Stack',
-      descripcion: 'Construcción de aplicaciones web completas con énfasis en frontend y experiencia del usuario.'
-    },
-    {
-      nombre: 'Analista de Sistemas',
-      descripcion: 'Análisis de requerimientos, diseño UML y arquitectura de soluciones tecnológicas.'
-    },
-    {
-      nombre: 'Documentador Técnico',
-      descripcion: 'Documentación estructurada de proyectos, procesos y guías técnicas de implementación.'
-    },
-    {
-      nombre: 'Tester QA',
-      descripcion: 'Control de calidad, pruebas funcionales y aseguramiento de la robustez del software.'
-    }
-  ],
-  servicios: [
-    {
-      nombre: 'E-commerce',
-      descripcion: 'Plataformas de venta online completas con carrito, pagos y gestión de inventario.'
-    },
-    {
-      nombre: 'Gestión de Inventarios',
-      descripcion: 'Sistemas para control, seguimiento y administración de productos y almacenes.'
-    },
-    {
-      nombre: 'Gestión de Citas',
-      descripcion: 'Aplicaciones para reservas, calendarios y asignación automática de horarios.'
-    },
-    {
-      nombre: 'Menús Digitales',
-      descripcion: 'Catálogos interactivos para restaurantes, bares y establecimientos comerciales.'
-    },
-    {
-      nombre: 'Portafolios Web',
-      descripcion: 'Sitios profesionales para mostrar proyectos, experiencia y servicios de manera impactante.'
-    }
-  ]
-},
-sobreMi: {
-  titulo: 'Sobre Mí',
-  subtitulo: 'Quién soy, qué me mueve y hacia dónde voy.',
-  tituloPerfil: 'Perfil Profesional',
-  parrafo1Parte1: 'Soy estudiante del programa de',
-  parrafo1Destacado: 'Ingeniería de Sistemas de la Universidad Francisco de Paula Santander',
-  parrafo1Parte2: ', con formación orientada al desarrollo de soluciones tecnológicas, el análisis de sistemas de información y la documentación técnica y de gestión de proyectos, con una proyección hacia el área de la inteligencia artificial.',
-  parrafo2Parte1: 'Me caracterizo por asumir mis responsabilidades académicas con',
-  parrafo2Destacado: 'compromiso, ética y una actitud proactiva',
-  parrafo2Parte2: 'frente al aprendizaje continuo, buscando aportar valor en los entornos donde me desempeño.',
-  tituloExpectativa: 'Expectativa Profesional',
-  textoExpectativa: 'Aspiro a fortalecer mis competencias técnicas y personales, aportando de manera significativa a la organización donde realice esta etapa formativa, mientras continúo desarrollándome en el área de la inteligencia artificial y el desarrollo de software.',
-  tituloFortalezas: 'Principales Fortalezas',
-  fortalezas: [
-    { nombre: 'Trabajo en equipo', emoji: '🤝' },
-    { nombre: 'Responsabilidad', emoji: '🎯' },
-    { nombre: 'Autodisciplina', emoji: '🏋️' },
-    { nombre: 'Aprendizaje rápido', emoji: '📈' },
-    { nombre: 'Orden y organización', emoji: '🗂️' },
-    { nombre: 'Proactividad', emoji: '🔥' }
-  ],
-  tituloInfoPersonal: 'Información Personal',
-  datosPersonales: [
-    { label: 'Ubicación', valor: 'Cúcuta, Norte de Santander' },
-    { label: 'Nacimiento', valor: '03 de Agosto, 2002' },
-    { label: 'Estado Civil', valor: 'Soltero' }
-  ],
-  tituloIdiomas: 'Idiomas',
-  espanol: 'Español',
-  ingles: 'Inglés',
-  nivelNativo: 'Nativo',
-  nivelRegular: 'Regular',
-  escuchaAhora: 'Escucha ahora',
-  reproducir: 'Reproducir',
-  pausar: 'Pausar'
-},
-contacto: {
-  titulo: '¿Hablamos?',
-  subtitulo: 'Estoy disponible para escucharte y llevar tu idea a la nube. No dudes en contactarme.',
-  email: 'Email',
-  telefono: 'Teléfono',
-  ubicacion: 'Ubicación',
-  direccion1: 'Av 5a #23-19 San Mateo',
-  direccion2: 'Cúcuta, Norte de Santander',
-  botonEnviar: 'Enviar Mensaje',
-  escribirWhatsapp: 'Escríbeme por WhatsApp',
-    descripciones: {
-    linkedin: 'Conectemos profesionalmente.',
-    instagram: 'Sígueme para más contenido.',
-    facebook: 'Encuéntrame también en Facebook.',
-    github: 'Explora mis proyectos.',
-    email: 'Escríbeme un correo cuando quieras.',
-    telefono: 'Llámame o escríbeme cuando quieras.',
-    ubicacion: 'Aquí me encuentras.'
-  },
-  redes: 'Sígueme en redes',
-  copiar: 'Copiar',
-  copiado: 'Copiado',
-  asuntoCorreo: 'Oportunidad de Prácticas Profesionales',
-  derechos: 'Todos los derechos reservados.',
-  footerRol: 'Estudiante de Ingeniería de Sistemas - Universidad Francisco de Paula Santander'
-},
-    
   },
   en: {
     nav: {
-      experiencia: 'Experience',
-      educacion: 'Education',
-      proyectos: 'Projects',
-      habilidades: 'Skills',
-      sobreMi: 'About Me',
-      contacto: 'Contact'
+      experiencia: "Experience",
+      educacion: "Education",
+      proyectos: "Projects",
+      habilidades: "Skills",
+      sobreMi: "About Me",
+      contacto: "Contact",
     },
     home: {
-      disponible: 'Available for work',
-      hola: 'Hi, I\'m',
-      roles: ['Frontend Developer', 'Systems Engineering Student', 'Full Stack Developer', 'Passionate about AI'],
-      descripcion: 'Specialist in technical documentation, systems analysis and development of technology solutions oriented to frontend.',
-      verCV: 'View CV',
-      descargar: 'Download',
+      disponible: "Available for work",
+      hola: "Hi, I'm",
+      roles: [
+        "Frontend Developer",
+        "Systems Engineering Student",
+        "Full Stack Developer",
+        "Passionate about AI",
+      ],
+      descripcion:
+        "Specialist in technical documentation, systems analysis and development of technology solutions oriented to frontend.",
+      verCV: "View CV",
+      descargar: "Download",
     },
     experiencia: {
-      titulo: 'Work Experience',
-      subtitulo: 'My professional journey. Pick an experience to see what I did and what I achieved.',
-      actividadesTitulo: 'Activities performed',
-      logrosTitulo: 'Achievements',
+      titulo: "Work Experience",
+      subtitulo:
+        "My professional journey. Pick an experience to see what I did and what I achieved.",
+      actividadesTitulo: "Activities performed",
+      logrosTitulo: "Achievements",
       items: {
         gnosoft: {
-          cargo: 'QA Analyst',
-          empresa: 'Gnosoft LTDA',
-          periodo: '2026 · Professional Internship',
-          descripcion: 'Execution of functional tests on the Gnosoft Académico platform, validating requirements in testing and production environments.',
+          cargo: "QA Analyst",
+          empresa: "Gnosoft LTDA",
+          periodo: "2026 · Professional Internship",
+          descripcion:
+            "Execution of functional tests on the Gnosoft Académico platform, validating requirements in testing and production environments.",
           actividades: [
-            'Requirements analysis, test case design and structured recording of evidence and issues',
-            'Support in the validation and deployment of updates in final environments',
-            'Ensuring compliance with quality standards'
+            "Requirements analysis, test case design and structured recording of evidence and issues",
+            "Support in the validation and deployment of updates in final environments",
+            "Ensuring compliance with quality standards",
           ],
           logros: [
-            'Successful management and closure of 19 functional requirements during the internship period',
-            'Strengthened critical analysis and assertive communication skills',
-            'Problem-solving in a real business environment'
-          ]
+            "Successful management and closure of 19 functional requirements during the internship period",
+            "Strengthened critical analysis and assertive communication skills",
+            "Problem-solving in a real business environment",
+          ],
         },
         ufps: {
-          cargo: 'Administrative Assistant',
-          empresa: 'Faculty of Agricultural Sciences · UFPS',
-          periodo: 'Semester II · 2024 · Work-Study Program',
-          descripcion: 'Management and organization of the digital filing system (Datasoft) of the faculty, as part of the university work-study program.',
+          cargo: "Administrative Assistant",
+          empresa: "Faculty of Agricultural Sciences · UFPS",
+          periodo: "Semester II · 2024 · Work-Study Program",
+          descripcion:
+            "Management and organization of the digital filing system (Datasoft) of the faculty, as part of the university work-study program.",
           actividades: [
-            'Classification, digitization and filing of administrative and academic documentation',
-            'Efficient attention and processing of official documents'
+            "Classification, digitization and filing of administrative and academic documentation",
+            "Efficient attention and processing of official documents",
           ],
           logros: [
-            'Strengthened digital document management skills',
-            'Improved efficiency in processing official documents'
-          ]
+            "Strengthened digital document management skills",
+            "Improved efficiency in processing official documents",
+          ],
         },
         isa: {
-          cargo: 'Administrative Assistant',
-          empresa: 'ISA Consultores',
-          periodo: '2018 - 2019 · 100 hours · Student Internship',
-          descripcion: 'Support in administrative tasks related to the management and documental organization of the company.',
+          cargo: "Administrative Assistant",
+          empresa: "ISA Consultores",
+          periodo: "2018 - 2019 · 100 hours · Student Internship",
+          descripcion:
+            "Support in administrative tasks related to the management and documental organization of the company.",
           actividades: [
-            'Classification, sorting and filing of payment vouchers and accounting documents',
-            'Support in bank payment and withdrawal management',
-            'Verification and organization of financial documents'
+            "Classification, sorting and filing of payment vouchers and accounting documents",
+            "Support in bank payment and withdrawal management",
+            "Verification and organization of financial documents",
           ],
           logros: [
-            'Successful completion of 100 hours of student internship',
-            'Strengthened skills in organization and responsibility',
-            'Contribution to improving the company\'s document order'
-          ]
-        }
-      }
+            "Successful completion of 100 hours of student internship",
+            "Strengthened skills in organization and responsibility",
+            "Contribution to improving the company's document order",
+          ],
+        },
+      },
     },
     educacion: {
-  tituloEducacion: 'Education',
-  tituloCertificaciones: 'Certifications',
-  subtitulo: 'My academic background and the certifications that back up my knowledge.',
-  subtituloCertificaciones: 'Hover over a badge to see it in color and click to open the certificate.',
-  items: [
-    {
-      titulo: 'Systems Engineering',
-      institucion: 'Francisco de Paula Santander University',
-      estado: '11th Semester - In progress',
-      inicioLabel: 'Start',
-      inicio: '2020 - Present'
+      tituloEducacion: "Education",
+      tituloCertificaciones: "Certifications",
+      subtitulo:
+        "My academic background and the certifications that back up my knowledge.",
+      subtituloCertificaciones:
+        "Hover over a badge to see it in color and click to open the certificate.",
+      items: [
+        {
+          titulo: "Systems Engineering",
+          institucion: "Francisco de Paula Santander University",
+          estado: "In progress",
+          inicioLabel: "Start",
+          inicio: "2020 - Present",
+        },
+        {
+          titulo: "Administrative Assistant Technician",
+          institucion: "Mercedes Abrego Technical Institute",
+          año: "2007 - 2019",
+        },
+      ],
     },
-    {
-      titulo: 'Administrative Assistant Technician',
-      institucion: 'Mercedes Abrego Technical Institute',
-      año: '2007 - 2019'
-    }
-  ]
-},
-proyectos: {
-  titulo: 'Projects',
-  subtitulo: 'Some of the projects I have built. Browse them to see a preview, the stack and the code.',
-  codigo: 'Code',
-  ver: 'View',
-  items: {
-    depuradorfnc: {
-      nombre: 'Depurador FNC',
-      descripcion: 'This micro-project is a web-based system for debugging a grammar—whether randomly generated or user-defined. It displays the step-by-step process of each debugging phase, culminating in the application of Chomsky Normal Form.'
+    proyectos: {
+      titulo: "Projects",
+      subtitulo:
+        "Some of the projects I have built. Browse them to see a preview, the stack and the code.",
+      codigo: "Code",
+      ver: "View",
+      documentacion: "Documentation",
+      items: {
+        depuradorfnc: {
+          nombre: "Depurador FNC",
+          descripcion:
+            "This micro-project is a web-based system for debugging a grammar—whether randomly generated or user-defined. It displays the step-by-step process of each debugging phase, culminating in the application of Chomsky Normal Form.",
+        },
+        conversorfng: {
+          nombre: "Conversor FNG",
+          descripcion:
+            "This micro-project is a web-based system that validates whether a grammar is in Chomsky Normal Form and performs the step-by-step conversion process to reach Greibach Normal Form, in which all productions begin with a terminal followed by a variable.",
+        },
+        ecommerce: {
+          nombre: "Mini E-Commerce MRM",
+          descripcion:
+            "Complete web system for the commercialization of motorcycle parts, featuring QR payment system, inventory management and automatic invoice generation.",
+        },
+        admin: {
+          nombre: "MRM Administrative System",
+          descripcion:
+            "Administrative management platform for a motorcycle repair shop with inventory control, appointments and intelligent mechanic assignment.",
+        },
+        ia: {
+          nombre: "AI Facial Recognition",
+          descripcion:
+            "Facial identification system using convolutional neural networks (CNN/MTCCN) with a modern web interface.",
+        },
+        pizzi: {
+          nombre: "Olivos Pizzi Menu",
+          descripcion:
+            "Website for viewing the menu of the Olivos Pizzi pizzeria in Bogotá, featuring a modern interactive experience for customers.",
+        },
+      },
     },
-    conversorfng: {
-      nombre: 'Conversor FNG',
-      descripcion: 'This micro-project is a web-based system that validates whether a grammar is in Chomsky Normal Form and performs the step-by-step conversion process to reach Greibach Normal Form, in which all productions begin with a terminal followed by a variable.'
+    habilidades: {
+      titulo: "Skills & Services",
+      subtitulo: "What I can do, the roles I play and the tools I build with.",
+      subtituloTecnologias: "Hover over each logo to see it in color.",
+      descripcionIntro:
+        "I am a passionate developer with multiple roles in the software development ecosystem. My specialty is creating impactful, functional web solutions, always maintaining quality standards and structured technical documentation.",
+      tituloServicios: "Services I Offer",
+      tituloTecnologias: "Technologies and Tools",
+      roles: [
+        {
+          nombre: "Full Stack Developer",
+          descripcion:
+            "Building complete web applications with an emphasis on frontend and user experience.",
+        },
+        {
+          nombre: "Systems Analyst",
+          descripcion:
+            "Requirements analysis, UML design and architecture of technology solutions.",
+        },
+        {
+          nombre: "Technical Writer",
+          descripcion:
+            "Structured documentation of projects, processes and technical implementation guides.",
+        },
+        {
+          nombre: "QA Tester",
+          descripcion:
+            "Quality control, functional testing and ensuring software robustness.",
+        },
+      ],
+      servicios: [
+        {
+          nombre: "E-commerce",
+          descripcion:
+            "Complete online sales platforms with cart, payments and inventory management.",
+        },
+        {
+          nombre: "Inventory Management",
+          descripcion:
+            "Systems for control, tracking and administration of products and warehouses.",
+        },
+        {
+          nombre: "Appointment Management",
+          descripcion:
+            "Applications for bookings, calendars and automatic schedule assignment.",
+        },
+        {
+          nombre: "Digital Menus",
+          descripcion:
+            "Interactive catalogs for restaurants, bars and commercial establishments.",
+        },
+        {
+          nombre: "Web Portfolios",
+          descripcion:
+            "Professional sites to showcase projects, experience and services impactfully.",
+        },
+      ],
     },
-    ecommerce: {
-      nombre: 'Mini E-Commerce MRM',
-      descripcion: 'Complete web system for the commercialization of motorcycle parts, featuring QR payment system, inventory management and automatic invoice generation.'
+    // Dentro de "en":
+    sobreMi: {
+      titulo: "About Me",
+      subtitulo: "Who I am, what drives me and where I am heading.",
+      tituloPerfil: "Professional Profile",
+      parrafo1Parte1: "I am a student in the",
+      parrafo1Destacado:
+        "Systems Engineering program at Francisco de Paula Santander University",
+      parrafo1Parte2:
+        ", currently in the final stage of my degree, with training oriented toward the development of technological solutions, information systems analysis, and technical and project management documentation, with a projection toward the field of artificial intelligence.",
+      parrafo2Parte1:
+        "I am characterized by taking on my academic responsibilities with",
+      parrafo2Destacado: "commitment, ethics and a proactive attitude",
+      parrafo2Parte2:
+        "toward continuous learning, seeking to add value in the environments where I work.",
+      tituloExpectativa: "Professional Expectations",
+      textoExpectativa:
+        "I aspire to strengthen my technical and personal skills, contributing significantly to the organization where I complete this training stage, while continuing to develop in the field of artificial intelligence and software development.",
+      tituloFortalezas: "Key Strengths",
+      fortalezas: [
+        { nombre: "Teamwork", emoji: "🤝" },
+        { nombre: "Responsibility", emoji: "🎯" },
+        { nombre: "Self-discipline", emoji: "🏋️" },
+        { nombre: "Fast learning", emoji: "📈" },
+        { nombre: "Order and organization", emoji: "🗂️" },
+        { nombre: "Proactivity", emoji: "🔥" },
+      ],
+      tituloInfoPersonal: "Personal Information",
+      datosPersonales: [
+        { label: "Location", valor: "Cúcuta, Norte de Santander" },
+        { label: "Birth", valor: "August 3rd, 2002" },
+        { label: "Marital Status", valor: "Single" },
+      ],
+      tituloIdiomas: "Languages",
+      espanol: "Spanish",
+      ingles: "English",
+      nivelNativo: "Native",
+      nivelRegular: "Intermediate",
+      escuchaAhora: "Listen now",
+      reproducir: "Play",
+      pausar: "Pause",
     },
-    admin: {
-      nombre: 'MRM Administrative System',
-      descripcion: 'Administrative management platform for a motorcycle repair shop with inventory control, appointments and intelligent mechanic assignment.'
+    // Dentro de "en":
+    contacto: {
+      titulo: "Let's Talk?",
+      subtitulo:
+        "I'm available to hear you out and take your idea to the cloud. Don't hesitate to reach out.",
+      email: "Email",
+      telefono: "Phone",
+      ubicacion: "Location",
+      direccion1: "Av 5a #23-19 San Mateo",
+      direccion2: "Cúcuta, Norte de Santander, Colombia",
+      botonEnviar: "Send Message",
+      escribirWhatsapp: "Message me on WhatsApp",
+      descripciones: {
+        linkedin: "Let's connect professionally.",
+        instagram: "Follow me for more content.",
+        facebook: "Find me on Facebook too.",
+        github: "Explore my projects.",
+        email: "Send me an email anytime.",
+        telefono: "Call or text me anytime.",
+        ubicacion: "This is where you can find me.",
+      },
+      redes: "Follow me",
+      copiar: "Copy",
+      copiado: "Copied",
+      asuntoCorreo: "Professional Internship Opportunity",
+      derechos: "All rights reserved.",
     },
-    ia: {
-      nombre: 'AI Facial Recognition',
-      descripcion: 'Facial identification system using convolutional neural networks (CNN/MTCCN) with a modern web interface.'
-    },
-    pizzi: {
-      nombre: 'Olivos Pizzi Menu',
-      descripcion: 'Website for viewing the menu of the Olivos Pizzi pizzeria in Bogotá, featuring a modern interactive experience for customers.'
-    }
-  }
-},
-habilidades: {
-  titulo: 'Skills & Services',
-  subtitulo: 'What I can do, the roles I play and the tools I build with.',
-  subtituloTecnologias: 'Hover over each logo to see it in color.',
-  descripcionIntro: 'I am a passionate developer with multiple roles in the software development ecosystem. My specialty is creating impactful, functional web solutions, always maintaining quality standards and structured technical documentation.',
-  tituloServicios: 'Services I Offer',
-  tituloTecnologias: 'Technologies and Tools',
-  roles: [
-    {
-      nombre: 'Full Stack Developer',
-      descripcion: 'Building complete web applications with an emphasis on frontend and user experience.'
-    },
-    {
-      nombre: 'Systems Analyst',
-      descripcion: 'Requirements analysis, UML design and architecture of technology solutions.'
-    },
-    {
-      nombre: 'Technical Writer',
-      descripcion: 'Structured documentation of projects, processes and technical implementation guides.'
-    },
-    {
-      nombre: 'QA Tester',
-      descripcion: 'Quality control, functional testing and ensuring software robustness.'
-    }
-  ],
-  servicios: [
-    {
-      nombre: 'E-commerce',
-      descripcion: 'Complete online sales platforms with cart, payments and inventory management.'
-    },
-    {
-      nombre: 'Inventory Management',
-      descripcion: 'Systems for control, tracking and administration of products and warehouses.'
-    },
-    {
-      nombre: 'Appointment Management',
-      descripcion: 'Applications for bookings, calendars and automatic schedule assignment.'
-    },
-    {
-      nombre: 'Digital Menus',
-      descripcion: 'Interactive catalogs for restaurants, bars and commercial establishments.'
-    },
-    {
-      nombre: 'Web Portfolios',
-      descripcion: 'Professional sites to showcase projects, experience and services impactfully.'
-    }
-  ]
-},
-// Dentro de "en":
-sobreMi: {
-  titulo: 'About Me',
-  subtitulo: 'Who I am, what drives me and where I am heading.',
-  tituloPerfil: 'Professional Profile',
-  parrafo1Parte1: 'I am a student in the',
-  parrafo1Destacado: 'Systems Engineering program at Francisco de Paula Santander University',
-  parrafo1Parte2: ', with training oriented toward the development of technological solutions, information systems analysis, and technical and project management documentation, with a projection toward the field of artificial intelligence.',
-  parrafo2Parte1: 'I am characterized by taking on my academic responsibilities with',
-  parrafo2Destacado: 'commitment, ethics and a proactive attitude',
-  parrafo2Parte2: 'toward continuous learning, seeking to add value in the environments where I work.',
-  tituloExpectativa: 'Professional Expectations',
-  textoExpectativa: 'I aspire to strengthen my technical and personal skills, contributing significantly to the organization where I complete this training stage, while continuing to develop in the field of artificial intelligence and software development.',
-  tituloFortalezas: 'Key Strengths',
-  fortalezas: [
-    { nombre: 'Teamwork', emoji: '🤝' },
-    { nombre: 'Responsibility', emoji: '🎯' },
-    { nombre: 'Self-discipline', emoji: '🏋️' },
-    { nombre: 'Fast learning', emoji: '📈' },
-    { nombre: 'Order and organization', emoji: '🗂️' },
-    { nombre: 'Proactivity', emoji: '🔥' }
-  ],
-  tituloInfoPersonal: 'Personal Information',
-  datosPersonales: [
-    { label: 'Location', valor: 'Cúcuta, Norte de Santander' },
-    { label: 'Birth', valor: 'August 3rd, 2002' },
-    { label: 'Marital Status', valor: 'Single' }
-  ],
-  tituloIdiomas: 'Languages',
-  espanol: 'Spanish',
-  ingles: 'English',
-  nivelNativo: 'Native',
-  nivelRegular: 'Intermediate',
-  escuchaAhora: 'Listen now',
-  reproducir: 'Play',
-  pausar: 'Pause'
-},
-// Dentro de "en":
-contacto: {
-  titulo: "Let's Talk?",
-  subtitulo: "I'm available to hear you out and take your idea to the cloud. Don't hesitate to reach out.",
-  email: 'Email',
-  telefono: 'Phone',
-  ubicacion: 'Location',
-  direccion1: 'Av 5a #23-19 San Mateo',
-  direccion2: 'Cúcuta, Norte de Santander, Colombia',
-  botonEnviar: 'Send Message',
-  escribirWhatsapp: 'Message me on WhatsApp',
-    descripciones: {
-    linkedin: "Let's connect professionally.",
-    instagram: 'Follow me for more content.',
-    facebook: 'Find me on Facebook too.',
-    github: 'Explore my projects.',
-    email: 'Send me an email anytime.',
-    telefono: 'Call or text me anytime.',
-    ubicacion: 'This is where you can find me.'
   },
-  redes: 'Follow me',
-  copiar: 'Copy',
-  copiado: 'Copied',
-  asuntoCorreo: 'Professional Internship Opportunity',
-  derechos: 'All rights reserved.',
-  footerRol: 'Systems Engineering Student - Francisco de Paula Santander University'
-},
-  }
 };
 
 export const LanguageProvider = ({ children }) => {
-  const [idioma, setIdioma] = useState('es');
+  const [idioma, setIdioma] = useState("es");
 
   const toggleIdioma = () => {
-    setIdioma((prev) => (prev === 'es' ? 'en' : 'es'));
+    setIdioma((prev) => (prev === "es" ? "en" : "es"));
   };
 
   const t = traducciones[idioma];

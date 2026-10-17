@@ -1,86 +1,101 @@
-import React, { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
-// Tiempos de la animación (en segundos)
-const PAUSA_INICIAL = 0.2; // antes de que aparezca la primera palabra
-const ENTRE_LETRAS = 0.06; // aparición de la primera palabra
-const PAUSA_ENTRE_FASES = 0.5; // respiro entre "Diego" y el efecto dominó
-const ENTRE_FICHAS = 0.075; // cada letra cae sobre la siguiente con este retraso
+// Tiempo (ms) que dura cada fase antes de pasar a la siguiente
+const FASES = {
+  solo: { espera: 2200, siguiente: "completo" }, // se ve únicamente "Diego"
+  completo: { espera: 3400, siguiente: "fuera" }, // se ve "Diego Álvarez" + manita
+  fuera: { espera: 1400, siguiente: "solo" }, // giran todos y salen; luego vuelve "Diego"
+};
 
-// Primero aparece la primera palabra y luego el resto del nombre "se levanta"
-// letra por letra, como una cadena de fichas de dominó. Al pasar el cursor
-// por encima, la animación se repite cuando ya terminó.
-const NombreDomino = ({ nombre }) => {
+// Giro de cada letra (en segundos)
+const DURACION_GIRO = 0.55;
+const ENTRE_LETRAS = 0.07;
+
+const ENTRA = { rotateY: [-90, 0], opacity: [0, 1] };
+const SALE = { rotateY: [0, 90], opacity: [1, 0] };
+const VISIBLE = { rotateY: 0, opacity: 1 };
+const OCULTO = { rotateY: -90, opacity: 0 };
+
+// Bucle infinito:
+//  1. "Diego" entra girando
+//  2. "Álvarez" y la manita (prop `extra`) entran girando
+//  3. Todo gira y sale
+//  4. Vuelve a entrar solo "Diego" ... y se repite
+// El espacio del apellido y de la manita queda reservado para que el título no salte.
+const NombreDomino = ({ nombre, extra = null }) => {
   const reducirMovimiento = useReducedMotion();
-  const [ronda, setRonda] = useState(0);
-  const [listo, setListo] = useState(false);
+  const [fase, setFase] = useState("solo");
 
-  if (reducirMovimiento) return <>{nombre}</>;
+  useEffect(() => {
+    if (reducirMovimiento) return undefined;
+    const { espera, siguiente } = FASES[fase];
+    const id = setTimeout(() => setFase(siguiente), espera);
+    return () => clearTimeout(id);
+  }, [fase, reducirMovimiento]);
 
-  const palabras = nombre.trim().split(' ');
-  const totalFichas = palabras.slice(1).join('').length;
-  const inicioDomino = PAUSA_INICIAL + palabras[0].length * ENTRE_LETRAS + 0.4 + PAUSA_ENTRE_FASES;
+  if (reducirMovimiento)
+    return (
+      <>
+        {nombre}
+        {extra && <> {extra}</>}
+      </>
+    );
 
-  const repetir = () => {
-    if (!listo) return;
-    setListo(false);
-    setRonda((r) => r + 1);
-  };
+  const [primera, ...resto] = nombre.trim().split(" ");
+  const apellido = resto.join(" ");
+  const largoPrimera = Array.from(primera).length;
+  const largoApellido = Array.from(apellido).length;
 
-  let ficha = 0;
+  const animacionPrimera =
+    fase === "solo" ? ENTRA : fase === "completo" ? VISIBLE : SALE;
+  const animacionApellido =
+    fase === "completo" ? ENTRA : fase === "fuera" ? SALE : OCULTO;
+
+  // Animación de una pieza del apellido (cada letra y también el "extra", p. ej. la manita)
+  const piezaApellido = (contenido, i, clave) => (
+    <motion.span
+      key={clave}
+      className="inline-block"
+      style={{ transformPerspective: 500 }}
+      initial={OCULTO}
+      animate={animacionApellido}
+      transition={{
+        // Al salir, el giro continúa de corrido desde "Diego" hasta el final
+        delay: (fase === "fuera" ? largoPrimera + i : i) * ENTRE_LETRAS,
+        duration: fase === "solo" ? 0 : DURACION_GIRO,
+        ease: "easeInOut",
+      }}
+    >
+      {contenido}
+    </motion.span>
+  );
 
   return (
-    <span key={ronda} onMouseEnter={repetir}>
+    <span>
       <span className="sr-only">{nombre}</span>
-
-      {palabras.map((palabra, w) => (
-        <React.Fragment key={w}>
-          {w > 0 && ' '}
-          <span className="inline-block whitespace-nowrap" aria-hidden="true">
-            {Array.from(palabra).map((letra, i) => {
-              // Primera palabra: aparece letra por letra, subiendo suavemente
-              if (w === 0) {
-                return (
-                  <motion.span
-                    key={i}
-                    className="inline-block"
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: PAUSA_INICIAL + i * ENTRE_LETRAS, duration: 0.4, ease: 'easeOut' }}
-                  >
-                    {letra}
-                  </motion.span>
-                );
-              }
-
-              // Resto del nombre: cada letra gira desde su esquina inferior izquierda
-              // hasta quedar de pie, con un pequeño rebote
-              const numero = ficha++;
-              const retraso = inicioDomino + numero * ENTRE_FICHAS;
-
-              return (
-                <motion.span
-                  key={i}
-                  className="inline-block"
-                  style={{ transformOrigin: '0% 100%' }}
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: [-90, 9, -3, 0] }}
-                  transition={{
-                    delay: retraso,
-                    duration: 0.55,
-                    times: [0, 0.55, 0.8, 1],
-                    ease: 'easeOut',
-                    opacity: { delay: retraso, duration: 0.12 }
-                  }}
-                  onAnimationComplete={numero === totalFichas - 1 ? () => setListo(true) : undefined}
-                >
-                  {letra}
-                </motion.span>
-              );
-            })}
-          </span>
-        </React.Fragment>
-      ))}
+      <span className="inline-block whitespace-nowrap" aria-hidden="true">
+        {Array.from(primera).map((letra, i) => (
+          <motion.span
+            key={i}
+            className="inline-block"
+            style={{ transformPerspective: 500 }}
+            initial={OCULTO}
+            animate={animacionPrimera}
+            transition={{
+              delay: (fase === "solo" ? 0.1 : 0) + i * ENTRE_LETRAS,
+              duration: DURACION_GIRO,
+              ease: "easeInOut",
+            }}
+          >
+            {letra}
+          </motion.span>
+        ))}
+      </span>{" "}
+      <span className="inline-block whitespace-nowrap" aria-hidden="true">
+        {Array.from(apellido).map((letra, i) => piezaApellido(letra, i, i))}
+        {extra && <> {piezaApellido(extra, largoApellido, "extra")}</>}
+      </span>
     </span>
   );
 };

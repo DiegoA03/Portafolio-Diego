@@ -1,10 +1,11 @@
-import React, { useState } from 'react';import {
+import React, { useState } from "react";
+import {
   motion,
   useMotionValue,
   useReducedMotion,
   useSpring,
-  useTransform
-} from 'framer-motion';
+  useTransform,
+} from "framer-motion";
 import {
   MapPin,
   Calendar,
@@ -14,34 +15,41 @@ import {
   Dumbbell,
   TrendingUp,
   FolderKanban,
-  Flame
-} from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import SectionTitle from './SectionTitle';
-import { BanderaEspana, BanderaEEUU } from './Banderas';
-import ReproductorCancion from './ReproductorCancion';
+  Flame,
+} from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import SectionTitle from "./SectionTitle";
+import { BanderaEspana, BanderaEEUU } from "./Banderas";
+import ReproductorCancion from "./ReproductorCancion";
 
 const iconosDatos = [MapPin, Calendar, User];
 
 // Un icono y un color por fortaleza (mismo orden que en LanguageContext)
-const iconosFortalezas = [Users, Target, Dumbbell, TrendingUp, FolderKanban, Flame];
+const iconosFortalezas = [
+  Users,
+  Target,
+  Dumbbell,
+  TrendingUp,
+  FolderKanban,
+  Flame,
+];
 const coloresFortalezas = [
-  'from-blue-500 to-cyan-500',
-  'from-violet-500 to-fuchsia-500',
-  'from-amber-400 to-orange-500',
-  'from-emerald-400 to-teal-500',
-  'from-pink-500 to-rose-500',
-  'from-indigo-500 to-blue-500'
+  "from-blue-500 to-cyan-500",
+  "from-violet-500 to-fuchsia-500",
+  "from-amber-400 to-orange-500",
+  "from-emerald-400 to-teal-500",
+  "from-pink-500 to-rose-500",
+  "from-indigo-500 to-blue-500",
 ];
 
-const dosDigitos = (n) => String(n).padStart(2, '0');
-const FOTO_FUTBOL = '/futbol.png';
+const dosDigitos = (n) => String(n).padStart(2, "0");
+const FOTO_FUTBOL = "/futbol.png";
 
 const aparecer = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: '-60px' },
-  transition: { duration: 0.5 }
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.5 },
 };
 
 const SobreMi = () => {
@@ -53,14 +61,20 @@ const SobreMi = () => {
 
   // En pantallas táctiles no existe "pasar el cursor": un toque alterna las fotos
   const alTocarFoto = () => {
-    if (window.matchMedia('(hover: none)').matches) setVerFutbol((v) => !v);
+    if (window.matchMedia("(hover: none)").matches) setVerFutbol((v) => !v);
   };
 
   // Efecto 3D: la foto se inclina siguiendo el cursor (igual que en Proyectos)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 150, damping: 18 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 150, damping: 18 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), {
+    stiffness: 150,
+    damping: 18,
+  });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), {
+    stiffness: 150,
+    damping: 18,
+  });
 
   const alMoverMouse = (e) => {
     if (reducirMovimiento) return;
@@ -76,26 +90,45 @@ const SobreMi = () => {
 
   const datosPersonales = t.sobreMi.datosPersonales.map((dato, idx) => ({
     ...dato,
-    Icono: iconosDatos[idx]
+    Icono: iconosDatos[idx],
   }));
 
   const idiomas = [
-    { nombre: t.sobreMi.espanol, nivel: t.sobreMi.nivelNativo, porcentaje: '100%', Bandera: BanderaEspana },
-    { nombre: t.sobreMi.ingles, nivel: t.sobreMi.nivelRegular, porcentaje: '40%', Bandera: BanderaEEUU }
+    {
+      nombre: t.sobreMi.espanol,
+      nivel: t.sobreMi.nivelNativo,
+      porcentaje: "100%",
+      Bandera: BanderaEspana,
+    },
+    {
+      nombre: t.sobreMi.ingles,
+      nivel: t.sobreMi.nivelRegular,
+      porcentaje: "40%",
+      Bandera: BanderaEEUU,
+    },
   ];
 
   const tarjeta =
-    'rounded-3xl border border-gray-200/70 bg-white/70 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-gray-900/60';
+    "rounded-3xl border border-gray-200/70 bg-white/70 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-gray-900/60";
 
   return (
-    <section id="sobre" className="py-12 transition-colors duration-300 md:py-16">
+    <section
+      id="sobre"
+      className="py-12 transition-colors duration-300 md:py-16"
+    >
       <div className="container mx-auto max-w-6xl px-4">
-        <SectionTitle titulo={t.sobreMi.titulo} subtitulo={t.sobreMi.subtitulo} />
+        <SectionTitle
+          titulo={t.sobreMi.titulo}
+          subtitulo={t.sobreMi.subtitulo}
+        />
 
         <div className="grid items-start gap-10 lg:grid-cols-[380px_1fr]">
           {/* Columna lateral: foto, datos personales e idiomas */}
           <div className="space-y-6">
-            <motion.div {...aparecer} className="relative mx-auto max-w-sm lg:max-w-none">
+            <motion.div
+              {...aparecer}
+              className="relative mx-auto max-w-sm lg:max-w-none"
+            >
               {/* Resplandor de color detrás de la foto */}
               <div
                 aria-hidden="true"
@@ -108,7 +141,7 @@ const SobreMi = () => {
                 style={{ rotateX, rotateY, transformPerspective: 1000 }}
                 className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900"
               >
-                               <div
+                <div
                   onMouseEnter={() => setVerFutbol(true)}
                   onMouseLeave={() => setVerFutbol(false)}
                   onClick={alTocarFoto}
@@ -120,7 +153,9 @@ const SobreMi = () => {
                       src="/sobre-mi.png"
                       alt="Diego Álvarez"
                       className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
-                        verFutbol && futbolOk ? 'scale-110 opacity-0 blur-sm' : 'scale-100 opacity-100 blur-0'
+                        verFutbol && futbolOk
+                          ? "scale-110 opacity-0 blur-sm"
+                          : "scale-100 opacity-100 blur-0"
                       }`}
                       onError={() => setFotoOk(false)}
                     />
@@ -137,7 +172,9 @@ const SobreMi = () => {
                       alt="Diego Álvarez jugando fútbol"
                       loading="lazy"
                       className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
-                        verFutbol ? 'scale-100 opacity-100 blur-0' : 'scale-110 opacity-0 blur-sm'
+                        verFutbol
+                          ? "scale-100 opacity-100 blur-0"
+                          : "scale-110 opacity-0 blur-sm"
                       }`}
                       onError={() => setFutbolOk(false)}
                     />
@@ -145,7 +182,9 @@ const SobreMi = () => {
                 </div>
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-5 pt-20">
-                  <p className="font-display text-3xl font-semibold text-white">Diego Álvarez</p>
+                  <p className="font-display text-3xl font-semibold text-white">
+                    Diego Álvarez
+                  </p>
                 </div>
 
                 <ReproductorCancion />
@@ -167,7 +206,9 @@ const SobreMi = () => {
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400">
                         {label}
                       </p>
-                      <p className="font-medium text-gray-800 dark:text-gray-200">{valor}</p>
+                      <p className="font-medium text-gray-800 dark:text-gray-200">
+                        {valor}
+                      </p>
                     </div>
                   </li>
                 ))}
@@ -208,19 +249,26 @@ const SobreMi = () => {
 
           {/* Columna principal: perfil, expectativa y fortalezas */}
           <div className="space-y-6">
-            <motion.div {...aparecer} className={`${tarjeta} relative overflow-hidden p-8 md:p-10`}>
+            <motion.div
+              {...aparecer}
+              className={`${tarjeta} relative overflow-hidden p-8 md:p-10`}
+            >
               <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500" />
               <h3 className="mb-5 text-3xl font-semibold text-gray-900 md:text-4xl dark:text-white">
                 {t.sobreMi.tituloPerfil}
               </h3>
               <p className="mb-4 text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
-                {t.sobreMi.parrafo1Parte1}{' '}
-                <span className="font-semibold text-blue-600 dark:text-blue-400">{t.sobreMi.parrafo1Destacado}</span>
+                {t.sobreMi.parrafo1Parte1}{" "}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
+                  {t.sobreMi.parrafo1Destacado}
+                </span>
                 {t.sobreMi.parrafo1Parte2}
               </p>
               <p className="text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
-                {t.sobreMi.parrafo2Parte1}{' '}
-                <span className="font-semibold text-blue-600 dark:text-blue-400">{t.sobreMi.parrafo2Destacado}</span>{' '}
+                {t.sobreMi.parrafo2Parte1}{" "}
+                <span className="font-semibold text-blue-600 dark:text-blue-400">
+                  {t.sobreMi.parrafo2Destacado}
+                </span>{" "}
                 {t.sobreMi.parrafo2Parte2}
               </p>
             </motion.div>
@@ -239,8 +287,12 @@ const SobreMi = () => {
                 <span className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 backdrop-blur-sm">
                   <Target size={24} />
                 </span>
-                <h3 className="mb-3 text-3xl font-semibold md:text-4xl">{t.sobreMi.tituloExpectativa}</h3>
-                <p className="text-base leading-relaxed text-blue-50 md:text-lg">{t.sobreMi.textoExpectativa}</p>
+                <h3 className="mb-3 text-3xl font-semibold md:text-4xl">
+                  {t.sobreMi.tituloExpectativa}
+                </h3>
+                <p className="text-base leading-relaxed text-blue-50 md:text-lg">
+                  {t.sobreMi.textoExpectativa}
+                </p>
               </div>
             </motion.div>
 
@@ -251,7 +303,8 @@ const SobreMi = () => {
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                 {t.sobreMi.fortalezas.map((fortaleza, idx) => {
                   const Icono = iconosFortalezas[idx % iconosFortalezas.length];
-                  const color = coloresFortalezas[idx % coloresFortalezas.length];
+                  const color =
+                    coloresFortalezas[idx % coloresFortalezas.length];
 
                   return (
                     <motion.div
@@ -263,7 +316,9 @@ const SobreMi = () => {
                       whileHover={{ y: -6 }}
                       className="group relative overflow-hidden rounded-2xl border border-gray-200/70 bg-white/70 p-5 shadow-lg backdrop-blur-xl transition-shadow hover:shadow-2xl dark:border-white/10 dark:bg-gray-900/60"
                     >
-                      <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${color}`} />
+                      <div
+                        className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r opacity-0 transition-opacity duration-300 group-hover:opacity-100 ${color}`}
+                      />
                       <span className="absolute right-4 top-4 text-xs font-semibold tracking-[0.25em] text-gray-400 dark:text-gray-500">
                         {dosDigitos(idx + 1)}
                       </span>

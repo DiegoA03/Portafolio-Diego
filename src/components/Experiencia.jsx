@@ -1,17 +1,38 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, CheckCircle2, Target, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import SectionTitle from './SectionTitle';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Calendar,
+  CheckCircle2,
+  Target,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import SectionTitle from "./SectionTitle";
 
 const datosExperiencia = [
-  { id: 'gnosoft', logo: '/logo-gnosoft.png', inicial: 'GN', color: 'from-blue-500 to-cyan-500' },
-  { id: 'ufps', logo: '/logo-ufps.png', inicial: 'U', color: 'from-red-500 to-orange-500' },
-  { id: 'isa', logo: '/logo-isa.png', inicial: 'ISA', color: 'from-purple-500 to-pink-500' }
+  {
+    id: "gnosoft",
+    logo: "/logo-gnosoft.png",
+    inicial: "GN",
+    color: "from-blue-500 to-cyan-500",
+  },
+  {
+    id: "ufps",
+    logo: "/logo-ufps.png",
+    inicial: "U",
+    color: "from-red-500 to-orange-500",
+  },
+  {
+    id: "isa",
+    logo: "/logo-isa.png",
+    inicial: "ISA",
+    color: "from-purple-500 to-pink-500",
+  },
 ];
 
 // Logo circular con respaldo de iniciales si la imagen no carga
-const Logo = ({ src, alt, inicial, ajuste, className = '' }) => {
+const Logo = ({ src, alt, inicial, ajuste, className = "" }) => {
   const [error, setError] = useState(false);
 
   return (
@@ -38,7 +59,7 @@ const Experiencia = () => {
 
   const experiencias = datosExperiencia.map((exp) => ({
     ...exp,
-    ...t.experiencia.items[exp.id]
+    ...t.experiencia.items[exp.id],
   }));
 
   const indice = experiencias.findIndex((e) => e.id === activaId);
@@ -49,14 +70,18 @@ const Experiencia = () => {
     setActivaId(experiencias[(indice + delta + total) % total].id);
   };
 
-  const etiquetaAnterior = idioma === 'es' ? 'Experiencia anterior' : 'Previous experience';
-  const etiquetaSiguiente = idioma === 'es' ? 'Experiencia siguiente' : 'Next experience';
+  const etiquetaAnterior =
+    idioma === "es" ? "Experiencia anterior" : "Previous experience";
+  const etiquetaSiguiente =
+    idioma === "es" ? "Experiencia siguiente" : "Next experience";
 
   return (
-    <section id="experiencia" className="py-12 transition-colors duration-300 md:py-16">
+    <section
+      id="experiencia"
+      className="py-12 transition-colors duration-300 md:py-16"
+    >
       <div className="container mx-auto max-w-6xl px-4">
         <SectionTitle
-        
           titulo={t.experiencia.titulo}
           subtitulo={t.experiencia.subtitulo}
         />
@@ -77,20 +102,26 @@ const Experiencia = () => {
                   <button
                     type="button"
                     onClick={() => setActivaId(exp.id)}
-                    aria-current={activo ? 'true' : undefined}
+                    aria-current={activo ? "true" : undefined}
                     className="relative flex w-full items-center gap-4 rounded-2xl p-3 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                   >
                     {activo && (
                       <motion.span
                         layoutId="experiencia-activa"
-                        transition={{ type: 'spring', stiffness: 380, damping: 32 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 32,
+                        }}
                         className="absolute inset-0 rounded-2xl bg-white/70 shadow-lg ring-1 ring-black/5 backdrop-blur-md dark:bg-white/10 dark:ring-white/10"
                       />
                     )}
 
                     <span
                       className={`relative z-10 shrink-0 rounded-full bg-gradient-to-br p-[3px] transition-all duration-300 ${exp.color} ${
-                        activo ? 'scale-105 opacity-100' : 'opacity-60 saturate-50 hover:opacity-100'
+                        activo
+                          ? "scale-105 opacity-100"
+                          : "opacity-60 saturate-50 hover:opacity-100"
                       }`}
                     >
                       <Logo
@@ -104,13 +135,13 @@ const Experiencia = () => {
 
                     <span className="relative z-10 min-w-0">
                       <span className="block text-[11px] font-semibold tracking-[0.25em] text-gray-500 dark:text-gray-400">
-                        {String(i + 1).padStart(2, '0')}
+                        {String(i + 1).padStart(2, "0")}
                       </span>
                       <span
                         className={`block truncate text-base font-semibold transition-colors ${
                           activo
-                            ? 'text-gray-900 dark:text-white'
-                            : 'text-gray-600 dark:text-gray-400'
+                            ? "text-gray-900 dark:text-white"
+                            : "text-gray-600 dark:text-gray-400"
                         }`}
                       >
                         {exp.empresa}
@@ -139,7 +170,9 @@ const Experiencia = () => {
 
               <div className="p-6 md:p-10">
                 <header className="flex flex-col gap-5 sm:flex-row sm:items-center">
-                  <span className={`shrink-0 rounded-full bg-gradient-to-br p-1 shadow-lg ${activa.color}`}>
+                  <span
+                    className={`shrink-0 self-start rounded-full bg-gradient-to-br p-1 shadow-lg sm:self-center ${activa.color}`}
+                  >
                     <Logo
                       src={activa.logo}
                       alt={activa.empresa}
@@ -159,7 +192,7 @@ const Experiencia = () => {
                 </header>
 
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {activa.periodo.split(' · ').map((dato, i) => (
+                  {activa.periodo.split(" · ").map((dato, i) => (
                     <span
                       key={dato}
                       className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-700 dark:bg-blue-400/10 dark:text-blue-300"
@@ -210,7 +243,10 @@ const Experiencia = () => {
                           transition={{ delay: 0.25 + i * 0.08 }}
                           className="flex items-start gap-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400"
                         >
-                          <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-green-500" />
+                          <CheckCircle2
+                            size={16}
+                            className="mt-0.5 shrink-0 text-green-500"
+                          />
                           {logro}
                         </motion.li>
                       ))}
@@ -231,7 +267,8 @@ const Experiencia = () => {
                 </button>
 
                 <span className="text-sm font-semibold tracking-[0.25em] text-gray-500 dark:text-gray-400">
-                  {String(indice + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                  {String(indice + 1).padStart(2, "0")} /{" "}
+                  {String(total).padStart(2, "0")}
                 </span>
 
                 <button
