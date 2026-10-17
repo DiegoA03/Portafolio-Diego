@@ -1,5 +1,4 @@
-import React from 'react';
-import {
+import React, { useState } from 'react';import {
   motion,
   useMotionValue,
   useReducedMotion,
@@ -20,6 +19,7 @@ import {
 import { useLanguage } from '../context/LanguageContext';
 import SectionTitle from './SectionTitle';
 import { BanderaEspana, BanderaEEUU } from './Banderas';
+import ReproductorCancion from './ReproductorCancion';
 
 const iconosDatos = [MapPin, Calendar, User];
 
@@ -35,6 +35,7 @@ const coloresFortalezas = [
 ];
 
 const dosDigitos = (n) => String(n).padStart(2, '0');
+const FOTO_FUTBOL = '/futbol.png';
 
 const aparecer = {
   initial: { opacity: 0, y: 24 },
@@ -46,6 +47,14 @@ const aparecer = {
 const SobreMi = () => {
   const { t } = useLanguage();
   const reducirMovimiento = useReducedMotion();
+  const [verFutbol, setVerFutbol] = useState(false);
+  const [futbolOk, setFutbolOk] = useState(true);
+  const [fotoOk, setFotoOk] = useState(true);
+
+  // En pantallas táctiles no existe "pasar el cursor": un toque alterna las fotos
+  const alTocarFoto = () => {
+    if (window.matchMedia('(hover: none)').matches) setVerFutbol((v) => !v);
+  };
 
   // Efecto 3D: la foto se inclina siguiendo el cursor (igual que en Proyectos)
   const mouseX = useMotionValue(0);
@@ -99,21 +108,47 @@ const SobreMi = () => {
                 style={{ rotateX, rotateY, transformPerspective: 1000 }}
                 className="relative overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900"
               >
-                <div className="aspect-[3/4] overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600">
-                  <img
-                    src="/sobre-mi.png"
-                    alt="Diego Álvarez"
-                    className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-110"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                      e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-6xl font-bold">DA</div>';
-                    }}
-                  />
+                               <div
+                  onMouseEnter={() => setVerFutbol(true)}
+                  onMouseLeave={() => setVerFutbol(false)}
+                  onClick={alTocarFoto}
+                  className="relative aspect-[3/4] overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600"
+                >
+                  {/* Foto profesional (la de siempre) */}
+                  {fotoOk ? (
+                    <img
+                      src="/sobre-mi.png"
+                      alt="Diego Álvarez"
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
+                        verFutbol && futbolOk ? 'scale-110 opacity-0 blur-sm' : 'scale-100 opacity-100 blur-0'
+                      }`}
+                      onError={() => setFotoOk(false)}
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 text-6xl font-bold text-white">
+                      DA
+                    </div>
+                  )}
+
+                  {/* Foto de fútbol: aparece al pasar el cursor */}
+                  {futbolOk && (
+                    <img
+                      src={FOTO_FUTBOL}
+                      alt="Diego Álvarez jugando fútbol"
+                      loading="lazy"
+                      className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-in-out ${
+                        verFutbol ? 'scale-100 opacity-100 blur-0' : 'scale-110 opacity-0 blur-sm'
+                      }`}
+                      onError={() => setFutbolOk(false)}
+                    />
+                  )}
                 </div>
 
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-5 pt-20">
                   <p className="font-display text-3xl font-semibold text-white">Diego Álvarez</p>
                 </div>
+
+                <ReproductorCancion />
               </motion.div>
             </motion.div>
 

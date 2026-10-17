@@ -4,6 +4,15 @@ import { Mail, Github, Linkedin, Instagram, Facebook, Download, Eye } from 'luci
 import { TypeAnimation } from 'react-type-animation';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, useReducedMotion } from 'framer-motion';
+import NombreDomino from '../components/NombreDomino';
+
+const redesHome = [
+  { nombre: 'Correo', Icono: Mail, href: 'mailto:ingdaalvarez@gmail.com', externo: false },
+  { nombre: 'GitHub', Icono: Github, href: 'https://github.com/DiegoA03' },
+  { nombre: 'LinkedIn', Icono: Linkedin, href: 'https://www.linkedin.com/in/diego-andres-alvarez-lizarazo-6a40113a6/' },
+  { nombre: 'Instagram', Icono: Instagram, href: 'https://www.instagram.com/dk_alvarez08/' },
+  { nombre: 'Facebook', Icono: Facebook, href: 'https://www.facebook.com/diego.lizarazo.562' }
+];
 
 const useEsOscuro = () => {
   const [esOscuro, setEsOscuro] = useState(document.documentElement.classList.contains('dark'));
@@ -71,8 +80,10 @@ const Home = () => {
             </div>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight mb-4 text-gray-900 dark:text-white">
-  {t.home.hola} 
- <span className="italic text-blue-600 dark:text-blue-400">Diego Álvarez</span>{' '}
+   {t.home.hola}{' '}
+   <span className="italic text-blue-600 dark:text-blue-400">
+     <NombreDomino nombre="Diego Álvarez" />
+   </span>{' '}
 <motion.span
   className="inline-block"
   style={{ transformOrigin: '70% 70%' }}
@@ -111,29 +122,20 @@ const Home = () => {
                 {t.home.descargar}
               </a>
 
-              <div className="flex gap-3">
-                <a href="mailto:ingdaalvarez@gmail.com" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
-                  <Mail size={20} />
-                </a>
-                <a href="https://github.com/DiegoA03" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
-                  <Github size={20} />
-                </a>
-                <a href="https://www.linkedin.com/in/diego-andres-alvarez-lizarazo-6a40113a6/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
-                  <Linkedin size={20} />
-                </a>
-                <a href="https://www.instagram.com/dk_alvarez08/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
-                  <Instagram size={20} />
-                </a>
-                <a href="https://www.facebook.com/diego.lizarazo.562" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white transition">
-                  <Facebook size={20} />
-                </a>
+                           <div className="flex gap-3">
+                {redesHome.map(({ nombre, Icono, href, externo = true }) => (
+                  <a
+                    key={nombre}
+                    href={href}
+                    {...(externo ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    aria-label={nombre}
+                    title={nombre}
+                    className="group flex h-12 w-12 items-center justify-center rounded-lg border-2 border-blue-600 text-blue-600 transition-all duration-300 hover:-translate-y-1 hover:border-transparent hover:bg-gradient-to-br hover:from-blue-500 hover:to-violet-500 hover:text-white hover:shadow-lg dark:border-blue-400 dark:text-blue-400"
+                  >
+                    <Icono size={20} className="transition-transform duration-300 group-hover:-rotate-6 group-hover:scale-110" />
+                  </a>
+                ))}
               </div>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              <Link to="/proyectos" className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-                {t.home.verProyectos} →
-              </Link>
             </div>
           </div>
 

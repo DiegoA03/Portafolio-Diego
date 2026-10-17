@@ -87,3 +87,62 @@ html:not(.dark) canvas#tsparticles {
 html.dark canvas#tsparticles {
   filter: none;
 }
+
+/* ───────── Nombre con la Vía Láctea dentro de las letras ───────── */
+:root {
+  /* Modo claro: tonos profundos para que las letras se lean sobre el fondo claro */
+  --galaxia-a: #1e1b4b;
+  --galaxia-b: #4338ca;
+  --galaxia-c: #7e22ce;
+  --galaxia-d: #be185d;
+  --galaxia-e: #1d4ed8;
+}
+
+html.dark {
+  /* Modo oscuro: tonos brillantes, como una nebulosa iluminada */
+  --galaxia-a: #4f46e5;
+  --galaxia-b: #9333ea;
+  --galaxia-c: #ec4899;
+  --galaxia-d: #38bdf8;
+  --galaxia-e: #a78bfa;
+}
+
+.texto-galaxia {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image:
+    radial-gradient(1.4px 1.4px at 18px 8px, #fff 96%, transparent),
+    radial-gradient(1.1px 1.1px at 96px 22px, #fff 96%, transparent),
+    radial-gradient(1.6px 1.6px at 140px 10px, #ffe9b0 96%, transparent),
+    radial-gradient(1.1px 1.1px at 40px 26px, #fff 96%, transparent),
+    radial-gradient(1.7px 1.7px at 120px 14px, #fff 96%, transparent),
+    radial-gradient(1.2px 1.2px at 200px 28px, #fff 96%, transparent),
+    /* banda lechosa: el "río" brillante de la Vía Láctea */
+    linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.55) 38%, rgba(255, 255, 255, 0.12) 52%, transparent 66%),
+    /* color de fondo de la nebulosa */
+    linear-gradient(100deg, var(--galaxia-a), var(--galaxia-b), var(--galaxia-c), var(--galaxia-d), var(--galaxia-e), var(--galaxia-a));
+  background-size:
+    170px 34px, 170px 34px, 170px 34px,
+    230px 34px, 230px 34px, 230px 34px,
+    300px 100%,
+    420px 100%;
+  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat-x, repeat-x;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: galaxia 22s linear infinite;
+  filter: drop-shadow(0 1px 1px rgba(15, 23, 42, 0.35));
+}
+
+html.dark .texto-galaxia {
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.45));
+}
+
+/* Cada capa se mueve a su propia velocidad (profundidad) y el bucle no se nota */
+@keyframes galaxia {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to   { background-position: -170px 0, -170px 0, -170px 0, -230px 0, -230px 0, -230px 0, -300px 0, 420px 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .texto-galaxia { animation: none; }
+}

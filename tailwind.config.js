@@ -10,6 +10,7 @@ export default {
   fontFamily: {
   display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
   sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+  marca: ['"Playfair Display"', 'serif'],
 },
 },
   },

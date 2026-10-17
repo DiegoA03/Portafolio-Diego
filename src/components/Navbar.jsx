@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
@@ -8,6 +9,7 @@ import ThemeToggle from './ThemeToggle';
 const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [conScroll, setConScroll] = useState(false);
+  const [rutaHover, setRutaHover] = useState(null);
   const location = useLocation();
   const { idioma, toggleIdioma, t } = useLanguage();
 
@@ -32,6 +34,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
 
   const esActivo = (ruta) => location.pathname === ruta;
 
+  // Estilo de los enlaces del menú móvil
   const claseLink = (ruta, extra = '') =>
     `${extra} rounded-lg text-sm font-medium transition ${
       esActivo(ruta)
@@ -56,7 +59,8 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
               alt="DA Logo"
               className="h-full w-auto object-contain transition-transform group-hover:scale-110"
             />
-            <span className="font-display hidden text-base font-semibold tracking-[0.2em] text-slate-900 min-[400px]:inline dark:text-white">
+            {/* Nombre con la Vía Láctea dentro de las letras (estilos en index.css) */}
+            <span className="texto-galaxia font-marca hidden text-xl tracking-[0.14em] group-hover:[animation-duration:5s] min-[400px]:inline">
               DIEGO ÁLVAREZ
             </span>
           </Link>
@@ -65,12 +69,48 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
             <LanguageToggle idioma={idioma} toggleIdioma={toggleIdioma} />
             <ThemeToggle modoOscuro={modoOscuro} toggleModoOscuro={toggleModoOscuro} />
 
-            <div className="hidden gap-1 md:flex">
-              {links.map((link) => (
-                <Link key={link.ruta} to={link.ruta} className={claseLink(link.ruta, 'px-4 py-2')}>
-                  {link.nombre}
-                </Link>
-              ))}
+            {/* Enlaces: una pastilla de cristal se desliza hasta el enlace bajo el cursor
+                y una línea con degradado se dibuja debajo */}
+            <div className="hidden gap-1 md:flex" onMouseLeave={() => setRutaHover(null)}>
+              {links.map((link) => {
+                const activo = esActivo(link.ruta);
+
+                return (
+                  <Link
+                    key={link.ruta}
+                    to={link.ruta}
+                    onMouseEnter={() => setRutaHover(link.ruta)}
+                    onFocus={() => setRutaHover(link.ruta)}
+                    onBlur={() => setRutaHover(null)}
+                    className={`group relative rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+                      activo
+                        ? 'text-slate-900 dark:text-white'
+                        : 'text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white'
+                    }`}
+                  >
+                    {rutaHover === link.ruta && (
+                      <motion.span
+                        layoutId="nav-hover"
+                        transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                        className="absolute inset-0 rounded-lg bg-slate-900/5 ring-1 ring-slate-900/5 backdrop-blur-sm dark:bg-white/10 dark:ring-white/10"
+                      />
+                    )}
+
+                    <span className="relative z-10 inline-block transition-transform duration-300 group-hover:-translate-y-0.5">
+                      {link.nombre}
+                    </span>
+
+                    <span
+                      aria-hidden="true"
+                      className={`absolute inset-x-4 bottom-1 h-0.5 rounded-full bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500 transition-transform duration-300 ease-out ${
+                        activo
+                          ? 'origin-left scale-x-100'
+                          : 'origin-right scale-x-0 group-hover:origin-left group-hover:scale-x-100'
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
             <button
@@ -93,7 +133,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
                 key={link.ruta}
                 to={link.ruta}
                 onClick={cerrarMenu}
-                className={claseLink(link.ruta, 'px-3 py-3')}
+                className={claseLink(link.ruta, 'px-4 py-3')}
               >
                 {link.nombre}
               </Link>

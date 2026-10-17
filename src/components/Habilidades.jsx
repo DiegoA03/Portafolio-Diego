@@ -115,7 +115,7 @@ const Habilidades = () => {
 
         {/* Presentación: ilustración + roles */}
         <div className="mb-20 grid items-center gap-12 md:mb-24 lg:grid-cols-2">
-          <motion.div
+                    <motion.div
             animate={reducirMovimiento ? undefined : { y: [0, -12, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
             className="relative mx-auto w-full max-w-md"
@@ -123,34 +123,37 @@ const Habilidades = () => {
             {/* Resplandor de color detrás de la ilustración */}
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-6 rounded-full bg-gradient-to-br from-blue-500 via-violet-500 to-pink-500 opacity-30 blur-3xl"
+              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-500 via-violet-500 to-pink-500 opacity-25 blur-3xl dark:opacity-30"
             />
 
             <motion.div
               onMouseMove={alMoverMouse}
               onMouseLeave={alSalirMouse}
               style={{ rotateX, rotateY, transformPerspective: 1000 }}
-              className="relative"
+              className="relative overflow-hidden rounded-3xl border border-gray-200 bg-gradient-to-br from-blue-400 to-blue-600 shadow-2xl dark:border-gray-800"
             >
               <img
                 src="/ilustracion.png"
                 alt="Developer"
-                className="h-auto w-full rounded-2xl drop-shadow-2xl"
+                className="h-auto w-full object-cover transition-transform duration-500 ease-out hover:scale-105"
                 onError={(e) => {
                   e.target.style.display = 'none';
-                  e.target.parentElement.innerHTML = `<div class="text-center text-gray-500 dark:text-gray-400"><div class="text-6xl mb-4">👨‍💻</div><p class="text-sm">Ilustración</p></div>`;
+                  e.target.parentElement.innerHTML = `<div class="flex aspect-square flex-col items-center justify-center text-white"><div class="text-6xl mb-4">👨‍💻</div><p class="text-sm">Ilustración</p></div>`;
                 }}
               />
             </motion.div>
           </motion.div>
 
           <div>
-            <motion.p
+              <motion.div
               {...aparecer}
-              className="mb-8 text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300"
+              className="relative mb-8 overflow-hidden rounded-3xl border border-gray-200/70 bg-white/70 p-8 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-gray-900/60"
             >
-              {t.habilidades.descripcionIntro}
-            </motion.p>
+              <div className="absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r from-blue-500 via-violet-500 to-pink-500" />
+              <p className="text-base leading-relaxed text-gray-700 md:text-lg dark:text-gray-300">
+                {t.habilidades.descripcionIntro}
+              </p>
+            </motion.div>
 
             <div className="space-y-4">
               {roles.map(({ nombre, descripcion, Icono, color }, idx) => (

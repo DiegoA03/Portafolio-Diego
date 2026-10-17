@@ -21,7 +21,6 @@ export const traducciones = {
       descripcion: 'Especialista en documentación técnica, análisis de sistemas y desarrollo de soluciones tecnológicas orientadas al frontend.',
       verCV: 'Ver CV',
       descargar: 'Descargar',
-      verProyectos: 'Ver mis proyectos'
     },
     experiencia: {
       titulo: 'Experiencia Laboral',
@@ -209,7 +208,10 @@ sobreMi: {
   espanol: 'Español',
   ingles: 'Inglés',
   nivelNativo: 'Nativo',
-  nivelRegular: 'Regular'
+  nivelRegular: 'Regular',
+  escuchaAhora: 'Escucha ahora',
+  reproducir: 'Reproducir',
+  pausar: 'Pausar'
 },
 contacto: {
   titulo: '¿Hablamos?',
@@ -220,6 +222,19 @@ contacto: {
   direccion1: 'Av 5a #23-19 San Mateo',
   direccion2: 'Cúcuta, Norte de Santander',
   botonEnviar: 'Enviar Mensaje',
+  escribirWhatsapp: 'Escríbeme por WhatsApp',
+    descripciones: {
+    linkedin: 'Conectemos profesionalmente.',
+    instagram: 'Sígueme para más contenido.',
+    facebook: 'Encuéntrame también en Facebook.',
+    github: 'Explora mis proyectos.',
+    email: 'Escríbeme un correo cuando quieras.',
+    telefono: 'Llámame o escríbeme cuando quieras.',
+    ubicacion: 'Aquí me encuentras.'
+  },
+  redes: 'Sígueme en redes',
+  copiar: 'Copiar',
+  copiado: 'Copiado',
   asuntoCorreo: 'Oportunidad de Prácticas Profesionales',
   derechos: 'Todos los derechos reservados.',
   footerRol: 'Estudiante de Ingeniería de Sistemas - Universidad Francisco de Paula Santander'
@@ -242,7 +257,6 @@ contacto: {
       descripcion: 'Specialist in technical documentation, systems analysis and development of technology solutions oriented to frontend.',
       verCV: 'View CV',
       descargar: 'Download',
-      verProyectos: 'View my projects'
     },
     experiencia: {
       titulo: 'Work Experience',
@@ -430,7 +444,10 @@ sobreMi: {
   espanol: 'Spanish',
   ingles: 'English',
   nivelNativo: 'Native',
-  nivelRegular: 'Intermediate'
+  nivelRegular: 'Intermediate',
+  escuchaAhora: 'Listen now',
+  reproducir: 'Play',
+  pausar: 'Pause'
 },
 // Dentro de "en":
 contacto: {
@@ -442,6 +459,19 @@ contacto: {
   direccion1: 'Av 5a #23-19 San Mateo',
   direccion2: 'Cúcuta, Norte de Santander, Colombia',
   botonEnviar: 'Send Message',
+  escribirWhatsapp: 'Message me on WhatsApp',
+    descripciones: {
+    linkedin: "Let's connect professionally.",
+    instagram: 'Follow me for more content.',
+    facebook: 'Find me on Facebook too.',
+    github: 'Explore my projects.',
+    email: 'Send me an email anytime.',
+    telefono: 'Call or text me anytime.',
+    ubicacion: 'This is where you can find me.'
+  },
+  redes: 'Follow me',
+  copiar: 'Copy',
+  copiado: 'Copied',
   asuntoCorreo: 'Professional Internship Opportunity',
   derechos: 'All rights reserved.',
   footerRol: 'Systems Engineering Student - Francisco de Paula Santander University'
