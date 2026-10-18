@@ -38,6 +38,10 @@ const datosProyectos = [
         nombre: "React",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
       },
+      {
+        nombre: "Vite",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+      },
     ],
   },
   {
@@ -59,6 +63,35 @@ const datosProyectos = [
       {
         nombre: "React",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        nombre: "Vite",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+      },
+    ],
+  },
+  {
+    id: "pizzi",
+    url: "olivos-pizzi-menu.vercel.app",
+    imagen: "/olivos-pizzi-menu.png",
+    demo: "https://olivos-pizzi-menu.vercel.app",
+    github: "https://github.com/DiegoA03/olivos-pizzi-menu",
+    tecnologias: [
+      {
+        nombre: "React",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        nombre: "Tailwind",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+      },
+      {
+        nombre: "Node.js",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      },
+      {
+        nombre: "Vite",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
       },
     ],
   },
@@ -138,27 +171,6 @@ const datosProyectos = [
       {
         nombre: "Tailwind",
         logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-      },
-    ],
-  },
-  {
-    id: "pizzi",
-    url: "olivos-pizzi-menu.vercel.app",
-    imagen: "/olivos-pizzi-menu.png",
-    demo: "https://olivos-pizzi-menu.vercel.app",
-    github: "https://github.com/DiegoA03/olivos-pizzi-menu",
-    tecnologias: [
-      {
-        nombre: "React",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-      },
-      {
-        nombre: "Tailwind",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
-      },
-      {
-        nombre: "Node.js",
-        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       },
     ],
   },
