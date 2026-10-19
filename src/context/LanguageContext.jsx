@@ -250,6 +250,18 @@ export const traducciones = {
       reproducir: "Reproducir",
       pausar: "Pausar",
     },
+    musica: {
+      titulo: "Mi Top 10",
+      reproducir: "Reproducir",
+      pausar: "Pausar",
+      anterior: "Anterior",
+      siguiente: "Siguiente",
+      minimizar: "Minimizar",
+      expandir: "Expandir reproductor",
+      cerrar: "Cerrar reproductor",
+      lista: "Lista de canciones",
+      progreso: "Progreso de la canción",
+    },
     contacto: {
       titulo: "¿Hablamos?",
       subtitulo:
@@ -519,6 +531,18 @@ export const traducciones = {
       escuchaAhora: "Listen now",
       reproducir: "Play",
       pausar: "Pause",
+    },
+    musica: {
+      titulo: "My Top 10",
+      reproducir: "Play",
+      pausar: "Pause",
+      anterior: "Previous",
+      siguiente: "Next",
+      minimizar: "Minimize",
+      expandir: "Expand player",
+      cerrar: "Close player",
+      lista: "Song list",
+      progreso: "Song progress",
     },
     // Dentro de "en":
     contacto: {

@@ -17,6 +17,7 @@ import ContactoPage from "./pages/ContactoPage";
 import { useLanguage } from "./context/LanguageContext";
 import TransicionCortina from "./components/TransicionCortina";
 import { MusicaProvider } from "./context/MusicaContext";
+import ReproductorFlotante from './components/ReproductorFlotante';
 
 // Fondo tipo galaxia/vía láctea - solo para el Home
 const particlesGalaxia = {
@@ -300,6 +301,7 @@ function App() {
               toggleModoOscuro={toggleModoOscuro}
             />
             <AnimatedRoutes />
+            <ReproductorFlotante />
             <WhatsAppButton />
           </div>
         </div>
