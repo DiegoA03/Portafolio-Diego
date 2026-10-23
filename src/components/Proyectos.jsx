@@ -97,7 +97,7 @@ const datosProyectos = [
   },
   {
     id: "ecommerce",
-    url: "mrm-ecommerce.site",
+    url: "Proyecto por desplegar",
     imagen: "/proyecto-ecommerce.jpg",
     demo: "https://github.com/DiegoA03/mrm_ecommerce",
     github: "https://github.com/DiegoA03/mrm_ecommerce",
@@ -126,9 +126,9 @@ const datosProyectos = [
   },
   {
     id: "admin",
-    url: "admin-mrm.site",
+    url: "Proyecto por desplegar",
     imagen: "/proyecto-admin.jpg",
-    demo: "hhttps://github.com/DiegoA03",
+    demo: "https://github.com/DiegoA03",
     github: "https://github.com/DiegoA03",
     tecnologias: [
       {
@@ -155,7 +155,7 @@ const datosProyectos = [
   },
   {
     id: "ia",
-    url: "github.com/reconocimiento-ia",
+    url: "Proyecto por desplegar",
     imagen: "/ia.png",
     demo: "https://github.com/BynelsonDa/Reconocimiento_emotion_2",
     github: "https://github.com/BynelsonDa/Reconocimiento_emotion_2",
