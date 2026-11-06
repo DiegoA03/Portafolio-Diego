@@ -127,6 +127,11 @@ export const traducciones = {
           descripcion:
             "Microproyecto, este es un sistema Web que valida un sigma si esta en la Forma Nomal De chomsky y aplica el paso a paso de conversion hasta llegar hasta la Forma Normal De Greibach que es donde todas sus producciones empiezan por variable terminal.",
         },
+        "Diseñador de AF": {
+          nombre: "Diseñador de AF",
+          descripcion:
+            "Microproyecto, permite diseñar automatas finitos deterministas y no deterministas ya sea por formulario o manualmente por el diagrama de transicion, se compone de 3 modulos que son el diseño, conversion y minimizacion de automatas.",
+        },
         ecommerce: {
           nombre: "Mini E-Commerce MRM",
           descripcion:
@@ -409,6 +414,11 @@ export const traducciones = {
           nombre: "Conversor FNG",
           descripcion:
             "This micro-project is a web-based system that validates whether a grammar is in Chomsky Normal Form and performs the step-by-step conversion process to reach Greibach Normal Form, in which all productions begin with a terminal followed by a variable.",
+        },
+        "Diseñador de AF": {
+          nombre: "Diseñador de AF",
+          descripcion:
+            "This micro-project allows for the design of deterministic and non-deterministic finite automata, either via a form or manually through a transition diagram; it consists of three modules: design, conversion, and minimization of automata.",
         },
         ecommerce: {
           nombre: "Mini E-Commerce MRM",

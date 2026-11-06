@@ -71,6 +71,32 @@ const datosProyectos = [
     ],
   },
   {
+    id: "Diseñador de AF",
+    url: "automatas-teal.vercel.app",
+    imagen: "/automatas.png",
+    demo: "https://automatas-teal.vercel.app/",
+    github: "https://github.com/diegoalvarez-dev/MicroproyectoWeb_AL",
+    documento: "/documentos/documentacion_AF.pdf",
+    tecnologias: [
+      {
+        nombre: "Python",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+      },
+      {
+        nombre: "Tailwind",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+      },
+      {
+        nombre: "React",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      },
+      {
+        nombre: "Vite",
+        logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+      },
+    ],
+  },
+  {
     id: "pizzi",
     url: "olivos-pizzi-menu.vercel.app",
     imagen: "/olivos-pizzi-menu.png",
