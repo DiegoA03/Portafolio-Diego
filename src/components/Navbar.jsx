@@ -46,26 +46,30 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
     <>
       {/* Navbar transparente: solo se desenfoca ligeramente al hacer scroll */}
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 h-20 border-b bg-transparent px-6 transition-all duration-300 ${
+        className={`fixed left-0 right-0 top-0 z-50 h-20 border-b bg-transparent px-4 transition-all duration-300 sm:px-6 ${
           conScroll
             ? "border-slate-900/5 backdrop-blur-md dark:border-white/10"
             : "border-transparent"
         }`}
       >
         <div className="container mx-auto flex h-full items-center justify-between">
-          <Link to="/" className="group flex h-full items-center gap-3 py-3">
+          <Link
+            to="/"
+            className="group flex h-full items-center gap-2 py-3 sm:gap-3"
+          >
             <img
               src="/logo.png"
               alt="DA Logo"
-              className="h-full w-auto object-contain transition-transform group-hover:scale-110"
+              className="h-full w-auto shrink-0 object-contain transition-transform group-hover:scale-110"
             />
             {/* Nombre con la Vía Láctea dentro de las letras (estilos en index.css) */}
-            <span className="texto-galaxia font-marca hidden text-xl tracking-[0.14em] group-hover:[animation-duration:5s] min-[400px]:inline">
-              DIEGO ÁLVAREZ
+            <span className="texto-galaxia font-marca whitespace-nowrap text-[clamp(11px,calc((100vw_-_300px)/7.5),19px)] leading-tight tracking-[0.08em] group-hover:[animation-duration:5s] min-[520px]:text-base sm:text-xl sm:tracking-[0.14em] lg:hidden xl:inline">
+              DIEGO <br className="min-[520px]:hidden" />
+              ÁLVAREZ
             </span>
           </Link>
 
-          <div className="flex items-center gap-3 md:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             <LanguageToggle idioma={idioma} toggleIdioma={toggleIdioma} />
             <ThemeToggle
               modoOscuro={modoOscuro}
@@ -75,7 +79,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
             {/* Enlaces: una pastilla de cristal se desliza hasta el enlace bajo el cursor
                 y una línea con degradado se dibuja debajo */}
             <div
-              className="hidden gap-1 md:flex"
+              className="hidden gap-1 lg:flex"
               onMouseLeave={() => setRutaHover(null)}
             >
               {links.map((link) => {
@@ -125,7 +129,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
 
             <button
               onClick={toggleMenu}
-              className="text-slate-800 transition hover:text-slate-950 md:hidden dark:text-slate-200 dark:hover:text-white"
+              className="text-slate-800 transition hover:text-slate-950 lg:hidden dark:text-slate-200 dark:hover:text-white"
               aria-label="Menú"
             >
               {menuAbierto ? <X size={28} /> : <Menu size={28} />}
@@ -136,7 +140,7 @@ const Navbar = ({ modoOscuro, toggleModoOscuro }) => {
 
       {/* Menú móvil: cristal translúcido para que se lea bien */}
       {menuAbierto && (
-        <div className="fixed left-0 right-0 top-20 z-40 border-b border-slate-900/5 bg-white/80 shadow-xl backdrop-blur-xl transition-colors duration-300 md:hidden dark:border-white/10 dark:bg-slate-950/80">
+        <div className="fixed left-0 right-0 top-20 z-40 border-b border-slate-900/5 bg-white/80 shadow-xl backdrop-blur-xl transition-colors duration-300 lg:hidden dark:border-white/10 dark:bg-slate-950/80">
           <div className="flex flex-col gap-2 p-4">
             {links.map((link) => (
               <Link
