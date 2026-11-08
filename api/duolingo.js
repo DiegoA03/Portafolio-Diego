@@ -32,6 +32,6 @@ export default async function handler(req, res) {
     });
   } catch (error) {
     res.setHeader('Cache-Control', 'no-store');
-    res.status(502).json({ error: true });
+    res.status(502).json({ error: true, detalle: String(error.message || error) });
   }
 }
