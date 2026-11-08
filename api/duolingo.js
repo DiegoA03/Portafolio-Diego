@@ -1,6 +1,6 @@
 // Función de Vercel: lee tu perfil público de Duolingo desde el servidor
 // (el navegador no puede hacerlo directo por CORS) y responde solo lo necesario.
-const USUARIO = 'PH.UHK3HY'; // tu usuario de Duolingo, sin la @
+const USUARIO = 'ph.uhK3hY'; // tu usuario de Duolingo, sin la @
 const IDIOMA = 'en'; // código del curso que quieres mostrar
 
 export default async function handler(req, res) {

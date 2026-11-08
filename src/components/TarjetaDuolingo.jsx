@@ -4,7 +4,7 @@ import { Flame, Zap, ExternalLink } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { BanderaEEUU } from './Banderas';
 
-const PERFIL = 'https://www.duolingo.com/profile/PH.UHK3HY';
+const PERFIL = 'https://www.duolingo.com/profile/ph.uhK3hY';
 const CLAVE_CACHE = 'duolingo-ultimo-dato';
 const CADA_MS = 10 * 60 * 1000;
 const HITO = 1000; // la barra avanza hacia el siguiente múltiplo de 1000 XP
