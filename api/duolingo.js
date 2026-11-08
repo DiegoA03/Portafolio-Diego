@@ -3,23 +3,30 @@
 const USUARIO = 'ph.uhK3hY'; // tu usuario de Duolingo, sin la @
 const IDIOMA = 'en'; // código del curso que quieres mostrar
 
+async function buscarUsuario(nombre) {
+  const url = `https://www.duolingo.com/2017-06-30/users?username=${encodeURIComponent(nombre)}`;
+  const respuesta = await fetch(url, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (compatible; PortafolioBot/1.0)',
+      Accept: 'application/json'
+    }
+  });
+  if (!respuesta.ok) throw new Error(`Duolingo respondió ${respuesta.status}`);
+  const datos = await respuesta.json();
+  return datos?.users?.[0] || null;
+}
+
 export default async function handler(req, res) {
   try {
-    const url =
-      `https://www.duolingo.com/2017-06-30/users?username=${encodeURIComponent(USUARIO)}` +
-      '&fields=streak,totalXp,courses,streakData';
+    // Prueba el usuario tal cual, en minúsculas y en mayúsculas
+    const variantes = [...new Set([USUARIO, USUARIO.toLowerCase(), USUARIO.toUpperCase()])];
 
-    const respuesta = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; PortafolioBot/1.0)',
-        Accept: 'application/json'
-      }
-    });
-    if (!respuesta.ok) throw new Error(`Duolingo respondió ${respuesta.status}`);
-
-    const datos = await respuesta.json();
-    const usuario = datos?.users?.[0];
-    if (!usuario) throw new Error('Usuario no encontrado');
+    let usuario = null;
+    for (const nombre of variantes) {
+      usuario = await buscarUsuario(nombre);
+      if (usuario) break;
+    }
+    if (!usuario) throw new Error(`Usuario no encontrado (probé: ${variantes.join(', ')})`);
 
     const curso = (usuario.courses || []).find((c) => c.learningLanguage === IDIOMA);
 
