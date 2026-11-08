@@ -21,6 +21,7 @@ import { useLanguage } from "../context/LanguageContext";
 import SectionTitle from "./SectionTitle";
 import { BanderaEspana, BanderaEEUU } from "./Banderas";
 import ReproductorCancion from "./ReproductorCancion";
+import TarjetaDuolingo from "./TarjetaDuolingo";
 
 const iconosDatos = [MapPin, Calendar, User];
 
@@ -244,6 +245,10 @@ const SobreMi = () => {
                   </div>
                 ))}
               </div>
+            </motion.div>
+            {/* Duolingo */}
+            <motion.div {...aparecer} className={`${tarjeta} p-6`}>
+              <TarjetaDuolingo />
             </motion.div>
           </div>
 
