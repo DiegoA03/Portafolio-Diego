@@ -132,6 +132,11 @@ export const traducciones = {
           descripcion:
             "Microproyecto, permite diseñar automatas finitos deterministas y no deterministas ya sea por formulario o manualmente por el diagrama de transicion, se compone de 3 modulos que son el diseño, conversion y minimizacion de automatas.",
         },
+        "Diseñador de AP": {
+          nombre: "Diseñador de AP",
+          descripcion:
+            "Microproyecto, permite diseñar automatas de pilas ya sea por medio de la plataforma o dibujarlos, es una herramienta para el diseño y simulacion de palabras que se pueden generar mediante los parametros.",
+        },
         ecommerce: {
           nombre: "Mini E-Commerce MRM",
           descripcion:
@@ -278,6 +283,56 @@ export const traducciones = {
       cerrar: "Cerrar reproductor",
       lista: "Lista de canciones",
       progreso: "Progreso de la canción",
+    },
+    norma: {
+      titulo: "Norma",
+      subtitulo: "Asistente de música y portafolio",
+      abrirPanel: "Hablar con Norma",
+      cerrarPanel: "Cerrar a Norma",
+      saludo:
+        "Hola, soy Norma. Puedo poner música de mi Top 10 y responder sobre Diego y sus proyectos. Prueba con: pon {tema}.",
+      hola: "¡Hola! ¿Qué música quieres escuchar o qué quieres saber de Diego?",
+      gracias: "Con gusto.",
+      adios: "¡Hasta luego!",
+      quienEres:
+        "Soy Norma, la asistente de este portafolio. Pongo música del Top 10 y respondo sobre Diego y sus proyectos.",
+      ayuda:
+        "Puedo poner temas del Top 10, por ejemplo: pon la canción 3, siguiente, pausa. Y puedo responder sobre los estudios, la experiencia, las habilidades y los proyectos de Diego.",
+      pon: "Pon",
+      sugerencia1: "¿Qué estudias?",
+      sugerencia2: "¿Dónde has trabajado?",
+      sugerencia3: "¿De qué trata el Depurador FNC?",
+      placeholder: "Escribe o usa el micrófono...",
+      enviar: "Enviar",
+      hablar: "Hablar con Norma",
+      detener: "Dejar de escuchar",
+      escuchando: "Te escucho...",
+      hablando: "Hablando...",
+      silenciar: "Silenciar la voz de Norma",
+      activarVoz: "Activar la voz de Norma",
+      sinVoz: "Este navegador no permite hablarle a Norma. Puedes escribirle.",
+      sinPermiso:
+        "Necesito permiso para usar el micrófono. Actívalo en tu navegador o escríbeme.",
+      errorRed:
+        "El reconocimiento de voz no está disponible en este navegador (en Brave está desactivado). Puedes escribirme.",
+      noOi: "No te escuché. Toca el micrófono e inténtalo de nuevo.",
+      noPuedo: "Lo siento, no puedo responder eso.",
+      segunDocumento: "Según la documentación del proyecto:",
+      reproduciendo: "Claro, pongo {tema} de {artista}.",
+      noEsta: "Ese tema no está en mi Top 10. Pídeme uno de la lista.",
+      numeroInvalido: "Solo tengo {max} canciones en mi Top 10.",
+      siguiente: "Siguiente tema.",
+      anterior: "Tema anterior.",
+      pausa: "Listo, en pausa.",
+      continuar: "Continuamos.",
+      abrir: "Abro el reproductor.",
+      minimizar: "Minimizo el reproductor.",
+      cerrar: "Cierro el reproductor.",
+      actual: "Está sonando {tema}.",
+      nadaSuena: "Ahora no suena nada. Dime qué tema quieres.",
+      lista: "Mi Top 10:",
+      abrirChat: "Abrir el chat con Norma",
+      microInactivo: "No te escuché, apagué el micrófono.",
     },
     contacto: {
       titulo: "¿Hablamos?",
@@ -432,6 +487,11 @@ export const traducciones = {
           descripcion:
             "This micro-project allows for the design of deterministic and non-deterministic finite automata, either via a form or manually through a transition diagram; it consists of three modules: design, conversion, and minimization of automata.",
         },
+         "Diseñador de AP": {
+          nombre: "Diseñador de AP",
+          descripcion:
+            "This micro-project allows for the design of pushdown automata—either through the platform's interface or by drawing them—and serves as a tool for designing and simulating strings that can be generated based on defined parameters.",
+        },
         ecommerce: {
           nombre: "Mini E-Commerce MRM",
           descripcion:
@@ -577,6 +637,57 @@ export const traducciones = {
       cerrar: "Close player",
       lista: "Song list",
       progreso: "Song progress",
+    },
+    norma: {
+      titulo: "Norma",
+      subtitulo: "Music and portfolio assistant",
+      abrirPanel: "Talk to Norma",
+      cerrarPanel: "Close Norma",
+      saludo:
+        "Hi, I'm Norma. I can play music from my Top 10 and answer questions about Diego and his projects. Try: play {tema}.",
+      hola: "Hi! What music would you like to hear, or what do you want to know about Diego?",
+      gracias: "You're welcome.",
+      adios: "See you!",
+      quienEres:
+        "I'm Norma, the assistant of this portfolio. I play music from the Top 10 and answer questions about Diego and his projects.",
+      ayuda:
+        "I can play songs from the Top 10, for example: play song 3, next, pause. I can also answer questions about Diego's studies, experience, skills and projects.",
+      pon: "Play",
+      sugerencia1: "What do you study?",
+      sugerencia2: "Where have you worked?",
+      sugerencia3: "What is Depurador FNC about?",
+      placeholder: "Type or use the microphone...",
+      enviar: "Send",
+      hablar: "Talk to Norma",
+      detener: "Stop listening",
+      escuchando: "I'm listening...",
+      hablando: "Speaking...",
+      silenciar: "Mute Norma's voice",
+      activarVoz: "Turn on Norma's voice",
+      sinVoz:
+        "This browser doesn't support talking to Norma. You can type to her.",
+      sinPermiso:
+        "I need microphone permission. Enable it in your browser or type to me.",
+      errorRed:
+        "Voice recognition is not available in this browser (it is disabled in Brave). You can type to me.",
+      noOi: "I didn't hear you. Tap the microphone and try again.",
+      noPuedo: "Sorry, I can't answer that.",
+      segunDocumento: "According to the project documentation (in Spanish):",
+      reproduciendo: "Sure, playing {tema} by {artista}.",
+      noEsta: "That song isn't in my Top 10. Ask for one from the list.",
+      numeroInvalido: "I only have {max} songs in my Top 10.",
+      siguiente: "Next song.",
+      anterior: "Previous song.",
+      pausa: "Paused.",
+      continuar: "Let's continue.",
+      abrir: "Opening the player.",
+      minimizar: "Minimizing the player.",
+      cerrar: "Closing the player.",
+      actual: "Now playing {tema}.",
+      nadaSuena: "Nothing is playing right now. Tell me what you want to hear.",
+      lista: "My Top 10:",
+      abrirChat: "Open chat with Norma",
+      microInactivo: "I didn't hear you, so I turned the microphone off.",
     },
     // Dentro de "en":
     contacto: {
